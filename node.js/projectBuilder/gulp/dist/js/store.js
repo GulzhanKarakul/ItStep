@@ -1,0 +1,1 @@
+import*as reducer from"./reducer.js";function createStore(r){let t=r(),c=[];return{getState:function(){return t},dispatch:function(e){t=r(t,e),c.forEach(e=>{e()})},subscribe:function(e){c.push(e)}}}const store=createStore(reducer.countReducer);export{store};

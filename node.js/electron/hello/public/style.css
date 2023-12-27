@@ -1,0 +1,43 @@
+body {
+    text-align: center;
+    background: #3db3ee;
+    color: #0a067c;
+}
+
+.format-bar {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    margin: 50px auto;
+}
+button {
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background: #242550;
+    color: #fff;
+}
+
+.display {
+    width: 800px;
+    height: 500px;
+    margin: 50px auto;
+    background: #a0acdc;
+    border: 2px solid #000;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: left;
+}
+
+h3 {
+    background: #0a067c;
+    color: #fff;
+    margin: 0;
+}
+
+#save, #open {
+    margin: 0px auto;
+    width: 350px;
+}
+
+

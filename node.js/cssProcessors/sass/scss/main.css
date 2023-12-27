@@ -1,0 +1,94 @@
+body * {
+  font-style: italic;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+body h1 {
+  text-align: center;
+  color: #2d40a2;
+}
+body .flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1350px;
+  margin: 0 auto;
+}
+body button {
+  border: none;
+  margin: 20px 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
+  font-size: 17px;
+  padding: 10px;
+  background-color: #72c6bb;
+}
+body ol {
+  list-style: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.item {
+  margin: 0 auto;
+  width: 400px;
+  background: #cfd8ef;
+  text-align: center;
+  margin: 20px;
+  transition: all 500ms ease-out;
+}
+.item img {
+  width: 85%;
+  height: 300px;
+  margin: 10px;
+}
+.item .price {
+  font-size: 20px;
+}
+.item .description {
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: left;
+}
+.item .red {
+  background-color: #e36557;
+  color: #000;
+}
+
+.osnova {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(188, 188, 188, 0.8117647059);
+  opacity: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 2%;
+}
+.osnova .stuff-image {
+  width: 500px;
+  margin: 0px auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: #84d1d2;
+  padding: 5px 50px;
+  justify-content: center;
+}
+.osnova img {
+  width: 85%;
+  padding: 20px 0;
+}
+.osnova .alert {
+  padding: 50px 15px;
+  border: 2px solid #0a4c7e;
+  border-radius: 10px;
+  color: #294d4e;
+  font-size: 24px;
+  text-align: center;
+  background-color: #84d1d2;
+  width: 400px;
+  margin: 0 auto;
+}/*# sourceMappingURL=main.css.map */

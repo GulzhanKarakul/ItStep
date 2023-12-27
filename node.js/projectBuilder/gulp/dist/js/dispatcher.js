@@ -1,0 +1,1 @@
+import{store}from"./store.js";const dispatcher={dispatch(t){store.dispatch(t)}};export{dispatcher};

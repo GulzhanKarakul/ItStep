@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #254166;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    margin-top: 100px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.chat {
+    width: 400px;
+    height: 300px;
+    border: 3px solid #fff;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+}
+
+.user-list {
+    margin-bottom: 10px;
+    border: 3px solid #fff;
+    border-radius: 7px;
+    padding: 7px;
+}
+
+.user-list li {
+    cursor: pointer;
+    border: 1px solid #fff;
+    margin: 5px;
+}
+
+.private-chat {
+    display: none;
+    border: 3px solid #fff;
+    border-radius: 7px;
+    padding: 10px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    align-content: space-between;
+    flex-wrap: wrap;
+}
+
+.private-chat.active {
+    display: flex;
+}
+
+.private-chat li {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.private-chat li.my {
+    justify-content: flex-end;
+}
+
+.message-panel {
+    width: 100%;
+    text-align: center;
+    border-top: 2px solid #fff;
+}
+
+input {
+    padding: 7px 15px;
+    border: 4px solid #052250;
+    border-radius: 7px;
+}
+
+button {
+    padding: 7px 15px;
+    border: 4px solid #052250;
+    border-radius: 7px;
+    color: #fff;
+    background: #223190;
+}

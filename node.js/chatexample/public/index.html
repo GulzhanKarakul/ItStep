@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Чат</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="chat-container">
+    <div id="messages-container">
+      <div id="general-room" class="room"></div>
+    </div>
+    <div id="input-container">
+      <form id="input-form">
+        <input type="text" id="input" placeholder="Введите сообщение..." autocomplete="off">
+        <button type="submit">Отправить</button>
+      </form>
+      <div id="typing-indicator"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.min.js" integrity="sha512-+NaO7d6gQ1YPxvc/qHIqZEchjGm207SszoNeMgppoqD/67fEqmc1edS8zrbxPD+4RQI3gDgT/83ihpFW61TG/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="index.js"></script>
+</body>
+</html>

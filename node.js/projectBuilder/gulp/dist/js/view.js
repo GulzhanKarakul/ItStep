@@ -1,0 +1,1 @@
+class CountView{constructor(t){this.store=t,this.store.subscribe(this.render),this.render()}render=()=>{var t=document.querySelector(".count"),e=this.store.getState();console.log(e),t.textContent=e.count.toString()}}export{CountView};

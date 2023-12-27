@@ -1,0 +1,1 @@
+import{types}from"./actions.js";const initialState={count:0};function countReducer(t=initialState,e){if(!e)return t;switch(e.type){case types.INCREMENT:return{count:t.count+1};case types.DECREMENT:return{count:t.count-1};case types.CLEAR:return{count:0};default:return t}}function listReducer(t){}export{countReducer,listReducer};
