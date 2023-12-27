@@ -1,0 +1,58 @@
+<script>
+//Функция создаёт и заполняет матрицу N x M числами от 0 по спирали, начиная от правого верхнего угла.
+test_getSpiralMatrix();
+
+function getSpiralMatrix(rows, columns) {
+    let matrix = [];
+	
+	for(let row = 0; row < rows; row++){
+		let currentRow = [];
+		for(let col = 0; col < columns; col++){
+		    currentRow[col] = 0;
+	    }
+		matrix.push(currentRow);
+	}
+	console.log(matrix);
+    
+   let count = rows*columns;
+   for( let k = 0; k < count;){
+	  
+	   for(let j = matrix[0].length; j >= 0; j--){
+		   for(let i in matrix){
+		       if(j === matrix[0].length ){
+			    matrix[i][j] = k;
+				k++;
+				}
+				if(j === matrix[0].length - 1){
+				    matrix[j][i] = k;
+				   k++;
+				}
+				console.log(matrix);
+				
+			  
+		   }
+	  }
+	  
+   }
+   
+}
+
+
+function test_getSpiralMatrix() {
+    let size = [2,2];
+    let expect = [[3,0],
+                  [2,1]];
+    console.assert(getSpiralMatrix(...size).toString() === expect.toString());
+
+    size = [4,5];
+    expect = [[10, 11, 12, 13, 0],
+              [ 9, 18, 19, 14, 1],
+              [ 8, 17, 16, 15, 2],
+              [ 7,  6,  5,  4, 3]];
+    console.assert(getSpiralMatrix(...size).toString() === expect.toString());
+
+    console.assert(getSpiralMatrix().toString() === [].toString());
+}
+
+
+</script>

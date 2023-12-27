@@ -1,0 +1,39 @@
+<script>
+/*  Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development). Функция должна выполнять только одно дело, имя каждой функции должно ясно указывать, что именно она делает. Имена аргументов функций тоже должны быть "говорящими".
+
+2.	В массиве хранятся имена сотрудников, которым была выписана премия за месяц. Проверить, не попал ли кто-либо из сотрудников в эту базу дважды: вывести эти имена в документ, а из массива все повторения удалить.*/
+
+let userInputOfNames = prompt("Запишите фамилии премированных сотрудников через запятую, программа отсортирует документ без повторяющихся фамилий:");
+
+if (!userInputOfNames) {
+  alert("Вы не ввели данные");
+} else {
+    let arrayOfNames = userInputOfNames.split(", ");
+    document.write("Оригинальный докеумент: " + arrayOfNames.join(", ") + "<br>");
+
+    let arrayOfDuplicateNames = getDuplicateNamesArray(arrayOfNames);
+	let sortedArray = arrayOfNames.filter((item, index) => arrayOfNames.indexOf(item) === index);
+
+    document.write("Повторяющиеся фамилии: " + arrayOfDuplicateNames.join(", ") + "<br>" + "Отсортированный документ, без повторяющихся фамилий: " + sortedArray.join(", "));
+}
+test_getDuplicateNamesArray();
+
+function getDuplicateNamesArray(arr){
+    let duplicates = [];
+    for (let i = 0; i < arr.length; i++) {
+        let name = arr[i];
+        if (arr.indexOf(name) !== i) { 
+            duplicates.push(name); 
+        }
+    }
+    return duplicates;
+}
+
+function test_getDuplicateNamesArray(){
+    console.assert(JSON.stringify(getDuplicateNamesArray([''])) === JSON.stringify([]), "Тест 1 не пройден: Пустой документ");
+    console.assert(JSON.stringify(getDuplicateNamesArray([])) === JSON.stringify([]),  "Тест 2 не пройден: Пустой массив");
+    console.assert(JSON.stringify(getDuplicateNamesArray(['Ли','Ким'])) === JSON.stringify([]),  "Тест 3 не пройден: Нет дубликатов")
+    console.assert(JSON.stringify(getDuplicateNamesArray(['Ли','Ли'])) === JSON.stringify(['Ли']), "Тест 5 не пройден: Неверный результат при наличии дубликатов");
+}
+
+</script>

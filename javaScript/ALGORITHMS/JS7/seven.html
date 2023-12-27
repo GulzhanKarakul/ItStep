@@ -1,0 +1,43 @@
+<script>
+/*  Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development). Функция должна выполнять только одно дело, имя каждой функции должно ясно указывать, что именно она делает. Имена аргументов функций тоже должны быть "говорящими".
+
+7.	Отсортировать массив чисел по возрастанию (неубыванию) методом выборки.*/
+let userInput = prompt("Введите данные через звпятую, которые заполнят массив. А программа отсортирует его по возврастанию!");
+
+if (!userInput) {
+    alert("Вы не ввели данные");
+} else {
+    let userArray = userInput.split(",");
+	userArray = userArray.map(Number);
+	document.write("Массив, который Вы ввели: " + userArray + "<br>");
+	let resultArray = selectionSort(userArray);
+
+    document.write("И Ваш отсортированный массив: " + resultArray);
+}
+
+
+test_selectionSort();
+
+/* А этот код я еще в пятницу в свою тетрадь записала. жаль тут нельзя смайлик использовать с улыбкой. Прикол в том что вчера после учебы я пришла и загуглила все виды сортировок и записала их в тетрадь... Так что и этот код у меня был заранее...*/
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    if (minIndex !== i) {
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+    }
+  }
+  return arr;
+}
+
+function test_selectionSort(){
+    console.assert(JSON.stringify(selectionSort([1])) === JSON.stringify([1]), "Array with one element");
+    console.assert(JSON.stringify(selectionSort([1,2,5,0])) === JSON.stringify([0,1,2,5]), "Sorted array: 0,1,2,5");
+    console.assert(JSON.stringify(isNaN(selectionSort([1,'s',0])[0])), "One element is Not a Number");
+}
+
+</script>

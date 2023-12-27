@@ -1,0 +1,33 @@
+<script>
+/* 3.	Пользователь вводит число любой длины. Вывести сумму всех цифр в числе и их произведение. */
+
+let userNumber = prompt("Введите число любой длины и программа выдаст Вам сумму/произведение всех его составляющих чисел! ");
+let lengthOfNumber = userNumber.length;
+
+if(isNaN(userNumber)){
+   alert("Введенные данные не являются числом!");
+}else{
+    let currentNumber = Number(userNumber);
+	if(!Number.isInteger(currentNumber)){
+		alert("Введенное число не является целым!");
+    }else{
+	
+	    let digit;
+	    let resultOne = 0;
+		let resultTwo = 1; 
+	    
+		
+	    for(let i = 0; i < lengthOfNumber; i++){
+		    digit = currentNumber % 10;
+			currentNumber = Math.floor(currentNumber / 10);
+			
+			resultOne += digit;
+			resultTwo *= digit;
+		}
+	    alert("Сумма цифр этого числа равна: " + resultOne  + "\nПроизведение цифр этого числа равна: " + resultTwo);
+	}
+	
+}
+
+
+</script>

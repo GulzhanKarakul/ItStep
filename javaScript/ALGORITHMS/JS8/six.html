@@ -1,0 +1,80 @@
+<script>
+/* Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development)! 
+. Римские цифры снова в моде! Напишите программу, которая переводит число в диапазоне от 0 до 9999 в римскую запись.*/
+
+/* Это была самая легкая задача) Стоило сделать от 1 дл 9 и потом все само сошлось)))*/
+
+let userInput = prompt("Введите число до 9999, которое конвертируется на римские цифры!");
+
+if (!userInput || userInput >= 10000 || userInput <= 0) {
+    alert("Вы ввели неверные данные");
+} else {
+    let userInputNumber = Number(userInput);
+    let romanNumber = toRomanNumber(userInputNumber);
+	
+    document.write(romanNumber);
+}
+
+function toRomanNumber(input){
+	let romanNumber = '';
+    let digit = input % 10; 
+    let tens = Math.floor(input / 10) % 10;
+    let hundreds = Math.floor(input / 100) % 10; 
+    let thousands = Math.floor(input / 1000); 
+        
+    switch(thousands){
+	    case 1: romanNumber += "M"; break;
+	    case 2: romanNumber += "MM"; break;
+	    case 3: romanNumber += "MMM"; break;
+	    case 4: romanNumber += "MV"; break;
+		case 5: romanNumber += "V"; break;
+		case 6: romanNumber += "VM"; break;
+		case 7: romanNumber += "VMM"; break;
+		case 8: romanNumber += "VMMM"; break;
+		case 9: romanNumber += "MX"; break;
+	}
+		
+	switch(hundreds){
+	    case 1: romanNumber += "C"; break;
+		case 2: romanNumber += "CC"; break;
+		case 3: romanNumber += "CCC"; break;
+		case 4: romanNumber += "CD"; break;
+		case 5: romanNumber += "D"; break;
+		case 6: romanNumber += "DC"; break;
+		case 7: romanNumber += "DCC"; break;
+		case 8: romanNumber += "DCCC"; break;
+		case 9: romanNumber += "CM"; break;
+	}
+		
+	switch(tens){
+	    case 1: romanNumber += "X"; break;
+		case 2: romanNumber += "XX"; break;
+		case 3: romanNumber += "XXX"; break;
+		case 4: romanNumber += "XL"; break;
+		case 5: romanNumber += "L"; break;
+		case 6: romanNumber += "LX"; break;
+		case 7: romanNumber += "LXX"; break;
+		case 8: romanNumber += "LXXX"; break;
+		case 9: romanNumber += "XC"; break;
+	}
+			
+	switch(digit){
+	    case 1: romanNumber += "I"; break;
+		case 2: romanNumber += "II"; break;
+		case 3: romanNumber += "III"; break;
+		case 4: romanNumber += "IV"; break;
+		case 5: romanNumber += "V"; break;
+		case 6: romanNumber += "VI"; break;
+		case 7: romanNumber += "VII"; break;
+		case 8: romanNumber += "VIII"; break;
+		case 9: romanNumber += "IX"; break;
+	}	
+	return romanNumber;
+}
+
+function test_toRomanNumber(){
+    console.assert(toRomanNumber() === "", "Test 1 failed");
+    console.assert(toRomanNumber(14) === "XIV", "Test 2 failed");
+    console.assert(toRomanNumber(9000) === "MX", "Test 3 failed");
+}
+</script>

@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #02074d;
+}
+
+#canvas {
+    border: 5px solid #02074d;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+}
+
+#player, #layer1, #layer2, #layer3, #layer4, #layer5, #layer6 , #layer7, #fireball, #heart {
+    display: none;
+}

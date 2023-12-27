@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Palette</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="JS26.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Color Palette</h1>
+		<form class="color-form">
+			<label for="name">Name:</label>
+			<input type="text" id="name-input" name="name" required pattern="[a-zA-Z]+">
+
+			<label for="type">Type:</label>
+			<select id="type-input" name="type">
+				<option value="rgb">RGB</option>
+				<option value="rgba">RGBA</option>
+				<option value="hex">HEX</option>
+			</select>
+
+			<label for="code">Code:</label>
+			<input type="text" id="code-input" name="code" required>
+
+			<button type="submit" id="save-btn">Save</button>
+		</form>
+
+		<ul id="color-list">
+			
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="JS26.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<script>
+
+let myVar = Number(prompt("Введите имеющееся колличество денег в тг"));
+let myInt = Number(prompt("Введите цену шоколадки в тг"));
+let numberOfChoco = Math.floor(myVar / myInt);
+let yourChange = myVar - (numberOfChoco * myInt);
+alert("Колличество шоколадок которое вы можете купить " + numberOfChoco + " и ваша сдача " + yourChange + " тг");
+
+</script>

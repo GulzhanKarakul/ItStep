@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <link href='JS37.css' rel='stylesheet' type='text/css'>
+        <title>Моя Игра</title>
+</head>
+<body>
+        <canvas id='canvas'></canvas>
+
+        <!-- Так как игра запускается на load, то есть после загрузки страницы,
+        имея имг на странице, мы подтверждаем что оно загрузилось на ЛОАД и после запускается игра
+        то есть избегаем ошибку уже в запущенной игре. Если картинка не загрузится в имг, то игра не запустится-->
+
+        <!-- Также перед использованием картинок, лучше уменьшить/увеличить спрайты/картинки
+                 до размеров которые будут по факту использоваться в игре.-->
+        <img id="player" src="/resources/char_95x159.png">
+        <img id="layer7" src="/resources/sky.png">
+        <img id="layer6" src="resources/layer-6.png" >
+        <img id="layer5" src="resources/layer-5.png" >
+        <img id="layer4" src="resources/layer-4.png" >
+        <img id="layer3" src="resources/layer-3.png" >
+        <img id="layer2" src="resources/layer-2.png" >
+        <img id="layer1" src="resources/layer-1.png" >
+        <img id="fireball" src="resources/fireball_40x40.png" >
+        <img id="heart" src="resources/heart.png" >
+</body>
+<script type='module' src='main.js'></script>
+</html>

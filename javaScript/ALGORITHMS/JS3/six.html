@@ -1,0 +1,34 @@
+<script>
+
+let numberOne = prompt("Введите число");
+let numberTwo = prompt("Введите на сколько вы хотите сдвинуть число");
+
+if(isNaN(numberOne) || isNaN(numberTwo)){
+   alert("Попробуйте еще раз! Введите число!");
+}else{
+   let numberBasis = Number(numberOne);
+   let numberSlice = Number(numberTwo);
+   if(!Number.isInteger(numberBasis) || !Number.isInteger(numberSlice)){
+       alert("Попробуйте еще раз! Введите целое число!");
+   }else{
+        let number;
+		let numberOneSlice;
+        for (let i = 0; i < numberSlice; i++){
+		    number = numberBasis % 10;
+			numberBasis = Math.floor(numberBasis / 10);
+			
+			/*я старалась сделать одним выводом. но если сюда вписать numberBasis то выводится numberBasis каждой итерации, а если вписать number после цикла то все number уже складываются... Работает этот вариант! НО ЕСЛИ У ВАС ЕСТЬ ВАРИАНТ НАПИСАНИЯ ОДНИМ ДОК.РАЙТ, пожалуйста поделитесь на будущее!*/
+			
+			document.write(number);
+		}
+		document.write(numberBasis)
+		
+		
+
+   }
+   
+}
+
+
+
+</script>

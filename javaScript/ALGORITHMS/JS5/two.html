@@ -1,0 +1,29 @@
+<script>
+/*	Написать функцию, которая принимает три отдельные цифры и превращает их в одно число. Например: цифры 1, 4, 9 превратятся в число 149. */
+
+let number1 = prompt("Введите первое число!") || 0; //смотрите какую прикольную вещь нашла пока делала 5 задание в прошлой дз)) 
+let number2 = prompt("Введите второе число!") || 0;
+let number3 = prompt("Введите третье число!") || 0;
+
+let result = oneNumberMaker(number1, number2, number3);
+alert(result);
+
+function oneNumberMaker(num1, num2, num3){
+    if(isNaN(num1) || isNaN(num2) || isNaN(num3))return;
+	let intNumber1 = Number(num1);
+	let intNumber2 = Number(num2);
+	let intNumber3 = Number(num3);
+	if(!Number.isInteger(intNumber1) || !Number.isInteger(intNumber2) || !Number.isInteger(intNumber3)) return;
+
+    let combinedFigure = num1 + "" + num2 + "" + num3;
+	
+	<!-- let combinedNumber = Number(combinedFigure);
+	//я спец перевела в число, конечно и без него работало, но так зато точно число выйдет! НО в итоге если его ввести и потом вписать 0-0-0 или пустая строка, в итоге выходит просто число 0. т.к. числа 000 нет))) он преобразуется даже если ввести 0/"" - 5- 0 в итоге выходит просто 50)) -->
+	
+	return combinedFigure;
+
+}
+
+
+
+</script>

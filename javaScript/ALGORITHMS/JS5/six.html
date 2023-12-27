@@ -1,0 +1,21 @@
+<script>
+/* Написать рекурсивную функцию, которая вычисляет факториал переданного ей числа*/
+
+//я думала будет тяжко разобраться, но оказалось очень легко. код запустился со второй коррекции!
+
+let number1 = prompt("Введите число чтобы определить его факториал");
+
+let result = getFactorial(number1);
+alert(result);
+
+function getFactorial(num1){
+    if(isNaN(num1))return;
+  	let intNumber1 = Number(num1);
+	if(!Number.isInteger(intNumber1)) return;
+	
+	if (intNumber1 === 1){return 1;}
+	
+	let factorialNumber = intNumber1 * getFactorial(intNumber1 - 1);
+	return factorialNumber;
+}
+</script>

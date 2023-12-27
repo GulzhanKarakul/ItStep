@@ -1,0 +1,23 @@
+<script>
+/* 3.	Написать функцию, которая принимает длину и ширину прямоугольника и вычисляет его площадь. Если в функцию передали 1 параметр, то она вычисляет площадь квадрата.*/
+
+
+let number1 = prompt("Введите длину прямоугольника!");
+let number2 = prompt("Введите ширину прямоугольника!");
+
+let result = areaOfRectangle(number1, number2);
+alert(result);
+
+function areaOfRectangle(num1, num2){
+    num2 = num2 ? num2 : num1;
+    num1 = num1 ? num1 : num2;
+    if(isNaN(num1) || isNaN(num2))return;
+  	let intNumber1 = Number(num1);
+	let intNumber2 = Number(num2);
+	
+	let area = intNumber1 * intNumber2;
+	return area;
+}
+
+
+</script>

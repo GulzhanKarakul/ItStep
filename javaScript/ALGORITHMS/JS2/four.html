@@ -1,0 +1,23 @@
+<script>
+
+let myVar = prompt('Введите пятизначное число');
+
+if (isNaN(myVar)) alert("Вы ввели не число!");
+else{
+    let myNum = Number(myVar);
+    const num = myVar.length;
+    if (num != 5) alert("Не пятизначное число!");
+    if(!Number.isInteger(myNum))alert("Вы ввели не целое число");
+
+    if (num === 5){
+    let firstNumber = myNum % 10;
+    let secondNumber = Math.floor(myNum / 10) % 10;
+    let fourthNumber = Math.floor(myNum / 1000) % 10;
+    let fivthNumber = Math.floor(myNum / 10000) % 10;
+
+    firstNumber === fivthNumber && secondNumber === fourthNumber ? alert("palindrome") : alert("Not palindrome");
+}
+}
+
+
+</script>

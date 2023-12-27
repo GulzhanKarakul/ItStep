@@ -1,0 +1,104 @@
+.body{
+  margin:0;
+  padding: 0;
+}
+.header{
+  background-image: url(kaktusi.jpg);
+  width: 100%;
+  padding: 95px 0;
+  height: 395px;
+}
+.test-title{
+  background-color: white;
+  width: 700px;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  padding: 50px;
+  flex-wrap: wrap;
+}
+form {
+	
+}
+
+form.active {
+	display: block;
+}
+.questions__count {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: normal;
+    margin-bottom: 22px;
+	text-align: center;
+}
+.intro__title {
+    text-align: center;
+    margin: 0 auto 37px;
+    font-size: 42px;
+    line-height: 42px;
+    font-weight: 700;
+    font-family: Roboto Condensed;
+    line-height: normal;
+}
+li {
+  display: none;
+}
+
+.active{
+  display: block;
+}
+.intro__sub-title {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 60px;
+    line-height: normal;
+    font-weight: 400;
+}
+.intro__button-start {
+    background: #ec5e40;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    min-width: 240px;
+    height: 50px;
+    text-transform: uppercase;
+    transition: opacity .15s ease-in-out;
+    border-radius: 3px;
+    padding: 1px 7px;
+}
+.form{
+	margin: 50px 0;
+	width: 700px;
+	margin-top: 30px;
+	display: none;
+}
+.button-style {
+  background: #EC5E40;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  min-width: 240px;
+  height: 50px;
+  text-transform: uppercase;
+  transition: opacity 150ms ease-in-out;
+  border-radius: 3px;
+  padding: 1px 7px;
+  position: relative;
+  margin: 20px 0 0;
+}
+
+fieldset{
+  text-align: left;
+}
+.answer p {
+	font-size: 24px;
+}

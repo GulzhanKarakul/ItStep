@@ -1,0 +1,16 @@
+<script>
+
+let priceOfProduct = +prompt("Введите стоимость товара");// Написано без намбер)) ну я нашла альтернативу))
+let total;
+// я специально ввела sale; напрягало что строка длинная и что повторяется все кроме %
+let sale;
+
+if (priceOfProduct > 0 && priceOfProduct < 200) sale = 0;
+else if (priceOfProduct >= 200 && priceOfProduct < 300)  sale = 3;
+else if (priceOfProduct >= 300 && priceOfProduct < 500)  sale = 5;
+else if (priceOfProduct >= 500) sale = 7;
+total = priceOfProduct - priceOfProduct * sale /100;
+
+alert("Итого " + total);
+
+</script>

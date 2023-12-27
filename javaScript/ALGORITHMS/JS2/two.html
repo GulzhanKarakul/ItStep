@@ -1,0 +1,24 @@
+<script>
+
+let myVar = prompt('Введите тречзначное число');
+
+if (isNaN(myVar)) alert("Вы ввели не число!");
+else{
+    let myNum = Number(myVar);
+    const num = myVar.length;
+    if(num != 3) alert("Не трехзначное число");
+
+    if(!Number.isInteger(myNum))alert("Вы ввели не целое число");
+
+    if(num === 3){
+    let firstNumber = myNum % 10;
+    let secondNumber = Math.floor(myNum / 10) % 10;
+    let thirdNumber = Math.floor(myNum / 100) % 10;
+    firstNumber === secondNumber ||
+    secondNumber === thirdNumber ||
+    thirdNumber === firstNumber ? alert("Есть одинаковые числа") : alert("Нет одинаковые чисел");
+	}
+}
+
+
+</script>

@@ -1,0 +1,31 @@
+<script>
+
+let number = prompt("Введите число");
+
+if(isNaN(number)){
+    alert("Вы ввели не число!")  
+}else{
+    let num = Number(number)
+    if(!Number.isInteger(num)){
+	    alert("Число должно быть целым! Попробуйте еще раз! ")
+	}else{
+        let numberMax = 0;
+        let numberMin = 9;
+
+        while (num > 0) {
+            let currentDigit = num % 10;
+            if (currentDigit > numberMax) {
+                numberMax = currentDigit;
+            }
+            if (currentDigit < numberMin) {
+                numberMin = currentDigit;
+            }
+            num = Math.floor(num / 10);
+        }
+
+        alert("Самое большое число: " + numberMax + "\nСамое маленькое число: " + numberMin);
+
+    }
+
+}
+</script>

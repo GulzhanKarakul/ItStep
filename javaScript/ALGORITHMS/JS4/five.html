@@ -1,0 +1,80 @@
+<script>
+/*5.	Резюме. Спросите у пользователя его ФИО. Затем в цикле спрашивайте, в каком году он начал работать, в каком году уволился, и как называлось это место работы. Если пользователь не ввёл ничего, прервите цикл, и напечатайте в браузере его резюме, а в конце укажите, сколько лет составляет его общий стаж работы. */
+
+let fillTheForm = true;
+
+let name = prompt("Запишите Ваше имя и фамилию!");
+let firstYearOfWorking, lastYearOfWorking, yourCompany;
+let  workExperience = 0;
+let count = 1;
+
+document.write(name + "<br>");
+
+while(fillTheForm){
+
+    firstYearOfWorking = prompt("В каком году вы начали работать на предыдущей работе?");
+	
+	if(firstYearOfWorking === ""){
+        alert("Вы не можете пропустить вопрос! Попробуйте сново!" );
+		fillTheForm = false;
+	    break;
+    }else{
+	    if(isNaN(firstYearOfWorking)){
+		    alert("Вы ввели не число!");
+		}else{
+		    let firstYear = Number(firstYearOfWorking);
+		    if(!Number.isInteger(firstYear)){
+	            alert("Введенные данные не являются целым числом!");
+	        }else{
+	            lastYearOfWorking = prompt("В каком году вы уволились с предыдущей работы?");
+				
+	            if(lastYearOfWorking === ""){
+	                alert("Вы не можете пропустить вопрос!");
+			        fillTheForm = false;
+					document.write( "Год старта прежней работы: " + firstYearOfWorking + "<br>");
+		            break;
+		        }else{
+                    if(isNaN(lastYearOfWorking)){
+                        alert("Вы ввели не число!");
+                    }else{
+	                    let lastYear = Number(lastYearOfWorking);
+						
+	                    if(!Number.isInteger(lastYear)){
+	                        alert("Введенные данные не являются целым числом!");
+	                    }else{
+						    let workTime;
+						    for(let i = 0; i < count; i++){
+			                    workTime = lastYear - firstYear;
+							}
+							workExperience += workTime;
+	                    }
+				
+			        	yourCompany = prompt("Запишите название компании: ");
+	                    if(yourCompany === ""){
+	                        alert("Вы не можете пропустить вопрос!");
+					        fillTheForm = false;
+							document.write( "Год старта прежней работы: " + firstYearOfWorking + "<br>" + "Год уольнения с прежней работы: " + lastYearOfWorking + "<br>");
+	                        break;
+	                    }else{
+							document.write("Компания: " + yourCompany + "<br>" + "Год старта прежней работы: " + firstYearOfWorking + "<br>" + "Год увольнения с прежней работы: " + lastYearOfWorking + "<br>");  
+						}
+						
+                    }
+                }
+			}
+	    }
+	}
+	count++;
+	
+	fillTheForm = confirm("Хотите дополнить информацию об опыте работы в другой компании?");
+	if(fillTheForm === false){
+	    break;
+	}
+}
+if(workExperience > 0 ){
+document.write("Стаж работы: " + workExperience);
+}
+
+
+
+</script>

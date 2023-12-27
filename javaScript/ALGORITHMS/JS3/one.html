@@ -1,0 +1,24 @@
+<script>
+
+
+let inputNumber = prompt("Введите число, чтобы определить его делители: ");
+
+if(!isNaN(inputNumber)){
+    let num = Number(inputNumber);
+    if(Number.isInteger(num)){
+	    let splitter = num;
+		while(splitter > 0){
+		    if (num % splitter === 0){
+			document.write("Числа на которые делится " + num + " это  " + splitter + "<br>")
+			}
+			splitter--;
+		}
+	}else{
+	    alert("Введите целое Число!!!")
+	}
+
+}else{
+    alert("Введите Число!!!");
+}
+
+</script>

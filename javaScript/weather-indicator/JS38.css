@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    border-bottom: none;
+}
+
+:root {
+    --rotate: 0deg;
+}
+
+body {
+    height: 100vh;
+    background-image: conic-gradient(
+        from var(--rotate),
+        #0f2952, 
+        #e7e8eb
+    );
+    z-index: -1;
+    animation: animate 5s linear infinite;
+    color: #092145;
+}
+
+/* НЕ РАБОТАЕТ АНИМАЦИЯ */
+
+/* @keyframes animate {
+    from { 
+        --rotate: 0deg;
+    }
+    to {
+       --rotate: 360deg;
+    }
+} */
+
+
+header {
+    width: 700px;
+    margin: 50px auto;
+    position: relative;
+}
+
+input {
+    padding: 10px;
+    border: 2px solid #092145;
+    border-radius: 10px;
+    font-size: 20px
+}
+
+button {
+    padding: 10px 38px;
+    border: 2px solid #092145;
+    border-radius: 10px;
+    background: linear-gradient(to left, #8c9eb5, #4a5c79);
+    font-size: 20px;
+    
+}
+
+.result {
+    position: absolute;
+    background: #e2e6ec;
+    top: 100%;
+    left: 0%;
+    width: 700px;
+    border: 2px solid #092145;
+    border-top: none;
+    border-bottom: none;
+    z-index: 1;
+}
+
+.fade-away li {
+    width: 95%;
+    padding: 8px;
+    margin: 5px;
+    list-style: none;
+    border-bottom: 1px solid #000;
+    font-size: 20px;
+}
+
+.weather {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.weather h2 {
+    background: linear-gradient(to left, #8c9eb5, #4a5c79);
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+.display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.display li {
+    padding: 50px;
+    margin: 10px;
+    background: #8c9eb5;
+    list-style: none;
+    border-radius: 10px;
+    border: 2px solid #092145;
+    width: 200px;
+}
+
+.current-weather {
+    padding: 0 10px 15px;
+    margin: 20px auto;
+    background: #8c9eb5;
+    border-radius: 10px;
+    border: 2px solid #092145;
+    width: 600px;
+    text-align: center;
+}

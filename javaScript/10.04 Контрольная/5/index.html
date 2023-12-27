@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <link href='index.css' rel='stylesheet' type='text/css'>
+        <title>Задача 5</title>
+    </head>
+    <body>
+        <!-- Создать страницу с двумя колонками. В первой колонке список дел - "To do list".
+             Во второй колонке список сделанных дел - "Done list". Каждый элемент списка содержит:
+               * рамку,
+               * чекбокс "Done",
+               * текст,
+               * кнопку "Х", удаляющую этот элемент списка.
+             В колонке сделанных дел элементы списка имеют светло-зелёный фон,
+             в колонке несделанных дел - светло-жёлтый.
+             Элементы списка с отмеченным чекбоксом "Done" перемещаются во вторую колонку.
+             Если снять отметку "Done", элемент перемещается обратно в первую колонку.
+             Под списком находится поле ввода и кнопка "Добавить", для добавления новой задачи в "To do list"  -->
+
+             <div class="flex">
+
+             <div class="toDo">
+                <h1>Необходимо сделать</h1>
+                <ul id="toDo">
+                    <li id="active">
+                        <input type="checkbox"></input>
+                        Первый элемент
+                    </li>
+                    <li>
+                        <input type="checkbox"></input>
+                        Второй элемент
+                    </li>
+                    <li>
+                        <input type="checkbox"></input>
+                        Третий элемент
+                    </li>
+                </ul>
+                <input type="text" id="newLi"></input>
+                <button id="btn">Новый элемент</button>
+             </div>
+
+             <div class="done">
+                <h1>Сделано</h1>
+                <ul id="done">
+                    <li>
+                        <input type="checkbox" checked></input>
+                        Четвертый элемент
+                    </li>
+                    <li>
+                        <input type="checkbox" checked></input>
+                        Пятый элемент
+                    </li>
+                    <li>
+                        <input type="checkbox" checked></input>
+                        Шестой элемент
+                    </li>
+                </ul>
+             </div>
+            </div>
+
+    </body>
+    <script src='index.js'></script>
+</html>

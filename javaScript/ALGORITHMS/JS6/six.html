@@ -1,0 +1,40 @@
+<script>
+/*  Создать два массива. Удалить из первого массива такие элементы, которые есть во втором массиве.*/
+
+/* Виталий, Почему то splice не заработал, как бы я не пыталась интерпретировать код. В итоге я нашла еще один вариант, filter,про него я читала тоже сразу когда delete использовала. И можно я map со след домашки начну использовать, надо прочитать сначала про него всю информацию))*/
+
+
+
+let stringSetOfNumbersOne = prompt("Введите 10 чисел разделяя их запятыми, которые заполнят массив: \n\nИ программа найдет одинаковые числа и удалит те элементы которые есть в втором массиве");
+let stringSetOfNumbersTwo = prompt("Введите 10 чисел разделяя их запятыми, которые заполнят массив:");
+let currentArrOne = stringSetOfNumbersOne.split(",");
+let currentArrTwo = stringSetOfNumbersTwo.split(",");
+document.write("Ваш первый массив по умолчанию: " + currentArrOne.join(" ") + "<br>" + "Ваш второй массив по умолчанию: " + currentArrTwo.join(" ") + "<br>");
+
+for (let i = 0; i < currentArrOne.length; i++) {
+  currentArrOne[i] = parseInt(currentArrOne[i]);
+}
+for (let i = 0; i < currentArrTwo.length; i++) {
+  currentArrTwo[i] = parseInt(currentArrTwo[i]);
+}
+
+for (let x of currentArrTwo) {
+  let equalNumIndex = getEqualNumberIndex(x, currentArrOne);
+  if (equalNumIndex >= 0) {
+    currentArrOne = currentArrOne.filter((element, index) => index !== parseInt(equalNumIndex));
+  }
+}
+
+document.write("Ваш первый массив, отсортированный на основе второго: " + currentArrOne.join(" "));
+
+function getEqualNumberIndex(elem, arr) {
+  for (let i in arr) {
+    if (elem === arr[i]) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+
+</script>

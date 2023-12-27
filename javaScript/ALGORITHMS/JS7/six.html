@@ -1,0 +1,41 @@
+<script>
+/*  Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development). Функция должна выполнять только одно дело, имя каждой функции должно ясно указывать, что именно она делает. Имена аргументов функций тоже должны быть "говорящими".
+
+6.	Массив может содержать элементы разных типов. Напишите функцию, которая проверяет, одинакового типа все элементы в массиве или нет.*/
+
+test_isSameType();
+
+let userInput = prompt("Введите данные через звпятую, которые заполнят массив. А программа проверит одного ли типа данные или нет!");
+
+if (!userInput) {
+    alert("Вы не ввели данные");
+} else {
+    let userArray = userInput.split(",");
+    for(let i = 0; i < userArray.length; i++){
+        if(!isNaN(userArray[i])){
+	        userArray[i] = Number(userArray[i]);
+	    }
+    }
+
+    let result = isSameType(userArray);
+    if (result == true){
+        document.write("Все введенные данные являются одного типа: " + userArray);
+    }else{
+        document.write("Введенные данные не являются одного типа: " + userArray);
+    }
+}
+
+//Честно признаюсь, я сперла данную функцию в интернете... НО она такая короткая и удобная)
+
+/* typeof Я еще в книжке своей прочитала, дает в строчном виде тип данных. Здесь получется что каждый тип элемента должен быть таким же что и тип нулевого элемента))) и тут стрелочная функция, нaдо будет поделать ее, я потому что ее не очень хорошо понимаю. просто тупо подставляю значения, как и в filter */
+function isSameType(arr) {
+  return arr.every(item => typeof item === typeof arr[0]);
+}
+
+function test_isSameType(){
+    console.assert(isSameType([1, 2, 's']) === false, "Test Failed");
+    console.assert(isSameType([1, 2]) == true, "Test Failed");
+    console.assert(isSameType(['s', 'd']) === true, "Test Failed");
+}
+
+</script>

@@ -1,0 +1,91 @@
+<script>
+/* Написать функцию, которая считает разницу между датами. Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс». При выполнении задания используйте функции из предыдущих 2-х заданий: сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «дд:мм:гг». */
+
+let date1 = prompt("Введите первую дату! Число: "); 
+let month1 = prompt("Введите первую дату! Месяц: ");
+let year1 = prompt("Введите первую дату! Год: ");
+let date2 = prompt("Введите вторую дату! Число: ");
+let month2 = prompt("Введите вторую дату! Месяц: ");
+let year2 = prompt("Введите вторую дату! Год: ");
+
+let result = differencePerDay(date1, month1, year1, date2, month2, year2);
+
+function differencePerDay(num1, num2, num3, num4, num5, num6){
+    if(isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4) || isNaN(num5) || isNaN(num6))return undefined;
+	let date1 = Number(num1);
+	let month1 = Number(num2);
+	let year1 = Number(num3);
+	let date2 = Number(num4);
+	let month2 = Number(num5);
+	let year2 = Number(num6);
+    if (!Number.isInteger(date1) || !Number.isInteger(month1) || !Number.isInteger(year1) || !Number.isInteger(date2) || !Number.isInteger(month2) || !Number.isInteger(year2)) return undefined;
+  
+    if (month1 < 1 || month1 > 12 || month2 < 1 || month2 > 12) return undefined;
+	
+	let yearDiff;
+	if(year2 >= year1){
+	    yearDiff = year2 - year1;
+	}else{
+	    return undefined;   
+	}
+	let yearSum = 0;
+	let daysOfMonthSumm = 0;
+	for(let year = year1; year < year2; year++ ){
+	    yearSum += isLeapYear(year) ? 366 : 365;
+	}
+	for (let i = month1 + 1; i < month2; i++) {
+        daysOfMonthSumm += daysInMonth(i, year2);
+    }
+	
+	let monthDeff;
+	if(month2 > month1){
+	    monthDeff = month2 - month1;
+	}else{
+	    monthDeff = (month2 +12) - month1;
+		yearDiff--;
+	}
+	
+	let daysDeff;
+	if(date2 > date1){
+	    daysDeff = date2 - date1;
+	}else{
+	    let previosMonth = month2 - 1;
+		if (previosMonth < 1) previosMonth = 12;
+		let numberOfDaysPreviosMonth = daysOfMonth(previosMonth, year2);
+		
+		daysDeff = (date2 + numberOfDaysPreviosMonth) - date1;
+	    monthDeff--;
+	}
+	
+	return alert("Разица между двумя датами:\n" + daysDeff + " дней. " + monthDeff + " месяцев. " + yearDiff + " лет.");
+	
+
+
+
+    function isLeapYear(year) {
+         return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
+    }
+
+    function daysOfMonth(month, year){
+        let days;
+	    switch (month){
+	        case 1: days = 31; break;
+	        case 2: days = isLeapYear(year) ? 29 : 28; break;
+	        case 3: days = 31; break;
+	        case 4: days = 30; break;
+	        case 5: days = 31; break;
+	        case 6: days = 30; break;
+	        case 7: days = 31; break;
+	        case 8: days = 31; break;
+	        case 9: days = 30; break;
+	        case 10: days = 31; break;
+	        case 11: days = 30; break;
+	        case 12: days = 31; break;
+	    }
+	    return days;
+    }
+
+}
+
+
+</script>

@@ -1,0 +1,24 @@
+<script>
+/* Написать функцию, которая принимает 2 числа и возвращает -1, если первое меньше чем второе; 1 – если первое больше, чем второе; и 0 – если числа равны.*/
+
+let number1 = prompt("Введите первое число!") || 0;
+let number2 = prompt("Введите второе число!") || 0;
+
+let result = resultOfComparison(number1, number2);
+alert(result);
+
+function resultOfComparison(num1, num2 ){
+  if(isNaN(num1) || isNaN(num2))return;ы
+  	let intNumber1 = Number(num1);
+	let intNumber2 = Number(num2);
+	if(!Number.isInteger(intNumber1) || !Number.isInteger(intNumber2)) return;
+
+  if(num1 < num2) return -1;
+  if(num1 > num2) return 1;
+  if(num1 === num2) return 0;
+  
+}
+
+
+
+</script>

@@ -1,0 +1,36 @@
+<script>
+
+let dayOfWeek = prompt("Какой день недели? Следующий день недели:");
+let wannaContinue = true;
+
+while(wannaContinue){
+/*Виталий, пожалуйста объясните почему не работает перевод на нижний регистр?
+Нужно было ввести новую переменную и в нее вставить dayOfWeek.toLowerCase?
+я так сделала и все равно не меняется, а вообще изначально я написала в свич(dayOfWeek.toLowerCase)*/
+
+<!-- dayOfWeek = dayOfWeek.toLowerCase; -->
+
+let nextDayOfWeek;
+switch(dayOfWeek){
+    case "понедельник" : nextDayOfWeek = "вторник";break;
+    case "вторник" : nextDayOfWeek = "среда";break;
+    case "среда" : nextDayOfWeek = "четверг";break;
+    case "четверг" : nextDayOfWeek = "пятница";break;
+    case "пятница" : nextDayOfWeek = "суббота";break;
+    case "суббота" : nextDayOfWeek = "воскресенье";break;
+    case "воскресенье" : nextDayOfWeek = "понедельник";break;
+	default:"Вы ввели день недели неправильно!!!";break;
+}
+
+alert(nextDayOfWeek);
+
+wannaContinue = confirm("Хотите увидеть следующий день недели?");
+if(wannaContinue){
+    dayOfWeek = nextDayOfWeek;
+}
+if(!wannaContinue){
+    break;
+}
+}
+
+</script>

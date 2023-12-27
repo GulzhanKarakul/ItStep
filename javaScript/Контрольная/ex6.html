@@ -1,0 +1,43 @@
+<script>
+//Функция принимает двумерный массив, содержащий буквы, и выводит два слова, составленные из букв главной и побочной диагоналей.
+function getDiagWords(array) {
+    let result = "";
+	
+    if(array.length === 0){
+	    return result;
+	}else {
+	    for(let i = 0; i < array.length; i++){
+	       result += array[i][i];
+	    } 
+	    result += " ";
+	    for(let j = 0 ; j < array.length; j++){
+	        result += array[j][array.length - j - 1];
+	    }
+	    return result;
+	}
+}
+
+
+function test_getDiagWords() {
+    let input = [['ж','ф','л'],
+                 ['р','и','а'],
+                 ['с','з','л']];
+    let expect = "жил лис";
+    console.assert(getDiagWords(input) === expect, 'Test 1 Failed');
+
+    input = [['б','ф','л','т',']','в'],
+             ['р','е','а','о','о','щ'],
+             ['е','и','л','р','э','к'],
+             ['г','ы','о','а','ф','о'],
+             ['н','н','а','а','я','ч'],
+             ['а','з','л','ц','в',' ']];
+    expect = "белая  ворона";
+    console.assert(getDiagWords(input) === expect, 'Test 2 Failed');
+
+    input = [];
+    expect = "";
+    console.assert(getDiagWords(input) === expect, 'Test 3 Failed');
+}
+test_getDiagWords();
+
+</script>

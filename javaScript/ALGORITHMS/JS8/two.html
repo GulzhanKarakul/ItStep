@@ -1,0 +1,88 @@
+<script>
+/* Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development)! 	
+
+2. Oпределить 3 наиболее часто встречаемых символа в строке. Пробелы не учитывать при подсчете. Требуется написать функцию top3(st), возвращающую массив. Итог работы функции представить в виде строки: «символ – количество раз, символ – количество раз…».
+*/
+
+/* Виталий, у меня 3 функции... Просто функция должна же делать только одно действие))) а мне надо было узнать повторения одной буквы, потом отсортировать его и т.к. повторяются в слове буквы прорядить предложение))*/
+
+let stringInput = prompt("Введите строку, программа выведет наиболее часто встречаемые символы:");
+document.write(stringInput + "<br>");
+stringInput = stringInput.toUpperCase();
+
+let dublicateArray = onlyUniqueLeters(stringInput);
+
+let arrayOfAllLettersAndCounts = [];
+for (let x of dublicateArray) {
+    arrayOfAllLettersAndCounts.push(arrayOfAllTimesLetterRepeates(x, stringInput));
+}
+
+let sortedArray = selectionSort(arrayOfAllLettersAndCounts);
+
+document.write("Эти три буквы больше всего встречаются в строке: " + sortedArray[0].join(" - ") + " раз, " + sortedArray[1].join(" - ") + " раз, " + sortedArray[2].join(" - ") + " раз.");
+
+test_onlyUniqueLeters();
+test_selectionSort();
+test_arrayOfAllTimesLetterRepeates();
+
+function onlyUniqueLeters(string){
+    let uniqueString = '';
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] !== ' ' && uniqueString.indexOf(string[i]) === -1) {
+            uniqueString += string[i];
+        }
+	}
+	return uniqueString;
+}
+
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j][1] > arr[minIndex][1]) {
+        minIndex = j;
+      }
+    }
+    if (minIndex !== i) {
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+    }
+  }
+  return arr;
+}
+
+function arrayOfAllTimesLetterRepeates(letter, str){
+    let arrOfLetterAndCount = [];
+	let count = 0;
+    let pos = 0;
+    while (true) {
+        let foundPos = str.indexOf(letter, pos);
+        if (foundPos == -1) break;
+		pos = foundPos +1;
+		count++;
+    }
+	arrOfLetterAndCount.push(letter);
+	arrOfLetterAndCount.push(count);
+	return arrOfLetterAndCount;
+}
+
+
+
+function test_selectionSort(){
+    console.assert(JSON.stringify(selectionSort([1])) === JSON.stringify([1]), "Array with one element");
+    console.assert(JSON.stringify(selectionSort([1,2,5,0])) === JSON.stringify([0,1,2,5]), "Sorted array: 0,1,2,5");
+    console.assert(JSON.stringify(isNaN(selectionSort([1,'s',0])[0])), "One element is Not a Number");
+}
+
+function test_arrayOfAllTimesLetterRepeates() {
+  console.assert( JSON.stringify(arrayOfAllTimesLetterRepeates("а", "банан")) === JSON.stringify(["а", 2]), "Test Failed"); 
+  console.assert(JSON.stringify(arrayOfAllTimesLetterRepeates("т", "банан")) === JSON.stringify(["т", 0]), "Test Failed" );
+  console.assert( JSON.stringify(arrayOfAllTimesLetterRepeates("б", "бббббб")) === JSON.stringify(["b", 6]),"Test Failed");
+}
+
+function test_onlyUniqueLeters(){
+    console.assert(onlyUniqueLeters("банан") === "бан", "Test Failed");
+    console.assert(onlyUniqueLeters("abcdefghijklmnopqrstuvwxyz") === "abcdefghijklmnopqrstuvwxyz", "Test Failed");
+    console.assert(onlyUniqueLeters("") === "", "Test Failed");
+}
+
+</script>

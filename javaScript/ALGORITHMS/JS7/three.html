@@ -1,0 +1,45 @@
+<script>
+/*Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development). Функция должна выполнять только одно дело, имя каждой функции должно ясно указывать, что именно она делает. Имена аргументов функций тоже должны быть "говорящими".
+
+  3.	Элементы массива содежит фамилии и имена сотрудников в виде строк: ["Фамилия1 Имя1", "Фамилия2 Имя2", ...]. Найти и вывести в документ всех однофамильцев.*/
+
+
+let fileOfEmployeesNames = prompt("Введите фамилии и имена сотрудников через запятую, программа вынесет однофамильцев отдельно: ");
+
+if (!fileOfEmployeesNames) {
+  alert("Вы не ввели данные");
+} else {
+  let arrayOfEmployeesNames = fileOfEmployeesNames.split(", "); /* Виталий,Исправляю для Вас! Это потому что я разделила сплит просто запятой "," ну а вы записали через запятую и пробел. НО с другой стороны если я исаправлю как вы говорите, через просто запятую он уже не воспринимает. Но если записать Смит Адам,Смит Мадам,Ловазов Амир, все отлично работало!*/
+  let arrayDublicate = [];
+
+  for (x of arrayOfEmployeesNames) {
+    let arrayMini = x.split(" ");
+    arrayDublicate.push(arrayMini);
+  }
+
+  let stringListOfSameNames = getDuplicateNamesArray(arrayDublicate);
+
+  document.write("Список с однофамильцами: " + stringListOfSameNames + "<br>" + "Список всех сотрудников: " + arrayOfEmployeesNames.join(", "));
+}
+
+function getDuplicateNamesArray(arr){
+    let duplicates = "";
+    for (let i = 0; i < arr.length; i++) {
+        let name = arr[i][0];
+        for(let j = i + 1; j < arr.length; j++){
+            if (arr[i][0] === arr[j][0]) { 
+               duplicates += arr[i].join(" ") + ", " + arr[j].join(" ") + ", ";
+		    }
+        }
+    }
+    return duplicates.trim();
+}
+
+function test_getDuplicateNamesArray(){
+    console.assert(getDuplicateNamesArray(['Ли']) === "", "Тест 1 не пройден: Только одна фамилия");
+    console.assert( getDuplicateNamesArray([]) === "", "Тест 2 не пройден: Пустой массив");
+    console.assert(getDuplicateNamesArray(['Ли','Ким']) === "", "Тест 3 не пройден: Нет дубликатов");
+    console.assert(getDuplicateNamesArray(['Ли','Ли']) === "Ли", "Тест 3 не пройден: Нет дубликатов");
+}
+
+</script>

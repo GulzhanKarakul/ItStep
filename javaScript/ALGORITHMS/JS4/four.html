@@ -1,0 +1,54 @@
+<script>
+/*4.	Билет считается счастливым, если в его номере сумма первой половины цифр равна сумме второй половины цифр. Пользователь вводит номер билета любой длины. Проверьте, счастливый ли это билет. */
+
+let wannaPlay = true;
+
+while(wannaPlay){
+
+let numberOfTicket = prompt("Введите номер билета, чтобы проверить является ли он выигрышнв=ым!");
+
+let lengthOfTicketNumber = numberOfTicket.length;
+let halfOfLength;
+if(lengthOfTicketNumber % 2 === 0){
+    halfOfLength = lengthOfTicketNumber / 2;
+}else{
+    halfOfLength = (lengthOfTicketNumber - 1) / 2;
+}
+
+let currentNumberOfTicket = Number(numberOfTicket);
+   
+if(isNaN(currentNumberOfTicket)){
+    alert("Введенные данные не являются целым числом!");
+}else{
+    if(Number.isInteger(currentNumberOfTicket)){
+        let digit;
+	    let resultOne = 0;
+	    let resultTwo = 0;
+        for(let i = 0; i < halfOfLength; i++){
+	        digit = currentNumberOfTicket % 10;
+	     	currentNumberOfTicket = Math.floor(currentNumberOfTicket / 10);
+		    resultOne += digit;
+	    }
+		if(lengthOfTicketNumber % 2 !== 0){
+		    currentNumberOfTicket = Math.floor(currentNumberOfTicket / 10);;
+		}
+	    for(let i = halfOfLength; i < lengthOfTicketNumber; i++){
+	        digit = currentNumberOfTicket % 10;
+		    currentNumberOfTicket = Math.floor(currentNumberOfTicket / 10);
+		    resultTwo += digit;
+	    }
+	    if(resultOne === resultTwo){
+	        alert("ПОЗДРАВЛЯЮ!!! Ваш билет является счастливым!");
+	    }else{
+	        alert("К сожалению Ваш билет не является счастливым!");
+	    }
+	}else{
+	    alert("Введенные данные не являются целым числом!");
+	}
+
+}
+
+wannaPlay = confirm("Хотите сыграть еще раз?");
+
+}
+</script>

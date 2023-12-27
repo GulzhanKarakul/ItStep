@@ -1,0 +1,43 @@
+<script>
+/* Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development)! 
+
+4. Дмитрий считает, что когда текст пишут в скобках (как вот тут, например), его читать не нужно. Вот и надумал он существенно укоротить время чтения, написав функцию, которая будет удалять все, что расположено внутри скобок.
+Помогите ленивому Диме разработать функцию shorten(str), которая будет удалять все, что внутри скобок и сами эти скобки, возвращая очищенный текст (учтите, что скобки могут быть вложенными).
+*/
+
+/* привет(как) как(де(ла)?!) дела
+Ваш отсортированный текст: привет как?! дела
+
+Виталий, я честно не знаю как исправить тот факт что ?! текст между закрытыми скобками переходит дальше. И у меня все тесты падают((( Пожалуйста подскажите как это исправить?*/
+
+let userInput = prompt("Введите текст, который нужно отсортировать. Весь текст в скобках будет удален!");
+
+document.write(userInput + "<br>");
+let newStringWithoutBrackets = shorten(userInput);
+document.write("Ваш отсортированный текст: " + newStringWithoutBrackets);
+
+test_shorten();
+
+function shorten(str) {
+  let clearedString = "";
+  let depth = 0; 
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "(") {
+      depth++;
+    } else if (str[i] === ")") {
+      depth--;
+    } else if (depth === 0) { 
+      clearedString += str[i];
+    }
+  }
+  return clearedString;
+}
+
+
+function test_shorten() {
+  console.assert(shorten("test") === "test", "Test 1 Failed");
+  console.assert(shorten("()") === "", "Test 2 Failed");
+  console.assert(shorten("a(b)c") === "ac", "Test 3 Failed");
+  console.assert(shorten("(a(bc))d") === "d", "Test 4 Failed");
+}
+</script>

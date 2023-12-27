@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0px;
+    font-family: Arial;
+    user-select: none;
+	background: #d7eeeb7d;
+}
+
+.cont {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #0d30bc;
+	margin-bottom: 30px;
+}
+
+.baseForTable {
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+}
+
+.canva-div {
+    width: 600px;
+    height: 600px;
+    background: #cae6fb99;
+    border: 5px solid #000;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+
+table th {
+	padding: 10px 20px;
+	border: 2px solid #2086eb;
+	cursor: pointer;
+    padding: 10px;
+	transition: all 500ms ease-out;
+}
+
+.myTable td {
+	border: 2px solid #2175d5;
+	text-align: center;
+	padding: 2px;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.btn {
+    border:none;
+    margin: 10px;
+    font-weight:600;
+    color:#fff;
+    font-size: 15px;
+    padding: 10px;
+    background-color: #93d9e6;
+	border: 2px solid #6bbde8;
+    border-radius: 3px;
+    box-shadow: 2px 2px 10px #4e63d9;
+}
+
+form  {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	font-style: italic;
+	/* margin: 32px; */
+}
+
+input, select {
+	width: 90%;
+	border-radius: 5px;
+	padding: 5px;
+	border: 2px solid #3f8db5;
+}
+
+.alert {
+    padding: 20px 15px;
+    border: 2px solid #0a4c7e;
+    border-radius: 10px;
+    color: #294d4e;
+    font-size: 20px;
+    text-align: center;
+    background-color: #dee1e8;
+    width: 350px;
+    margin: 9px auto;
+    position: fixed;
+    opacity: 100%;
+    top: 0;
+    left: 570px;
+    padding-top: 2%;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.alert button {
+	padding: 7px 15px;
+	margin: 20px 0 0;
+	background: #8989e1;
+}

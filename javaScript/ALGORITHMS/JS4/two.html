@@ -1,0 +1,44 @@
+<script>
+
+let wannaPlay = true;
+
+while(wannaPlay){
+    let numberPlayer;
+	let randomNumber = Math.floor(101 * Math.random());
+    for(i = 7; i > 0; i--){
+	    numberPlayer = prompt("Попробуйте угадать число от 1 до 100!");
+	
+	if(isNaN(numberPlayer)){
+	    alert("Введенные данные не являются числом!");
+	}else{
+	    let currentNumber = Number(numberPlayer);
+	    if(!Number.isInteger(currentNumber)){
+		    alert("Введенное число не является целым!");
+		}else{
+		    if(currentNumber === randomNumber){
+			    alert("ПОЗДРАВЛЯЮ!!! Вы угадали!!!");
+				break;
+				
+			}
+			if(currentNumber > randomNumber){
+			    alert("Загаданное число меньше!");
+			}
+			if(currentNumber < randomNumber){
+			    alert("Загаданное число больше!");
+			}
+			
+	    }
+		
+		if (i === 1){
+	       alert("К сожалению, вы проиграли. Загаданное число было: " + randomNumber);
+	       break;
+	    }
+		}
+	
+	}
+	
+    wannaPlay = confirm("Хотите сыграть еще раз?");
+	
+}
+
+</script>

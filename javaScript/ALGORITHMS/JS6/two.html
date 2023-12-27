@@ -1,0 +1,19 @@
+<script>
+/*	Создать 2 массива из 7 чисел. Сравнить значения в массиве по очереди (0-й элемент первого массива с 0-м элементом второго и т.д.) и выводить информацию в документ.*/
+
+let arrayOne = [];
+let arrayTwo = [];
+
+for(let i = 1; i <= 7; i++){
+arrayOne[i] = prompt("Давайте создадим два массива и сравним первый массив со вторым!" + "\n" + "\nВведите " + i + " число в ПЕРВЫЙ массив: ");
+arrayTwo[i] = prompt("Введите " + i + " число в ВТОРОЙ массив: ");
+
+if(arrayOne[i] === arrayTwo[i]) document.write(arrayOne[i] + " и " + arrayTwo[i] + " равны!"  + "<br>");
+else if(arrayOne[i] > arrayTwo[i]) document.write(arrayOne[i] + " больше чем " + arrayTwo[i] + "<br>");
+else if(arrayOne[i] < arrayTwo[i]) document.write(arrayOne[i] + " меньше чем " + arrayTwo[i] + "<br>");
+
+}
+
+document.write("Сами массивы: " + " [ " + arrayOne.join(" ") + " ] " + " [ " + arrayTwo.join(" ") + " ] ");
+
+</script>

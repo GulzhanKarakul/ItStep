@@ -1,0 +1,103 @@
+.cont {
+    margin: 0 auto;
+    width: 500px;
+}
+
+#list {
+    padding: 0;
+    list-style: none;
+	transition: 3000ms;
+  }
+
+  li {
+    display: flex;
+	transition: 3000ms;
+  }
+  
+  .item {
+    width: 200px;
+    background-color: #f3f0f0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 15px 8px;
+    cursor: pointer;
+    position: relative;
+    transition: 3000ms;
+  }
+  
+  .item:hover {
+    background: #cc9d9d;
+  }
+  .item:active {
+    background: #88d0aa;
+  }
+  
+  
+  .btn {
+    width: 20px;
+    height: 20px;
+    background-color: #ddd;
+    display: inline-block;
+    margin-left: 5px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  
+  #new-item-text {
+    width: 200px;
+    height: 30px;
+    margin-right: 10px;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid green;
+  }
+  
+  #add-item-btn {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .sub-panel {
+    padding: 10px;
+    border-radius: 10px;
+    width: 155px;
+    display: none;
+	transition: 500ms;
+  }
+
+  li:hover div.sub-panel {
+    display: block;
+	
+  }
+
+  .sub-panel button{
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    background: #7575757d;
+    cursor: pointer;
+    
+  }
+  
+.up {
+    color: green;
+  padding: 5px;
+}
+
+.down {
+  color: #673AB7;
+  padding: 5px;
+}
+.delete {
+  color: red;
+  padding: 5px 10px;
+}
+  

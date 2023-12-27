@@ -1,0 +1,84 @@
+<script>
+/* Класс Point имеет свойства: x, y.
+Класс Figure содержит массив точек (объектов класса Point) и методы:
+        add(point) -- добавляет новую вершину к фигуре,
+        perimeter -- геттер, возвращает периметр фигуры.
+    Реализовать эти классы.
+*/
+<!-- class Point { -->
+    <!-- constructor(x, y){ -->
+	    <!-- this.x = x; -->
+		<!-- this.y = y; -->
+	<!-- } -->
+<!-- } -->
+
+<!-- class Figure extends Point{ -->
+    <!-- constructor(array) { -->
+        <!-- super(x, y); -->
+<!-- } -->
+
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class Figure {
+  constructor() {
+    this.points = [];
+  }
+
+  add(point) {
+    this.points.push(point);
+  }
+
+  perimeter() {
+    let perimeter = 0;
+    const points = this.points;
+    const n = points.length;
+
+    for (let i = 0; i < n; i++) {
+      const j = (i + 1) % n;
+      perimeter += distance(points[i], points[j]);
+    }
+
+    return perimeter;
+  }
+}
+
+function distance(a, b) {
+  const dx = a.x - b.x;
+  const dy = a.y - b.y;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function test_Point() {
+    let p = new Point(10,20);
+    console.assert(p.x === 10 && p.y === 20);
+
+    p = new Point();
+    console.assert(p.x === 0 && p.y === 0);
+}
+
+function test_Figure() {
+    let triangle = new Figure();
+    console.assert(triangle.perimeter === 0);
+
+    triangle.add(new Point(5,5));
+    console.assert(triangle.perimeter === 0);
+
+    triangle.add(new Point(8,5));
+    console.assert(triangle.perimeter === 6);
+
+    triangle.add(new Point(8,8));
+    console.assert(triangle.perimeter === 6 + Math.sqrt(9+9));
+
+    triangle.add();
+    console.assert(triangle.perimeter === 6 + Math.sqrt(9+9));
+}
+
+test_Point();
+test_Figure();
+
+</script>

@@ -1,0 +1,37 @@
+<script>
+/* 	В массиве найти минимальный и максимальный элементы, поменять их местами.*/
+
+let stringArr = prompt("Введите 10 чисел разделяя их запятыми, которые заполнят массив:" + "\n" + "\nИ программа найдет минимальное и максимальное число и поменяет их местами!");
+
+let currentArr = stringArr.split(",");
+document.write(currentArr + "<br>");
+
+for (let i = 0; i < currentArr.length; i++) {
+  currentArr[i] = parseInt(currentArr[i]);
+}
+
+let minNumberIndex = getMinNumberIndex(currentArr);
+let maxNumberIndex = getMaxNumberIndex(currentArr);
+
+let temporaryVariable = currentArr[minNumberIndex];
+currentArr[minNumberIndex] = currentArr[maxNumberIndex];
+currentArr[maxNumberIndex] = temporaryVariable;
+
+function getMinNumberIndex(arr){
+       let min = 0;
+	   for(let i = 0; i < arr.length; i++){
+	      if( arr[i] < arr[min]) min = i;
+	   }
+	   return min;   
+}
+
+function getMaxNumberIndex(arr){
+       let max = 0;
+	   for(let i = 0; i < arr.length; i++){
+	      if(arr[i] > arr[max]) max = i;
+	   }
+	   return max;   
+}
+
+document.write("Индекс минимального числа массива: " + minNumberIndex + "<br>" + " Индекс максимального числа массива: " + maxNumberIndex + '<br>' + currentArr);
+</script>

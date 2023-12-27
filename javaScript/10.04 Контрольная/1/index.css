@@ -1,0 +1,10 @@
+.kvadrat{
+    width: 200px;
+    height: 200px;
+    margin: 100px auto;
+    font-size: 28px;
+    text-align: center;
+    line-height: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+}

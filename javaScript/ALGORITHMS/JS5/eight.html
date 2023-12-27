@@ -1,0 +1,25 @@
+<script>
+/*	Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.*/
+
+
+let number1 = prompt("Введите часы: ") || 0; //смотрите какую прикольную вещь нашла пока делала 5 задание в прошлой дз)) 
+let number2 = prompt("Введите минуты: ") || 0;
+let number3 = prompt("Введите секунды:") || 0;
+
+let result = getTimeConverterInSeconds(number1, number2, number3);
+alert(result);
+
+function getTimeConverterInSeconds(num1, num2, num3){
+    if(isNaN(num1) || isNaN(num2) || isNaN(num3))return;
+	let intNumber1 = Number(num1);
+	let intNumber2 = Number(num2);
+	let intNumber3 = Number(num3);
+	if(!Number.isInteger(intNumber1) || !Number.isInteger(intNumber2) || !Number.isInteger(intNumber3)) return;
+	if((intNumber1 > 24 || intNumber1 < 0) || (intNumber2 > 60 || intNumber2 < 0) || (intNumber3 > 60 || intNumber3 < 0)) return;
+	 
+	intNumber1 = 60 * 60 * intNumber1;
+	intNumber2 = 60 * intNumber2;
+	let timeInSeconds = intNumber1 + intNumber2 + intNumber3;
+	return timeInSeconds;
+}
+</script>

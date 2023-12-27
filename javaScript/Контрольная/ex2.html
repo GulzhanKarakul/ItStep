@@ -1,0 +1,36 @@
+<script>
+//Функция возвращает строку длиной len чередующихся символов '!@#'.
+test_getSpecialString(); 
+
+function getSpecialString(len) {
+    let result = '';
+	const string = '!@#'
+	
+	if(len === undefined || len <= 0){
+	    result = '';
+	}else {
+	    if(len <= string.length){
+	        result += string.slice(0, len);
+		}else if(len > string.length){
+		    
+		    let count = (len / 3);
+			len = len % 3;
+			for (let i = 1; i < count; i++){
+		        result += string.slice(0, 3);
+			}
+		result += string.slice(0, len);
+		}
+	}
+	return result;
+}
+
+function test_getSpecialString() {
+    console.assert(getSpecialString()    === '', 'Test 1 Failed');
+    console.assert(getSpecialString(0)   === '', 'Test 2 Failed');
+    console.assert(getSpecialString(-3)  === '', 'Test 3 Failed');
+    console.assert(getSpecialString(2)   === '!@', 'Test 4 Failed');
+    console.assert(getSpecialString(10)  === '!@#!@#!@#!', 'Test 5 Failed');
+}
+test_getSpecialString();
+
+</script>

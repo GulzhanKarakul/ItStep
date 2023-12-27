@@ -1,0 +1,37 @@
+<script>
+
+let inputNumber = prompt("Введите число, чтобы рассчитать число Фибоначчи: ");
+
+if(isNaN(inputNumber)){
+    alert("Введите Число!!!");
+}else{
+    let number = Number(inputNumber);
+    if(!Number.isInteger(number)){
+	    alert("Число, что вы ввели не является целым!");
+	}else{
+	    if (number === 0){
+		    alert(0);
+		}
+		
+		if (number === 1){
+		    alert(1);
+		}
+		
+	    if(number > 1){
+	       let fibonacci;
+		   let numOne = 0;
+		   let numTwo = 1;
+
+		   for (let i = 1; i < number; i++ ){
+		      fibonacci  = numOne + numTwo; 
+			  numOne = numTwo;
+			  numTwo = fibonacci;
+		
+		   }
+			   alert(fibonacci);
+		}
+	}
+
+}
+
+</script>

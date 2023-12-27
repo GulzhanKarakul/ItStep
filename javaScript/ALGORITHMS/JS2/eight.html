@@ -1,0 +1,34 @@
+<script>
+
+let questionFirst = prompt("Вам нравится JS? Есть 3 варианта ответа: yes no maybe");
+let value1;
+let value;
+switch(questionFirst){
+    case "yes": value1 = 2;break;
+	case "no": value1 = 0; break;
+	case "maybe": value1 = 0; break;
+	default: value1 = 0;
+	alert("Ответ не засчитан, следуйте строго инструкции"); break;
+}
+let questionSecond = prompt("Вам нравится Академия Шаг? Есть 3 варианта ответа: yes no maybe");
+let value2;
+switch(questionSecond){
+	case "no": value2 = 0; break;
+	case "maybe": value2 = 0; break;
+	case "yes": value2 = 2; break;
+	default: value2 = 0;
+	alert("Ответ не засчитан, следуйте строго инструкции"); break;
+}
+let questionThird = prompt("Вам нравится домашнее задание? Есть 3 варианта ответа: yes no maybe");
+let value3;
+switch(questionThird){
+	case "no": value3 = 0; break;
+	case "yes": value3 = 2; break;
+	case "maybe": value3 = 0; break;
+	default:value3 = 0;
+	alert("Ответ не засчитан, следуйте строго инструкции"); break;
+}
+value = value1 + value2 + value3; 
+alert(value);
+
+</script>

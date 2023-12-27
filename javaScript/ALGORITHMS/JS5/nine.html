@@ -1,0 +1,31 @@
+<script>
+/* Написать функцию, которая принимает количество секунд, переводит их в часы, минуты и секунды и возвращает в виде строки «чч:мм:сс».*/
+
+let number1 = prompt("Введите секунды:") || 0;
+
+let result = getSecondsConverterInHours(number1);
+alert(result);
+
+function getSecondsConverterInHours(num1){
+    if(isNaN(num1))return;
+	let intNumber1 = Number(num1);
+	if(!Number.isInteger(intNumber1)) return;
+	 
+	let hour = Math.floor(intNumber1 / (60 * 60));
+	intNumber1 = intNumber1 - hour * 60 * 60;
+	let minutes = Math.floor(intNumber1 / 60);
+	intNumber1 = intNumber1 - 60 * minutes;
+	let seconds = intNumber1;
+	
+	if(minutes == 60) minutes = 0;
+	if(seconds == 60) seconds = 0;
+	if(hour < 10) hour = "0" + hour;
+	if(minutes < 10) minutes = "0" + minutes;
+	if(seconds < 10) seconds = "0" + seconds;
+	
+	let SecondsInHours = hour + ":" + minutes + ":" + seconds;
+	return SecondsInHours;
+}
+
+
+</script>

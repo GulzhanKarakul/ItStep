@@ -1,0 +1,41 @@
+<script>
+/*  Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development). Функция должна выполнять только одно дело, имя каждой функции должно ясно указывать, что именно она делает. Имена аргументов функций тоже должны быть "говорящими".
+
+1.	В массиве найти максимальную длину последовательности неубывающих чисел.*/
+
+let currentArray = prompt("Введите 10 чисел разделяя их запятыми, которые заполнят массив:\n\nПрограмма выдаст самую длинную неубывающую последовательность!");
+currentArray = currentArray.split(",");
+document.write(currentArray + "<br>");
+
+let sortedArray = [];
+let longSortedArray = [];
+while (currentArray.length > 0) {
+  let subArray = getSorted(currentArray);
+  sortedArray = sortedArray.concat(subArray);
+  currentArray = currentArray.slice(subArray.length);
+  if (subArray.length > longSortedArray.length) {
+    longSortedArray = subArray;
+  }
+}
+document.write("Самая длинная последовательность: " + longSortedArray);
+
+test_getSorted();
+
+function getSorted(arr) {
+  let sortedArr = [arr[0]];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] >= arr[i - 1]) {
+      sortedArr.push(arr[i]);
+    } else {
+      break;
+    }
+  }
+  return sortedArr;
+}
+function test_getSorted(){
+    console.assert(JSON.stringify(getSorted([1])) === JSON.stringify([1]), "Test Failed");
+	console.assert(JSON.stringify(getSorted([2,3,4,1,0])) === JSON.stringify([2,3,4]), "2,3,4");
+	console.assert(JSON.stringify(getSorted([1,1,1,1,0])) === JSON.stringify([1,1,1,1]), "Test Failed: sorted array is [1,1,1,1]");
+	console.assert(JSON.stringify(isNaN(getSorted(["s",2,3]))), "'s' = NaN. Test Failed");
+}
+</script>

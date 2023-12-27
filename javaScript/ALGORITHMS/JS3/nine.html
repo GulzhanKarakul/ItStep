@@ -1,0 +1,35 @@
+<script>
+
+
+let currentNumber = prompt("Введите число: ");
+
+if(isNaN(currentNumber)){
+    alert("Вы ввели не число... Попробуйте еще раз!");
+}else{
+    let naturalNumber = Number(currentNumber);
+    if(Number.isInteger(naturalNumber)){
+	    
+		let result;
+		while(true){
+		    if(naturalNumber%2 === 0){
+			    naturalNumber /= 2;
+				document.write(naturalNumber + "<br>");
+			}else{
+			    naturalNumber = (naturalNumber * 3 +1) / 2;
+				document.write(naturalNumber + "<br>");
+			}
+			
+			if(naturalNumber === 1){
+			    break;
+			}
+		 
+		}
+	
+	}else{
+	    alert("Введенное число не является целым!")
+	}
+
+}
+
+
+</script>

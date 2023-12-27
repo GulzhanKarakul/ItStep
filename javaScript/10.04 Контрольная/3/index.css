@@ -1,0 +1,28 @@
+
+div {
+    width: 500px;
+    background: #9b9898;
+    margin: 20px auto;
+    padding: 20px 0;
+}
+ul {
+    width: 100%;
+    text-align: center;
+    list-style: none;
+}
+
+li {
+    width: 80%;
+    background: #fbb9b9;
+    padding: 5px;
+    margin: 5px 0;
+}
+p{
+    font-size: 18px;
+}
+span {
+    font-size: 10px;
+}
+.selected {
+    background-color: red;
+}

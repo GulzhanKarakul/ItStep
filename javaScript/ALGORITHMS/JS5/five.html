@@ -1,0 +1,39 @@
+<script>
+/*  Написать функцию, которая принимает минимальное и максимальное значения для диапазона, и выводит только те числа из диапазона, которые являются совершенными. Используйте написанную ранее функцию, чтобы узнавать, совершенное число или нет.*/
+
+
+let number1 = prompt("Введите минимальное число из диапазона, в котором произойдет поиск совершенного числа: ");
+let number2 = prompt("Введите максимальное число из диапазона, в котором произойдет поиск совершенного числа: ");
+
+let result = searchOfPerfectNumber(number1, number2);
+alert(result);
+
+function searchOfPerfectNumber(num1, num2 ){
+  if(isNaN(num1) || isNaN(num2))return;
+  	let minRange = Number(num1);
+	let maxRange = Number(num2);
+	if(!Number.isInteger(minRange) || !Number.isInteger(maxRange)) return;
+	
+	let listOfPerfectNumber = "";
+	while(minRange <= maxRange){
+	    let perfectNumber = showPerfectNumber(minRange);
+	    if(perfectNumber) {
+	      listOfPerfectNumber += perfectNumber + " ";
+	    }
+		minRange++;
+	}
+	return listOfPerfectNumber;
+	
+function showPerfectNumber(num1){
+        let perfectNumber = Number(num1);
+	    let splitterSumm = 0;
+		for(let splitter = 1;splitter < perfectNumber; splitter++){
+		    if (perfectNumber % splitter === 0){ splitterSumm += splitter;}
+		}
+		if(perfectNumber === splitterSumm) {return perfectNumber;}
+        else {return;}
+}
+
+}
+
+</script>

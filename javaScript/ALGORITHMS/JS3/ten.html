@@ -1,0 +1,28 @@
+<script>
+/* 10.	Запросите у пользователя число. Найдите и выведите все комбинации из трёх чисел, которые в сумме дают это число.*/
+
+let number = prompt("Введите число: ");
+
+if(!isNaN(number)){
+    let numberValue = Number(number);
+    if(Number.isInteger(numberValue)){
+
+        for(let i = 1; i < numberValue; i++){
+             for(let j = 1; j < numberValue; j++){
+	            for(let k = 1; k < numberValue; k++){
+		            if(i + j + k === numberValue){
+		                document.write(i + " + " + j + " + " + k + " = " + numberValue + "<br>");
+		        
+		            }
+		        }
+	        }
+        }
+
+    }else{
+	    alert("Вы ввели не целое число!");
+	}
+
+}else{
+    alert("Вы ввели не число!");
+}
+</script>

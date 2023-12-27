@@ -1,0 +1,142 @@
+<script>
+let apartmentPrice = prompt("Введите стоимость квартиры:");
+let percent = prompt("Введите годовую процентную ставку:");
+let numberOfYears = prompt("Введите колличество лет, на которое берете ипотеку:");
+
+if(isNaN(apartmentPrice) || isNaN(percent) || isNaN(numberOfYears)){
+    alert("Вы ввели не число!");
+}else{
+    let apartmentPriceValue = Number(apartmentPrice);
+	let percentValue = Number(percent);
+	let numberOfYearsValue = Number(numberOfYears);
+	
+    let monthlyPayment;
+	let numberOfAllCreditMonth = numberOfYearsValue * 12;
+	let percentValueOfMonth = percentValue /12;
+	
+    if(Number.isInteger(apartmentPriceValue) && Number.isInteger(percentValue) && Number.isInteger(numberOfYearsValue)){
+
+	    monthlyPayment = (apartmentPriceValue / numberOfAllCreditMonth) + (percentValueOfMonth * apartmentPriceValue) / (1 - (Math.pow(1 + percentValueOfMonth, -numberOfAllCreditMonth)));
+	    
+	  
+		document.write("Ваш ежемесячный платеж: " + monthlyPayment + " тг " + "<br>");
+		
+		
+		// хотела использовать  но от него переменная становится строковой и у меня средний ежемесячный платеж не рассчитывается!
+	}else{
+	    alert("Введенные данные не являются целым числом!");
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- function line(num){ -->
+    <!-- if(num === 1){ -->
+	<!-- document.write(" 1"); return 1; -->
+	<!-- } -->
+	<!-- let result = 3 * line(num -1); -->
+	<!-- document.write(" " + result); -->
+	<!-- return result; -->
+<!-- } -->
+
+
+
+
+
+
+
+
+	let yearSum = 0;
+	let daysOfMonthSumm = 0;
+	for(let year = year1; year < year2; year++ ){
+	    yearSum += isLeapYear(year) ? 366 : 365;
+	}
+	for (let i = month1; i < month2; i++) {
+        daysOfMonthSumm += daysOfMonth(i, year2) ;
+    }
+	
+	daysOfMonthSumm = daysOfMonthSumm - 61;
+	
+
+
+
+
+
+<!-- function fibonacci(num){ -->
+    <!-- if (num === 0){ -->
+	    <!-- document.write(" " + 0); -->
+		<!-- return 0; -->
+	<!-- } -->
+	<!-- if (num === 1){ -->
+	    <!-- document.write(" " + 1); -->
+		<!-- return 1; -->
+	<!-- } -->
+	
+	<!-- let result = fibonacci(num - 2) + fibonacci(num - 1); -->
+	<!-- document.write(" " + result); -->
+	<!-- return  result; -->
+<!-- } -->
+
+
+
+
+
+
+<!-- function maxOf3(num1, num2 = Number.MIN_SAFE_INTEGER, num3 = Number.MIN_SAFE_INTEGER){ -->
+  <!-- if(isNaN(num1) || isNaN(num2) || isNaN(num3))return; -->
+  
+  <!-- let max = num1; -->
+  <!-- if(num2 > max) max = num2; -->
+  <!-- if(num3 > max) max = num3; -->
+  <!-- return max; -->
+
+<!-- } -->
+
+
+
+
+
+
+<!-- function calcAndWrite(num1 = 1, num2 = 1){ -->
+ <!-- if(isNaN(num1) || isNaN(num2)) return; -->
+ 
+ <!-- num1 = num1 ?? 1; -->
+ <!-- num2 = num2 ?? 1; -->
+ 
+ <!-- document.write(`${num1} + ${num2} = ${num1+num2} <br>`); -->
+ <!-- document.write(`${num1} - ${num2} = ${num1-num2} <br>`); -->
+ <!-- document.write(`${num1} * ${num2} = ${num1*num2} <br>`); -->
+ <!-- document.write(`${num1} / ${num2} = ${num1/num2} <br>`); -->
+    
+<!-- } -->
+
+
+</script>

@@ -1,0 +1,39 @@
+<script>
+/* Заполнить массив из 5 чисел при помощи prompt. Вывести массив, сумму значений и среднее значение массива.*/
+let currentArr = [];
+
+for(let i = 0; i < 5; i++){
+  currentArr[i] = prompt("Введите числа, которые заполнят массив");
+  currentArr[i] = parseInt(currentArr[i]);
+}
+
+let elementsSumm = 0;
+for(let elem in currentArr) {
+  elementsSumm += currentArr[elem];
+}
+let averageValue = elementsSumm / currentArr.length;
+alert("Ваш массив: " + currentArr + "\nСумма всех эелементов массива: " + elementsSumm + "\nСреднее значение массива: " + averageValue.toFixed(2));
+
+
+
+
+
+<!-- function examination(arguments){ -->
+      
+     <!-- for(i = 0; i < arguments.length; i++){ -->
+        <!-- if(isNaN(arguments[i])){ -->
+		    <!-- alert("Вы ввели не число!"); -->
+		    <!-- return NaN; -->
+		<!-- } -->
+  	    <!-- let intNumber1 = Number(arguments[i]); -->
+	    <!-- if(!Number.isInteger(intNumber1)){ -->
+		    <!-- alert("Ваше число не является целым!!!!"); -->
+			<!-- return undefined; -->
+		<!-- } -->
+		<!-- else return intNumber1; -->
+    <!-- } -->
+	
+<!-- } -->
+
+
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <link href='index.css' rel='stylesheet' type='text/css'>
+        <title>Задача 6</title>
+    </head>
+    <body>
+        <!-- Взять за основу предыдущую задачу. Сделать так чтобы список дел сохранялся
+             в localStorage и когда пользователь закроет страницу и браузер, а потом снова их
+             откроет - список дел должен автоматически подгружаться и отображаться в том виде,
+             который был на момент закрытия.  -->
+
+             <div class="flex">
+
+                <div class="toDo">
+                   <h1>Необходимо сделать</h1>
+                   <ul id="toDo">
+                       <li id="active">
+                           <input type="checkbox"></input>
+                           Первый элемент
+                       </li>
+                       <li>
+                           <input type="checkbox"></input>
+                           Второй элемент
+                       </li>
+                       <li>
+                           <input type="checkbox"></input>
+                           Третий элемент
+                       </li>
+                   </ul>
+                   <input type="text" id="newLi"></input>
+                   <button id="btn">Новый элемент</button>
+                </div>
+   
+                <div class="done">
+                   <h1>Сделано</h1>
+                   <ul id="done">
+                       <li>
+                           <input type="checkbox" checked></input>
+                           Четвертый элемент
+                       </li>
+                       <li>
+                           <input type="checkbox" checked></input>
+                           Пятый элемент
+                       </li>
+                       <li>
+                           <input type="checkbox" checked></input>
+                           Шестой элемент
+                       </li>
+                   </ul>
+                </div>
+               </div>
+
+    </body>
+    <script src='index.js'></script>
+</html>

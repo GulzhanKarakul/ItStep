@@ -1,0 +1,45 @@
+<script>
+//Два слова похожи, если отличаются только одной буквой. Функция проверяет, похожи строки, или нет.
+test_isSimilar();
+
+function isSimilar(word1, word2) {
+   
+    if(word1 === undefined || word2 === undefined){
+	    return false;
+	}
+	if(word1.length - word2.length > 1 || word2.length - word1.length > 1){
+	    return false;
+	}
+    let count = 0;
+	
+	for(let i in word1){
+	   for(let j in word2){
+	    if(word1[i] === word2[j]){
+		     if(word1[i + 1] === word2[j + 1]){
+			     count++;
+		    }else{
+		       continue;
+		   } 
+		}
+	  }
+	}
+	
+	if(count === word2.length - 1 || count === word2.length){
+	    return true;
+	}else{
+	    return false;
+	}
+}
+
+function test_isSimilar() {
+    console.assert(isSimilar('пень', 'лень') === true, 'Test 1 Failed');
+    console.assert(isSimilar('вторник', 'вторнек') === true, 'Test 2 Failed');
+    console.assert(isSimilar('город', 'огород') === true, 'Test 3 Failed');
+    console.assert(isSimilar('перец', 'конец') === false, 'Test 4 Failed');
+    console.assert(isSimilar('вор', 'ворон') === false, 'Test 5 Failed');
+    console.assert(isSimilar('перец') === false, 'Test 6 Failed');
+    console.assert(isSimilar() === false, 'Test 7 Failed');
+}
+
+
+</script>

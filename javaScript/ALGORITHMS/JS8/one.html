@@ -1,0 +1,31 @@
+<script>
+/* Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development)! 	
+
+1. Требуется определить индексы первого и последнего вхождения буквы в строке. Для этого нужно написать функцию firstAndLast(letter, str), включающую 2 параметра: letter – искомый символ(буква), str – целевая строка. Функция возвращает массив из двух индексов. В случае отсутствия буквы в строке, нужно вернуть [-1, -1].
+*/
+
+let userInputString = prompt("Введите строку: ");
+let userInputLetter = prompt("Введите букву и программа определит ее первое и последнее положение вхождения!");
+userInputString = userInputString.toUpperCase();
+userInputLetter = userInputLetter.toUpperCase();
+
+let firstAndLastLetterPosition = firstAndLast(userInputLetter, userInputString);
+document.write("Первая и последняя позиция буквы: " + userInputLetter + " в строке: " + userInputString +  " [" + firstAndLastLetterPosition + " ]");
+
+test_firstAndLast();
+
+function firstAndLast(letter, str){
+   let arrayOfFirstAndLastLetterPosition = [];
+   arrayOfFirstAndLastLetterPosition[0] = str.indexOf(letter);
+   arrayOfFirstAndLastLetterPosition[1] = str.lastIndexOf(letter);
+  
+  return arrayOfFirstAndLastLetterPosition;
+}
+
+function test_firstAndLast() {
+  console.assert(JSON.stringify(firstAndLast('а', 'алфавит')) === JSON.stringify([0, 3]), 'Test Case 1 Failed');
+  console.assert(JSON.stringify(firstAndLast('т', 'яблоко')) === JSON.stringify([-1, -1]), 'Test Case 2 Failed');
+  console.assert(JSON.stringify(firstAndLast('б', 'банан')) === JSON.stringify([0, 0]), 'Test Case 2 Failed');
+}
+
+</script>

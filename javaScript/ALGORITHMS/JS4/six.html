@@ -1,0 +1,37 @@
+<script>
+/* Ипотека. Спросите у пользователя стоимость квартиры, которую он хочет приобрести, процентную ставку банка и количество лет, за которое он собирается выплатить эту ипотеку. Считаем, что проценты начисляются каждый месяц. Рассчитать и вывести ежемесячный платёж по кредиту(с учётом процентов), размер последнего платежа и общую сумму переплаты за кредит. */
+
+/* Виталий, тут нет никакого варианта рассчитать кредит с циклом, разве что только сумму всех платежей за этот период,
+прибавляя ежемечный платеж каждый раз с уменьшением колличества месяцев в цикле for до того момента пока месяцев не станет 0, 
+НО это глупо потому что можно просто тупо умножить. И я очень сильно помучалась с этой задачей, а именно с формулой для рассчета кредита. Так что не скрываю, это формула слеплена из нескольких примеров с гугла, но я честно старалась понять и на самом деле многое поняла. Но зато в итоге ежемесячеый платеж и сумма переплаты абсолютно совпадают с любым калькулятором ипотеки.
+*/
+
+let apartmentPrice = prompt("Введите стоимость квартиры: ");
+let percent = prompt("Введите годовую процентную ставку:");
+let numberOfYears = prompt("Введите колличество лет, на которое берете ипотеку:");
+
+if(isNaN(apartmentPrice) || isNaN(percent) || isNaN(numberOfYears)){
+    alert("Вы ввели не число!");
+}else{
+    let apartmentPriceValue = Number(apartmentPrice);
+    let percentValue = Number(percent);
+    let numberOfYearsValue = Number(numberOfYears);
+    
+    if(Number.isInteger(apartmentPriceValue) && Number.isInteger(percentValue) && Number.isInteger(numberOfYearsValue)){
+	
+    percentValue = percentValue / 100;
+    let monthlyInterestRate = percentValue / 12;
+    let numberOfPayments = numberOfYearsValue * 12;
+    let numerator = monthlyInterestRate * (1 + monthlyInterestRate) ** numberOfPayments;
+    let denominator = ((1 + monthlyInterestRate) ** numberOfPayments - 1);
+    let monthlyPayment = apartmentPriceValue * numerator / denominator;
+	let totalDifferents = monthlyPayment * numberOfPayments - apartmentPriceValue;
+
+    document.write("Ваш ежемесячный платеж: " + monthlyPayment.toFixed(2) + "<br>" + "Переплата: " + totalDifferents.toFixed(2));
+    }else{
+        alert("Введенные данные не являются целым числом!");
+}
+
+}
+
+</script>

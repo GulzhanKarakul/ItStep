@@ -1,0 +1,30 @@
+<script>
+/* Написать функцию, которая проверяет, является ли переданное ей число совершенным. Совершенное число – это число, равное сумме всех своих собственных делителей.*/
+let number1 = prompt("Введите число чтобы проверить является ли оно совершенным!");
+
+let result = showPerfectNumber(number1);
+
+if(result === true){
+    alert("Ваше число является Совершенным!");
+}else{
+    alert("Ваше число не является Совершенным!");
+}
+
+function showPerfectNumber(num1){
+    if(isNaN(num1))return;
+  	let perfectNumber = Number(num1);
+	if(!Number.isInteger(perfectNumber)) return;
+	
+	    let splitterSumm = 0;
+		for(let splitter = 0;splitter < perfectNumber; splitter++){
+		    if (perfectNumber % splitter === 0){
+			    splitterSumm += splitter;
+			}
+		}
+		if(perfectNumber === splitterSumm) {
+		return true;
+		}
+		
+}
+
+</script>

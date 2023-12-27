@@ -1,0 +1,39 @@
+<script>
+
+
+let userWantPlay = true;
+let counterOfGames = 1;
+let counterOfWins = 0;
+
+while(userWantPlay) {
+
+let answer = prompt("Орел или Решка!");
+
+let answerInNumber;
+switch(answer.toLowerCase()){
+    case "решка" : answerInNumber = 1;break;
+    case "орел" : answerInNumber = 0;break;
+	default:break;
+}
+
+let randomNumber = Math.floor(2 * Math.random())
+
+if(answerInNumber == randomNumber){
+    alert("Вы угадали!");
+	counterOfWins += 1;
+}else{
+    alert("Не верно!");
+}
+
+
+userWantPlay = confirm("Играем дальше?");
+if(userWantPlay){
+  counterOfGames += 1;
+}
+if(!userWantPlay){
+    alert("Число игр: " + counterOfGames + "\nЧисло побед: " + counterOfWins);
+    break;
+}
+}
+
+</script>

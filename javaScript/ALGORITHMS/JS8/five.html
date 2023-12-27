@@ -1,0 +1,31 @@
+<script>
+/* Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development)! 
+
+5. Тимур решил как-то отобразить в тексте BACKSPACE (т.е. удаление последнего символа). Он подумал, что символ @ отлично для этого подходит. Всем своим знакомым он дал строки такого вида (например, гр@оо@лк@оц@ва), чтобы посмотреть, кому удастся написать функцию cleanStr(str), возвращающую строку в ее чистом виде.
+*/
+
+let userInput = prompt("Введите строку, используя @ вместо BACKSPACE");
+if (!userInput) {
+  alert("Вы не ввели данные");
+} else {
+    let newString = cleanStr(userInput);
+
+    document.write("Ваш текст: " + userInput + "<br>" + "Строка в чистом виде: " + newString);
+}
+
+function cleanStr(str){
+    str = str.split("");
+    let strCleaning = [];
+    for(let i = 1; i < str.length; i++){
+	   if(str[i] === "@"){
+	      strCleaning = str.splice(i-1, 2);
+	   }
+	}
+	return str.join("");
+}
+
+function test_cleanStr() {console.assert(JSON.stringify(cleanStr("яблокоз@ банан")) === JSON.stringify(["я", "б", "л", "о", "к", "о", " ", "б", "а", "н", "а", "н"]), "Test 1 Failed");
+    console.assert(JSON.stringify(cleanStr("abc@def@ghi")) === JSON.stringify(["a", "b", "d", "e", "g", "h", "i"]),"Test 2 Failed");
+    console.assert(JSON.stringify(cleanStr("киви")) === JSON.stringify(["к", "и", "в", "и"]), "Test Case 3 Failed");
+}
+</script>

@@ -1,0 +1,43 @@
+<script>
+/* Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development)! 	
+
+3. Асель решила вспомнить старые времена. В свое время было модно писать сообщения с чередующимися заглавной и малой буквами. Она захотела изобрести функцию, которая будет делать с любой предоставленной строкой аналогичное. Ваша задача: повторить её труд, написать функцию  camel(str) с учетом того, что пробелы и знаки препинания не должны портить чередование регистра символов (они в этом процессе не учитываются, но возвращаются в итоговой строке).
+*/
+
+let stringInput = prompt("Введите строку! Программа переведет ее в CamelCase");
+
+if (!stringInput) {
+  alert("Вы не ввели данные");
+} else {
+    let result = camel(stringInput);
+    document.write(result);
+}
+
+test_camel();
+
+function camel(str){
+    let newString = "";
+	count = 0;
+    for(let i in str){
+	    if(str[i] !== " " && str[i] !== "," && str[i] !== "." && str[i] !== "!" && str[i] !== "?"){
+            if(count % 2 === 0){
+		        newString += str[i].toLowerCase();
+		    }else{
+		        newString += str[i].toUpperCase();
+		    }
+			count++;
+		}else{
+		    newString += str[i];
+		}
+	}
+	return newString;
+}
+
+
+function test_camel() {
+  console.assert(camel("Привет") === "пРиВеТ", "Test 1 Failed");
+  console.assert(camel("как дела") === "кАк ДеЛа", "Test 2 Failed");
+  console.assert(camel("Привет, как ты?") === "пРиВеТ, кАк Ты?", "Test 3 Failed");
+}
+
+</script>

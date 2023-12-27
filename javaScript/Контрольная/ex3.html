@@ -1,0 +1,64 @@
+<script>
+//Функция возвращает массив array в перевернутом виде, и только из тех элементов, которые не превышают значение max.
+function reverseLimited(array, max = Number.MAX_VALUE) {
+    let result = [];
+	    if(typeof(max) !== 'number'){
+	        max = Number.MAX_VALUE;
+	    }else{
+	       for (let i = array.length; i >= 0; i--){
+	          if(array[i] <= max){
+		         result.push(array[i]);
+		      }
+	        }
+		}
+	return result;
+}
+
+
+function test_reverseLimited() {
+    let input  = [21,9,6,11,4,15];
+    let max = 11;
+    let expect = [4,11,6,9];
+    console.assert(reverseLimited(input, max).toString() === expect.toString(), 'Test 1 Failed');
+
+    input  = [2,19,16,1,14,5];
+    max = 'a';
+    expect = [5,14,1,16,19,2];
+    console.assert(reverseLimited(input, max).toString() === expect.toString(), 'Test 2 Failed');
+
+    console.assert(reverseLimited(input).toString() === expect.toString(), 'Test 3 Failed');
+}
+test_reverseLimited();
+
+
+<!-- function isSimilar(word1, word2) { -->
+   
+    <!-- if(word1 === undefined || word2 === undefined){ -->
+	    <!-- return false; -->
+		
+	<!-- }if(word1.length !== word2.length || -->
+	<!-- word1.length !== (word2.length + 1) || -->
+	<!-- (word1.length + 1) !== word2.length){ -->
+	    <!-- return false; -->
+	<!-- } -->
+    <!-- let count = 0; -->
+	
+	<!-- for(let i in word1){ -->
+	    <!-- for(let j in word2){ -->
+	        <!-- if(word1[i] === word2[j] ){ -->
+		        <!-- if(word1[i + 1] !== word2[j + 1]){ -->
+			       <!-- count++; -->
+		      <!-- }else{ -->
+		       <!-- continue; -->
+		   <!-- }  -->
+		<!-- } -->
+	  <!-- } -->
+	<!-- } -->
+	
+	<!-- if(count === word2.length - 1){ -->
+	    <!-- return true; -->
+	<!-- }else{ -->
+	    <!-- return false; -->
+	<!-- } -->
+<!-- } -->
+</script>

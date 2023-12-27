@@ -1,0 +1,54 @@
+<script>
+
+let positiveNumber = 0;
+let negativeNumber = 0;
+let zero = 0;
+let oddNumber = 0;
+let evenNumber = 0;
+let n = 0;
+
+while( n < 10){
+    let inputNumber = prompt("Введите 10 чисел: ");
+	 
+	if(inputNumber === ""){
+        alert("Вы не можете пропустить вопрос! Попробуйте сново!" );
+	    continue;
+    }else{
+	
+	    if (isNaN(inputNumber)){
+            alert("Введите число! Это число не засчитывается");
+    	    continue;
+	
+        }else{
+            let num = Number(inputNumber);
+            if(Number.isInteger(num)){
+
+		        if (num > 0){
+		            positiveNumber++;
+		        }else if (num < 0){
+		            negativeNumber++;
+		        }
+				
+		        if(num === 0){
+				  zero++;
+				}else if(num % 2 !== 0){
+		            oddNumber++;
+		        }else if(num % 2 === 0){
+		            evenNumber++;
+		        }
+
+	        }else{
+	            alert("Введите целое число!!!  Это число не засчитывается");
+		       continue;
+	        }
+        }
+    }
+  
+n++;
+}
+ 
+alert("Вы ввели 10 чисел, подсчет идет...");
+document.write("Вы ввели: " + "<br>" + "Положительных чисел: " + positiveNumber + "<br>" + "Отрицательных чисел: " + negativeNumber + "<br>" + "Нулей: " + zero + "<br>" + "Из них четных: " + evenNumber + "<br>" + "Нечетных: " + oddNumber);
+
+
+</script>

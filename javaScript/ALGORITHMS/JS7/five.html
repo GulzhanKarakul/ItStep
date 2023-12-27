@@ -1,0 +1,39 @@
+<script>
+/*  Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development). Функция должна выполнять только одно дело, имя каждой функции должно ясно указывать, что именно она делает. Имена аргументов функций тоже должны быть "говорящими".
+
+5.	Пользователь вводит массив чисел userArray. Cформировать массив resultArray по правилу: resultArray[i] = userArray[1] + userArray[2] + ... + userArray[i].*/
+
+let userInput = prompt("Введите числа через запятую, которые заполнят массив, чтобы определить сумму всех чисел!");
+
+if (!userInput) {
+    alert("Вы не ввели данные");
+} else {
+    let userArray = userInput.split(",");
+    let resultArray = getSummElement(userArray);
+
+    document.write("Введенные данные: " + userArray.join(" ") + "<br>" + "Сумма всех введенных чисел: " + resultArray.join(", "));
+}
+
+test_getSummElement();
+
+
+function getSummElement(arr){
+    let newArrayOfSumm = [];
+	arr = arr.map(Number);
+	let elem = 0;
+    for(let x of arr){
+	    elem += x;
+		newArrayOfSumm.push(elem);
+	}
+	
+	return newArrayOfSumm;
+}
+
+function test_getSummElement(){
+    console.assert(JSON.stringify(getSummElement([2,3])) === JSON.stringify([2,5]), "first elem:2, second elem:2 + 3 = 5");
+	console.assert(JSON.stringify(getSummElement([-2,2])) === JSON.stringify([-2,0]),"first elem:-2, second elem:-2 + 2 = 0");
+	console.assert(JSON.stringify(!isNaN(getSummElement(["",3]))), "'' + 3 = NaN");
+	console.assert(JSON.stringify(getSummElement(['2','3'])) === JSON.stringify([2,5]), "2 + 3 = 5: " + getSummElement(['2','3']));
+}
+
+</script>

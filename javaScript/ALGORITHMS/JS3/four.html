@@ -1,0 +1,36 @@
+<script>
+
+while (true) {
+    let numberOne = prompt("Введите первое число: ");
+    let numberTwo = prompt("Введите второе число: ");
+    let operation = prompt("Введите нужный оператор( +, -, *, / ): ");
+    
+    if(isNaN(numberOne) || isNaN(numberTwo)){
+    alert("ВВЕДИТЕ ЧИСЛО!!!")
+    }else{ //я спец не сделала isInteger, чтобы с дробными тоже можно было считать, просто так лучше калькулятор по мне. 
+        let num1 = Number(numberOne);
+        let num2 = Number(numberTwo);
+        let result;
+        switch (operation) {
+            case "+": result = num1 + num2; break;
+            case "-": result = num1 - num2; break;
+            case "*": result = num1 * num2; break;
+            case "/": result = num1 / num2; break;
+            default: alert("Такого оператора к сожалению нет, попробуйте еще раз");
+            continue;
+        }
+	
+        
+    
+        alert("Итого: " + result);
+        let continueCalculate = prompt("Вы хотите продолжить? Ответы: yes/no");
+        if (continueCalculate.toLowerCase() === "no") {
+        break;
+	    }
+    
+	}
+    
+  
+}
+
+</script>

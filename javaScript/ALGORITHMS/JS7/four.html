@@ -1,0 +1,66 @@
+<script>
+/*Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development). Функция должна выполнять только одно дело, имя каждой функции должно ясно указывать, что именно она делает. Имена аргументов функций тоже должны быть "говорящими".
+
+  4.	Синоптики фиксировали дневные температуры в течение месяца: номер индекса массива - номер дня. Вывести в документ все локальные минимумы и максимумы температур в таком виде: "Максимумы: день 3 - 16о, день 7 - 25о, ...".  (Локальный максимум - значение, которое больше двух соседних, локальный минимум - меньше двух соседних)*/
+ 
+let temperature = prompt("Введите температуры через запятую, их последовательность будет соответсвовать дням. \nТо есть 1,3,5 будет значить в первый день температура была 1, во второй 3, в третий день 5!");
+
+if (!temperature) {
+  alert("Вы не ввели данные");
+} else {
+    let temperatureArray = temperature.split(",");
+    document.write("Введенные данные: " + temperatureArray + "<br>");
+	
+    let localMinTemperature = getMinNumberElement(temperatureArray);
+    let localMaxTemperature = getMaxNumberElement(temperatureArray);
+
+    let minimum = "";
+    for(let x of localMinTemperature){
+        minimum += " день " + (temperatureArray.indexOf(x) + 1) + " : " + x + ",";
+    }
+
+    let maximum = "";
+    for(let x of localMaxTemperature){
+         maximum += " день " + (temperatureArray.indexOf(x) + 1) + " : " + x  + ",";
+    }
+
+    document.write("Максимумы: " + maximum + "<br>" + "Минимумы: " + minimum);
+}
+test_getMinNumberElement();
+test_getMaxNumberElement();
+
+function getMinNumberElement(arr) {
+  let min = [];
+  for (let i = 1; i < arr.length - 1; i++) {
+    arr[i] = Number(arr[i]);
+    if (arr[i] < arr[i - 1] && arr[i] < arr[i + 1]) {
+      min.push(arr[i]);
+    }
+  }
+  return min;
+}
+
+function getMaxNumberElement(arr) {
+  let max = [];
+  for (let i = 1; i < arr.length - 1; i++) {
+    arr[i] = Number(arr[i]);
+    if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+      max.push(arr[i]);
+    }
+  }
+  return max;
+}
+function test_getMinNumberElement() {
+  console.assert(JSON.stringify(getMinNumberElement([1, 3, 2, 4, 0, 3])) === JSON.stringify([2, 0]),"Test Case 1 Failed");
+  console.assert(JSON.stringify(getMinNumberElement([10, 2, 15, 8, 25])) === JSON.stringify([2, 8]), "Test Case 2 Failed");
+  console.assert(JSON.stringify(getMinNumberElement([2, 2, 2])) === JSON.stringify([]),"Test Case 3 Failed");
+}
+
+function test_getMaxNumberElement() {
+  console.assert(JSON.stringify(getMaxNumberElement([1, 2, 5, 4, 3])) === JSON.stringify([5]), 'Test Case 1 Failed');
+  console.assert(JSON.stringify(getMaxNumberElement([2, 5, 3, 4, 1])) === JSON.stringify([5, 4]), 'Test Case 2 Failed');
+  console.assert(JSON.stringify(getMaxNumberElement([1, 1, 1])) === JSON.stringify([]), 'Test Case 3 Failed');
+}
+
+
+</script>

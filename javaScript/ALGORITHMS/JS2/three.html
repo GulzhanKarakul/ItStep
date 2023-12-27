@@ -1,0 +1,14 @@
+<script>
+
+let year = prompt("Введите год");
+
+if (isNaN(year)) alert("Вы ввели не число!");
+else{
+    let yearNum = Number(year);
+    if(!Number.isInteger(yearNum))
+    alert("Вы ввели не целое число");
+    else{
+       yearNum %400 === 0 || yearNum %4 === 0 ? alert("Leap Year") : alert("Regular Year");
+    }
+}
+</script>

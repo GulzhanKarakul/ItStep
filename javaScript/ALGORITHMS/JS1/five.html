@@ -1,0 +1,8 @@
+<script>
+
+let volumeInMb = Number(prompt("Введите объем флешки в Гб"));
+volumeInMb *= 1024;
+let numberOfFiles = Math.floor(volumeInMb / 820);
+alert("Число файлов, размером 820Мб, вмещаемых на флешку " + numberOfFiles);
+
+</script>

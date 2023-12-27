@@ -1,0 +1,19 @@
+<script>
+/* 	Вывести элементы числового массива, которые больше, чем элементы, стоящие перед ними. Например, для массива [3, 9, 8, 4, 5, 1] следует вывести числа 9 и 5, так как перед ними стоят соответственно числа 3 и 4, которые меньше их.*/
+
+let strinSetOfNumber = prompt("Введите числа разделяя их запятыми, которые заполнят массив:");
+
+let currentArray = strinSetOfNumber.split(",");
+for (let i = 0; i < currentArray.length; i++) {
+  currentArray[i] = parseInt(currentArray[i]);
+}
+let maxNumberArray = [];
+
+for(let i = 1; i < currentArray.length; i++){
+   let currentNumber = currentArray[i];
+   let previousNumber = currentArray[i - 1];
+   if(currentNumber > previousNumber) maxNumberArray.push(currentNumber);
+}
+   document.write("Ваш массив: " + currentArray.join(" ") + '<br>' + "Элементы числового массива, которые больше, чем элементы, стоящие перед ними: " + maxNumberArray.join(" "));
+
+</script>
