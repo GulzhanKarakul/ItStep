@@ -1,0 +1,577 @@
+<!doctype html>
+<html>
+<head>
+<title>Машинки</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/navfloat.js"></script>
+<link rel="stylesheet" href="../css/float2.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../html/favicon.ico">
+</head>
+
+<body>
+<header class="header">
+<div class="ekran">
+
+<div class="css float-right">
+
+<div class="style float-left"><span>Style:</span></div>
+
+<div class="select float-left"  id="joker"><span>Select your css</span> 
+<i class="fa-solid fa-sort-down"></i>
+<div class="off" id="Erden">
+
+<div class=""><a href="#"><i class="fa-solid fa-cloud-bolt"></i>float</a></div>
+<div class=""><a href="#"><i class="fa-solid fa-sun"></i>inline</a></div>
+<div class=""><a href="#"><i class="fa-solid fa-rainbow"></i>flex</a></div>
+<div class=""><a href="#"><i class="fa-solid fa-cloud-moon-rain"></i>bootstrap</a></div>
+
+</div>
+</div>
+
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+
+
+<div class="logo"><h1>Car<span style="color:#ffbf00;" class="sdvig">|</span>rental</h1></div>
+
+
+<div class="burger">
+<i class="fa-solid fa-bars" id="Mac"></i>
+</div>
+
+<div class="menu float-right" id="Apple">
+
+<div class="offer"><i class="fa-solid fa-xmark" id="Nikita"></i>
+</div>
+
+<ul class="nav">
+    <li class="sub"><a href="#Home" class=" active">Home</a></li>
+    <li class="sub"><a href="#services">Services</a></li>
+    <li class="sub"><a href="#vehicle">Vehicle Models</a></li>
+    <li class="sub"><a href="#reviews">Reviews</a></li>
+    <li class="sub"><a href="#locations">Locations</a></li>
+    <li class="sub"><a href="#contact">Contact</a></li>
+	
+</ul>
+
+<div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+</div>
+</header>
+
+<div class="home" id="Home">
+<div class="ekran">
+
+<div class="car-type">
+<form class="mashina" action="#" method="get">
+<fieldset>
+
+<label>
+<select name="selc" required>
+<optgroup placeholder="">
+<option label="Select your car type" value="" req></option>
+<option label="VW Golf VII" value="VW Golf VII"></option>
+<option label="Audi A1 S-LINE" value="Audi A1 S-LINE"></option>
+<option label="Toyota Camry" value="Toyota Camry"></option>
+<option label="BMW 320 ModernLine" value="BMW 320 ModernLine"></option>
+</optgroup>
+</select>
+</label>
+
+<label class="adress">
+<span class="formochka"><i class="fa-solid fa-location-dot"></i> Pick-up</span>
+<input type="text" class="location" name="adress" placeholder="Enter a City or Airport" required></input>
+<div class="clear"></div>
+<div class="hesh"><a class="different-drop-off" href="#">Need a different drop-off location?</a></div>
+</label>
+
+<label>
+<span class="formochka"><i class="fa-solid fa-calendar-days"></i> Pick-up</span>
+<input type="datetime" class="data" name="data" placeholder="mm/dd/yyyy" required></input>
+<select class="time" name="pick-up-time" id="pick-up-time" required>
+                            <option value="12:00 AM">12:00 AM</option>
+                            <option value="12:30 AM">12:30 AM</option>
+                            <option value="01:00 AM">01:00 AM</option>
+                            <option value="01:30 AM">01:30 AM</option>
+                            <option value="02:00 AM">02:00 AM</option>
+                            <option value="02:30 AM">02:30 AM</option>
+                            <option value="03:00 AM">03:00 AM</option>
+                            <option value="03:30 AM">03:30 AM</option>
+                            <option value="04:00 AM">04:00 AM</option>
+                            <option value="04:30 AM">04:30 AM</option>
+                            <option value="05:00 AM">05:00 AM</option>
+                            <option value="05:30 AM">05:30 AM</option>
+                            <option value="06:00 AM">06:00 AM</option>
+                            <option value="06:30 AM">06:30 AM</option>
+                            <option value="07:00 AM">07:00 AM</option>
+                            <option value="07:30 AM">07:30 AM</option>
+                            <option value="08:00 AM">08:00 AM</option>
+                            <option value="08:30 AM">08:30 AM</option>
+                            <option value="09:00 AM">09:00 AM</option>
+                            <option value="09:30 AM">09:30 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="10:30 AM">10:30 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="11:30 AM">11:30 AM</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="12:30 PM">12:30 PM</option>
+                            <option value="01:00 PM">01:00 PM</option>
+                            <option value="01:30 PM">01:30 PM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="02:30 PM">02:30 PM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="03:30 PM">03:30 PM</option>
+                            <option value="04:00 PM">04:00 PM</option>
+                            <option value="04:30 PM">04:30 PM</option>
+                            <option value="05:00 PM">05:00 PM</option>
+                            <option value="05:30 PM">05:30 PM</option>
+                            <option value="06:00 PM">06:00 PM</option>
+                            <option value="06:30 PM">06:30 PM</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                            <option value="07:30 PM">07:30 PM</option>
+                            <option value="08:00 PM">08:00 PM</option>
+                            <option value="08:30 PM">08:30 PM</option>
+                            <option value="09:00 PM">09:00 PM</option>
+                            <option value="09:30 PM">09:30 PM</option>
+                            <option value="10:00 PM">10:00 PM</option>
+                            <option value="10:30 PM">10:30 PM</option>
+                            <option value="11:00 PM">11:00 PM</option>
+                            <option value="11:30 PM">11:30 PM</option>
+                          </select>
+<div class="clear"></div>
+</label>
+
+<label>
+<span class="formochka3"><i class="fa-solid fa-calendar-days"></i> Drop-off</span>
+<input type="datetime" class="data" name="data" placeholder="mm/dd/yyyy" required></input>
+<select class="time" name="pick-up-time" id="pick-up-time" required>
+                            <option value="12:00 AM">12:00 AM</option>
+                            <option value="12:30 AM">12:30 AM</option>
+                            <option value="01:00 AM">01:00 AM</option>
+                            <option value="01:30 AM">01:30 AM</option>
+                            <option value="02:00 AM">02:00 AM</option>
+                            <option value="02:30 AM">02:30 AM</option>
+                            <option value="03:00 AM">03:00 AM</option>
+                            <option value="03:30 AM">03:30 AM</option>
+                            <option value="04:00 AM">04:00 AM</option>
+                            <option value="04:30 AM">04:30 AM</option>
+                            <option value="05:00 AM">05:00 AM</option>
+                            <option value="05:30 AM">05:30 AM</option>
+                            <option value="06:00 AM">06:00 AM</option>
+                            <option value="06:30 AM">06:30 AM</option>
+                            <option value="07:00 AM">07:00 AM</option>
+                            <option value="07:30 AM">07:30 AM</option>
+                            <option value="08:00 AM">08:00 AM</option>
+                            <option value="08:30 AM">08:30 AM</option>
+                            <option value="09:00 AM">09:00 AM</option>
+                            <option value="09:30 AM">09:30 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="10:30 AM">10:30 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="11:30 AM">11:30 AM</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="12:30 PM">12:30 PM</option>
+                            <option value="01:00 PM">01:00 PM</option>
+                            <option value="01:30 PM">01:30 PM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="02:30 PM">02:30 PM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="03:30 PM">03:30 PM</option>
+                            <option value="04:00 PM">04:00 PM</option>
+                            <option value="04:30 PM">04:30 PM</option>
+                            <option value="05:00 PM">05:00 PM</option>
+                            <option value="05:30 PM">05:30 PM</option>
+                            <option value="06:00 PM">06:00 PM</option>
+                            <option value="06:30 PM">06:30 PM</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                            <option value="07:30 PM">07:30 PM</option>
+                            <option value="08:00 PM">08:00 PM</option>
+                            <option value="08:30 PM">08:30 PM</option>
+                            <option value="09:00 PM">09:00 PM</option>
+                            <option value="09:30 PM">09:30 PM</option>
+                            <option value="10:00 PM">10:00 PM</option>
+                            <option value="10:30 PM">10:30 PM</option>
+                            <option value="11:00 PM">11:00 PM</option>
+                            <option value="11:30 PM">11:30 PM</option>
+                          </select>
+<div class="clear"></div>
+</label>
+
+<label>
+<input type="submit" class="submit" name="submit" value="continue car reservation"></input>
+</label>
+
+</fieldset>
+</form>
+
+</div>
+
+<div class="anime">
+<h1>LUXURY CAR FROM FROM $28 DAY</h1>
+<h2>Treat yourself in USA</h2>
+<div class="anime-img">
+<img src="../img/car2.png" />
+</div>
+</div>
+
+<div class="clear">
+</div>
+
+
+</div>
+</div>
+
+<section class="servis">
+<div class="ekran">
+
+<div class="zagol"><h1>Customer Services</h1></div>
+
+<div class="Vidi">
+<div class="blocky">
+
+<h2>Special rates on car booking</h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed nonumy eirmod tempor invidunt ut labore et dolore magnaed aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
+</div>
+<div class="blocky">
+
+<h2>Mobile Phone Reservation</h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed nonumy eirmod tempor invidunt ut labore et dolore magnaed aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
+</div>
+<div class="blocky">
+
+<h2>Unlimited Miles Car Rental</h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed nonumy eirmod tempor invidunt ut labore et dolore magnaed aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
+</div>
+<div class="blocky">
+
+<h2>One Way Car Rentals</h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed nonumy eirmod tempor invidunt ut labore et dolore magnaed aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
+</div>
+
+
+
+</div>
+</div>
+</section>
+
+
+<section class="office">
+<div class="ekran">
+
+<div class="amazing vert-al">
+<h1>SIGN UP FOR AMAZING OFFERS
+<span>EXCLUSIVE ACCESS FOR OFFERS AND PROMOTIONS</span></h1>
+
+</div>
+
+<div class="amaz-forma vert-al">
+<form class="amaz-email" action="#" method="get">
+
+<input type="email" name="email" placeholder="Enter your Email Address" required></input>
+<button type="submit">SEND</button>
+</form>
+</div>
+
+<div class="amaz-icon vert-al">
+<i class="fa-brands fa-square-twitter"></i>
+<i class="fa-brands fa-google-plus-g"></i>
+<i class="fa-brands fa-facebook"></i>
+</div>
+
+</div>
+</section>
+
+ <section class="js-block">
+ <div class="ekran">
+ 
+ 
+<h1>Vehicle Models - <span>Our rental fleet at a glance<span></h1>
+
+
+<div class="vibor">
+
+
+<ul class="vehicle-nav">
+<li class="active"><a href="#vehicle-1">VW Golf VII</a><span class="">&nbsp;</span></li>
+<li class=""><a href="#vehicle-2">Audi A1 S-LINE</a><span class="">&nbsp;</span></li>
+<li class=""><a href="#vehicle-3">Toyota Camry</a><span class="">&nbsp;</span></li>
+<li class=""><a href="#vehicle-4">BMW 320 ModernLine</a><span class="">&nbsp;</span></li>
+<li class=""><a href="#vehicle-5">Mercedes-Benz GLK</a><span class="">&nbsp;</span></li>
+<li class=""><a href="#vehicle-6">VW Passat CC</a><span class="">&nbsp;</span></li>
+</ul>
+
+
+   <div class="styled-select">
+ <select class="data-select">
+ 
+ 
+ <option class="active" value="#vehicle-1"><a href="#vehicle-1">VW Golf VII</a></option>
+ <option value="#vehicle-2"><a href="#vehicle-2">Audi A1 S-LINE</a></option>
+ <option value="#vehicle-3"><a href="#vehicle-3">Toyota Camry</a></option>
+ <option value="#vehicle-4"><a href="#vehicle-4">BMW 320 ModernLine</a></option>
+ <option value="#vehicle-5"><a href="#vehicle-5">Mercedes-Benz GLK</a></option>
+ <option value="#vehicle-6"><a href="#vehicle-6">VW Passat CC</a></option>
+ 
+ </select>
+ </div>
+
+<div class="vehicle" id="vehicle-1">
+<div class="vih-img">
+<img src="../img/car1.jpg" />
+ </div>
+ 
+ <div class="vehicle-list">
+ <div class="price">$ 37.40 <span class="info">rent per day</span>
+ </div>
+ <div class="luboy">
+  <div class="cost-flex"><div>Model</div><div>Limousine</div></div>
+  <div class="cost-flex"><div>Doors</div><div>4</div></div>
+  <div class="cost-flex"><div>Seats</div><div>5</div></div>
+  <div class="cost-flex"><div>Laggage</div><div>2 Suitcases/2 Bags</div></div>
+  <div class="cost-flex"><div>Transmition</div><div>Automatic</div></div>
+  <div class="cost-flex"><div>Air conditioning</div><div>Yes</div></div>
+  <div class="cost-flex"><div>Minimum age</div><div>25 Years</div></div>
+
+ </div>
+   <button class="submit"><i class="fa-solid fa-calendar-days"></i>Reserve now</submit>
+ 
+ </div>
+ 
+ 
+ </div>
+ 
+ <div class="vehicle" id="vehicle-2">
+<div class="vih-img">
+<img src="../img/car1.jpg" />
+ </div>
+ 
+ <div class="vehicle-list">
+ <div class="price">$ 37.40 <span class="info">rent per day</span>
+ </div>
+ <div class="luboy">
+  <div class="cost-flex"><div>Model</div><div>Limousine</div></div>
+  <div class="cost-flex"><div>Doors</div><div>4</div></div>
+  <div class="cost-flex"><div>Seats</div><div>5</div></div>
+  <div class="cost-flex"><div>Laggage</div><div>2 Suitcases/2 Bags</div></div>
+  <div class="cost-flex"><div>Transmition</div><div>Automatic</div></div>
+  <div class="cost-flex"><div>Air conditioning</div><div>Yes</div></div>
+  <div class="cost-flex"><div>Minimum age</div><div>25 Years</div></div>
+
+ </div>
+   <button class="submit"><i class="fa-solid fa-calendar-days"></i>Reserve now</submit>
+ 
+ </div>
+ 
+ 
+ </div>
+ 
+ <div class="vehicle" id="vehicle-3">
+<div class="vih-img">
+<img src="../img/car1.jpg" />
+ </div>
+ 
+ <div class="vehicle-list">
+ <div class="price">$ 37.40 <span class="info">rent per day</span>
+ </div>
+ <div class="luboy">
+  <div class="cost-flex"><div>Model</div><div>Limousine</div></div>
+  <div class="cost-flex"><div>Doors</div><div>4</div></div>
+  <div class="cost-flex"><div>Seats</div><div>5</div></div>
+  <div class="cost-flex"><div>Laggage</div><div>2 Suitcases/2 Bags</div></div>
+  <div class="cost-flex"><div>Transmition</div><div>Automatic</div></div>
+  <div class="cost-flex"><div>Air conditioning</div><div>Yes</div></div>
+  <div class="cost-flex"><div>Minimum age</div><div>25 Years</div></div>
+
+ </div>
+   <button class="submit"><i class="fa-solid fa-calendar-days"></i>Reserve now</submit>
+ 
+ </div>
+ 
+
+ 
+ 
+ 
+ </div>
+ 
+ <div class="vehicle" id="vehicle-4">
+<div class="vih-img">
+<img src="../img/car1.jpg" />
+ </div>
+ 
+ <div class="vehicle-list">
+ <div class="price">$ 37.40 <span class="info">rent per day</span>
+ </div>
+ <div class="luboy">
+  <div class="cost-flex"><div>Model</div><div>Limousine</div></div>
+  <div class="cost-flex"><div>Doors</div><div>4</div></div>
+  <div class="cost-flex"><div>Seats</div><div>5</div></div>
+  <div class="cost-flex"><div>Laggage</div><div>2 Suitcases/2 Bags</div></div>
+  <div class="cost-flex"><div>Transmition</div><div>Automatic</div></div>
+  <div class="cost-flex"><div>Air conditioning</div><div>Yes</div></div>
+  <div class="cost-flex"><div>Minimum age</div><div>25 Years</div></div>
+
+ </div>
+   <button class="submit"><i class="fa-solid fa-calendar-days"></i>Reserve now</submit>
+ 
+ </div>
+ 
+
+ 
+ </div>
+ 
+ <div class="vehicle" id="vehicle-5">
+<div class="vih-img">
+<img src="../img/car1.jpg" />
+ </div>
+ 
+ <div class="vehicle-list">
+ <div class="price">$ 37.40 <span class="info">rent per day</span>
+ </div>
+ <div class="luboy">
+  <div class="cost-flex"><div>Model</div><div>Limousine</div></div>
+  <div class="cost-flex"><div>Doors</div><div>4</div></div>
+  <div class="cost-flex"><div>Seats</div><div>5</div></div>
+  <div class="cost-flex"><div>Laggage</div><div>2 Suitcases/2 Bags</div></div>
+  <div class="cost-flex"><div>Transmition</div><div>Automatic</div></div>
+  <div class="cost-flex"><div>Air conditioning</div><div>Yes</div></div>
+  <div class="cost-flex"><div>Minimum age</div><div>25 Years</div></div>
+
+ </div>
+   <button class="submit"><i class="fa-solid fa-calendar-days"></i>Reserve now</submit>
+ 
+ </div>
+ 
+ 
+ </div>
+ 
+ <div class="vehicle" id="vehicle-6">
+<div class="vih-img">
+<img src="../img/car1.jpg" />
+ </div>
+ 
+ <div class="vehicle-list">
+ <div class="price">$ 37.40 <span class="info">rent per day</span>
+ </div>
+ <div class="luboy">
+  <div class="cost-flex"><div>Model</div><div>Limousine</div></div>
+  <div class="cost-flex"><div>Doors</div><div>4</div></div>
+  <div class="cost-flex"><div>Seats</div><div>5</div></div>
+  <div class="cost-flex"><div>Laggage</div><div>2 Suitcases/2 Bags</div></div>
+  <div class="cost-flex"><div>Transmition</div><div>Automatic</div></div>
+  <div class="cost-flex"><div>Air conditioning</div><div>Yes</div></div>
+  <div class="cost-flex"><div>Minimum age</div><div>25 Years</div></div>
+
+ </div>
+   <button class="submit"><i class="fa-solid fa-calendar-days"></i>Reserve now</submit>
+ 
+ </div>
+ 
+ 
+ </div>
+ 
+ </div>
+ </div>
+
+ 
+ 
+ 
+ </div>
+ </div>
+ </section>
+
+<section class="slider">
+<div class="container">
+
+<div class="row">
+<div class="col">
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide text-center" data-bs-ride="carousel">
+  <!-- <div class="carousel-indicators"> -->
+    <!-- <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button> -->
+    <!-- <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button> -->
+    <!-- <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
+  <!-- </div> -->
+  
+  
+  <div class="carousel-inner  w-75 mx-auto">
+  
+
+  
+    <div class="carousel-item active" data-bs-interval="10000">
+	  <div class="star">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+     <p>This was my first time renting from car|rental. And over all it was a wonderful experience I have no complaints. The service rep help me find the best rental to suit my needs. I also love the fact that you guys provide luxury rentals at a great price. I will definitely rent with this company again.</p>
+<h2>– Michael Smith, Santa Barbara CA</h2>
+    </div>
+	
+    <div class="carousel-item" data-bs-interval="2000">
+	  <div class="star">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+  <p>This rental was the best rental experience ever! After completing all details on-line myself, the pick-up was super efficient, extremely friendly, and free of the usual 5 - 10 min very unpleasant drilling of why one is not signing up to all options (insurance, etc). I was handed the keys and a wide register print out that required...</p>
+<h2>– Jon Doe, Las Vegas NV</h2>
+    </div>
+	
+    <div class="carousel-item">
+	  <div class="star">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<p>This was my first time renting from car|rental. And over all it was a wonderful experience I have no complaints. The service rep help me find the best rental to suit my needs. I also love the fact that you guys provide luxury rentals at a great price. I will definitely rent with this company again.</p>
+<h2>– Michael Smith, Santa Barbara CA</h2>
+      </div>
+	  
+	  
+    </div>
+  
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  
+  
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+</section>
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,66 @@
+.items a{font-size:22px;margin:5px;color:grey;}
+.items:hover:nth-child(1) a{color:#428bca;transition:2s;}
+.items:hover:nth-child(2) a{color:#c03035;transition:2s;}
+.items:hover:nth-child(3) a{color:#c03035;transition:2s;}
+.items:hover:nth-child(4) a{color:#4fcccd;transition:2s;}
+.items:hover:nth-child(5) a{color:#2a6496;transition:2s;}
+
+.slider{background-image:url(../image/slider-bg.png);
+background-repeat:repeat-x; background-position:left bottom; 
+height:512px;}
+img.house{width:100%; vertical-align:bottom;}
+.sun{left: 32%;bottom: 162%;width: 23%;}
+.cloud1{left: 17%;bottom: 138%;width: 19%;}
+.cloud2{left: -3%;bottom: 176%;width: 26%;}
+.cloud3{left: 53%;bottom: 152%;width: 22%;}
+.circle1{left: 11%;bottom: 103%;width: 6%;}
+.circle2{left: 15%;bottom: 121%;width: 4%;}
+.cycle{right: 100%;bottom: 0%;width: 30%;animation:slide-in-right 2000ms both;}
+
+
+a.btn-common{
+	display: inline-block;
+    font-size: 14px;
+    color: #797979;
+    border: 1px solid #dbb075;
+    font-family: open sans,sans-serif;
+    font-weight: 300;
+padding: 10px 25px;}
+
+
+.fly{background:url(../img/tour-bg.png);}
+.plane{background:url(../img/tour-icon2.png);padding:31px 0px;
+background-repeat:no-repeat;background-position:1040px bottom;}
+
+.stroki img{width:89%;}
+
+.stroki .row:nth-child(even){flex-direction:row-reverse; margin:50px 0px;}
+
+
+@media(max-width:1200px){
+
+@media(max-width:998px){
+
+}
+@media(max-width:768px){
+.row{height:auto;}
+.sl-img{height:auto;}
+
+.sun{left: 20%;bottom: 126%;width: 19%;}
+.cloud1{left: 34%;bottom: 118%;width: 16%;}
+.cloud2{left: 3%;bottom: 135%;width: 17%;}
+.cloud3{left: 56%;bottom: 118%;width: 19%;}
+.circle1{left: 13%;bottom: 102%;width: 4%;}
+.circle2{left: 17%;bottom: 114%;width: 3%;}
+.cycle{right:-133%;bottom: 0%;width: 24%;animation: velosiped 2000ms both;}
+
+@keyframes velosiped{
+	0%{right:84%; bottom:0%;}
+}
+}
+@media(max-width:460px){
+	
+}
+@media(max-width:320px){
+	
+}
