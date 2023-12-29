@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="./static.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Exam</title>
+</head>
+
+<body>
+
+    <h1 class="winx"> Welcome To Winx Library</h1>
+    <div class="container">
+
+        <div class="left-menu">
+            <div class="books" data-target="books">
+                <i class="fa-solid fa-book"></i>
+            </div>
+            <div class="readers" data-target="readers">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="given-out" data-target="give_out">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+        </div>
+
+        <div class="vivod">
+            <!-- КОНТЕЙНЕР ДЛЯ КНИГГГГГ -->
+            <div id="books" class="vivod-container result active">
+
+                <h2>Найти книгу</h2>
+                <input id="search-book" type="text">
+                <button id="search" style=" height: 31px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+                <div class="search-result"></div>
+
+                <h2>Книги в тренде!</h2>
+                <div class="trend-books">
+
+                </div>
+
+            </div>
+            <!-- Контейнер для читателей -->
+            <div id="readers" class="reader-view result">
+                <div class="for-buttons">
+                    <button class="btn" id="enter">Войти</button>
+                    <button class="btn" id="registr">Зарегестрироваться</button>
+                </div>
+                <div class="read-result">
+                    <div class="registr">
+                        <form action="" class="sign-up-form">
+                            <label for="name">Full Name</label>
+                            <input class="sign-up-input" type="text" name="fullName"></input>
+                            <label for="addres">Addres</label>
+                            <input class="sign-up-input" type="text" name="addres"></input>
+                            <label for="phone">Phone Number</label>
+                            <input class="sign-up-input" type="number" name="phoneNum"></input>
+                            <label for="image">Avatar Url</label>
+                            <input class="sign-up-input" type="text" name="image"></input>
+                    
+                        </form>
+                        <button class="btn" id="registration">Sign Up</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Контейнер для выданных книг -->
+            <div id="give_out" class=" result">
+                <h2>Список недоступных книг</h2>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+</body>
+<script type="module" src="./main.js"></script>
+
+</html>
