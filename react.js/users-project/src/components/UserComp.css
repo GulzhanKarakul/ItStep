@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.user-card {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #04107b;
+}
+
+h1 {
+    text-align: center;
+}
+
+.user-details, .user-address, .user-company {
+    margin-top: 20px;
+}
+
+.user-detail h2, .user-address h2, .user-company h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.user-detail p, .user-address p, .user-company p {
+    font-size: 16px;
+    margin: 5px 0;
+}

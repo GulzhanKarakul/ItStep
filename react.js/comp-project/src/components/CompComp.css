@@ -1,0 +1,35 @@
+/* Стили для компонента .computer-info */
+.computer-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+  
+  /* Стили для заголовка h1 */
+  .computer-info h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Стили для параграфов p */
+  .computer-info p {
+    font-size: 16px;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  /* Стили для состояния (включен/выключен) */
+  .computer-info .online {
+    color: green;
+  }
+  
+  .computer-info .offline {
+    color: red;
+  }
+  

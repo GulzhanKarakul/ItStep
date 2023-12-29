@@ -1,0 +1,47 @@
+.cont2 {
+    color: #0c42a6;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    min-height: 600px;
+    margin: 0 auto;
+    font-weight: 600;
+}
+
+.newPost {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+.newPost p {
+    width: 100%;
+}
+
+.newPost input {
+    width: 80%;
+    margin: 10px;
+    padding: 10px 0;
+    border-radius: 15px;
+}
+
+.newPost label {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.newPost input[type='submit']{
+    background: #42a4f4;
+    font-size: 17px;
+    margin-top: 20px;
+    width: 33%;
+}
+
+.newPost textarea {
+    width: 80%;
+    margin: 10px;
+    padding: 10px 0;
+    border-radius: 15px;
+    height: 200px;
+}

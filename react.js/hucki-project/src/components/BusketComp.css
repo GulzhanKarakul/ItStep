@@ -1,0 +1,68 @@
+.busket {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 20px;
+  color: #000;
+}
+
+.busket ul {
+  list-style: none;
+  padding: 0;
+}
+
+.busket-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.busket-item img {
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+.busket-item h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.busket-item .cost {
+  color: #007BFF;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.busket-item button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.busket-item button:hover {
+  background-color: #0056b3;
+}
+
+.busket h2 {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.busket button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.busket button:hover {
+  background-color: #0056b3;
+}

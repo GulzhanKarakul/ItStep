@@ -1,0 +1,64 @@
+/* Стили для элемента списка li */
+.staff-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для изображения img */
+  .staff-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 50%;
+  }
+
+  /* .staff-item img:hover {
+    width: 500px;
+    height: 500px;
+  } */
+  
+  /* Стили для заголовка h1 внутри li */
+  .staff-item h1 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Стили для параграфа p */
+  .staff-item p {
+    font-size: 16px;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  /* Стили для класса .cost */
+  .staff-item .cost {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Стили для кнопки button */
+  .staff-item button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Стили для кнопки button при наведении */
+  .staff-item button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,39 @@
+/* Стили для контейнера div */
+div {
+  text-align: center;
+  margin: 20px;
+}
+
+/* Стили для заголовка h1 */
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Стили для кнопок */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Стили при наведении курсора на кнопку */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Дополнительные стили для определенных кнопок, если необходимо */
+/* Например, для кнопки CLEAR */
+button:nth-child(3) {
+  background-color: #dc3545;
+}
+
+/* Стили при наведении курсора на кнопку CLEAR */
+button:nth-child(3):hover {
+  background-color: #c82333;
+}

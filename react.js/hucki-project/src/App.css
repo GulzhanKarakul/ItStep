@@ -1,0 +1,45 @@
+/* Общие стили для контейнера */
+body {
+  font-family: Arial, sans-serif;
+  /* background-color: #f4f4f4; */
+  margin: 0;
+  padding: 0;
+  background-color: #464646;
+  color: #fff
+}
+
+.cont {
+  padding: 20px; /* Отступы по краям контейнера */
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 20px; /* Отступ между элементами меню */
+  cursor: pointer;
+}
+
+.navbar li p {
+  margin: 0;
+  padding: 10px 15px;
+  border: 1px solid #ffffff; /* Граница вокруг текста */
+  border-radius: 5px; /* Скругление углов */
+}
+
+.navbar li:nth-child(1) p {
+  background-color: #3498db; /* Цвет фона для первого элемента */
+  color: #fff; /* Цвет текста для первого элемента */
+}
+
+.navbar li:nth-child(2) p {
+  background-color: #e74c3c; /* Цвет фона для второго элемента */
+  color: #fff; /* Цвет текста для второго элемента */
+}
+
+#content {
+  /* Стили для вашего контента здесь */
+}

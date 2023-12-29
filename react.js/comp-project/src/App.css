@@ -1,0 +1,74 @@
+/* Стили для формы */
+form {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Стили для элементов формы (лейбл и инпуты) */
+form div {
+  /* margin-bottom: 15px; */
+  padding: 15px;
+}
+
+label {
+  font-size: 18px;
+  color: #333;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Стили для кнопки "Обновить" */
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+/* Стили для кнопки "Обновить" при наведении */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Стили для блока с состоянием и кнопкой "Включить/Выключить" */
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Стили для кнопки "Включить/Выключить" */
+button[type="button"] {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+/* Стили для кнопки "Включить/Выключить" при наведении */
+button[type="button"]:hover {
+  background-color: #1e7e34;
+}

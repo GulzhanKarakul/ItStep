@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.help-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.help-container h2 {
+    color: #007BFF;
+}
+
+.search-form {
+    margin-top: 20px;
+}
+
+.search-form input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-form input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-results {
+    margin-top: 20px;
+}
+
+.search-results  section {
+    padding: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+}
+
+.search-results p {
+    font-size: 18px;
+}

@@ -1,0 +1,51 @@
+/* Стили для .list-container */
+.list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Стили для заголовка h1 */
+  .list-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Стили для списка ol */
+  .list-container ol {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Стили для элементов списка li */
+  .list-container li {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Стили для активной ссылки */
+  .list-container a.active {
+    background-color: #ff4d00;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  /* Стили для ссылок внутри списка */
+  .list-container a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 5px 0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Стили для ссылок при наведении */
+  .list-container a:hover {
+    background-color: #ff4d00;
+    color: #fff;
+  }
+  

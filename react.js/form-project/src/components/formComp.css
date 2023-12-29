@@ -1,0 +1,13 @@
+.Title {
+    width: 1200px;
+    margin: 20px auto;
+    color: #153c99;
+    background: #dfbcf7;
+}
+
+.Title p{
+    color: #62b4ef;
+    background: #bd68f6;
+    font-size: 18px;
+    padding: 15px 0;
+}
