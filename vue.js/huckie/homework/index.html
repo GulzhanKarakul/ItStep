@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        #root{
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            width: 400px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root">
+        <img v-img-src-changer.random="imgSrcObj" >
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

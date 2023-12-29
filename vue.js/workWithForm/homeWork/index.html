@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Content</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="root">
+        <div class="add-post">
+            <h1>Создать новый пост: </h1>
+            <textarea v-model.lazy="newPostText" type="text" > </textarea>
+            <input @click="createNewPost"  type="submit" value="Создать">
+        </div>
+
+        <ul class="post-list">
+            <li v-for="(post, index) in allPosts" :key="index">
+                <div class="post" :style="post['bcgrnd']">
+                    <div class="tools-menu">
+                        <h3 @click="showPanel(index)">Инструментная панель</h3>
+                        <div v-if="post['show']">
+                            <ul class="menu">
+                                <li @click="showDiv('div1')">Цвет текста</li>
+                                <li @click="showDiv('div2')">Фон поста</li>
+                                <li @click="showDiv('div3')">Шрифт</li>
+                                <li @click="showDiv('div4')">Размер шрифта</li>
+                                <li @click="showDiv('div5')">Стиль шрифта</li>
+                                <li @click="showDiv('div6')">Редактирование текста</li>
+                            </ul>
+                            <div class="panel" style="color:black">
+                                <div class="color"  v-if="currentDiv === 'div1'">
+                                    <input id="textColor" type="color" v-model="textColor" @change='chooseColor(index)'>
+                                </div>
+                                <div class="backgrnd"  v-if="currentDiv === 'div2'">
+                                    <div class="img" @click="chooseBackgrnd('pink', index)">
+                                        <img :src="backgroundImage['pink']" alt="">
+                                    </div>
+                                    <div class="img" @click="chooseBackgrnd('dark', index)">
+                                        <img :src="backgroundImage['dark']" alt="">
+                                    </div>
+                                    <div class="img" @click="chooseBackgrnd('light', index)">
+                                        <img :src="backgroundImage['light']" alt="">
+                                    </div>
+                                    <div class="img" @click="chooseBackgrnd('blue', index)">
+                                        <img :src="backgroundImage['blue']" alt="">
+                                    </div>
+                                    <div class="img" @click="chooseBackgrnd('abstraction', index)">
+                                        <img :src="backgroundImage['abstraction']" alt="">
+                                    </div>
+                                </div>
+                                <div class="style"  v-if="currentDiv === 'div3'">
+                                    <p>Введите название шрифта!</p>
+                                    <input type="text" v-model="style" @input="changeStyle(index)">
+                                </div>
+                                <div class="font-size"  v-if="currentDiv === 'div4'">
+                                    <p>Введите размер шрифта!</p>
+                                    <input type="text" v-model="size" @input="changeFontSize(index)">
+                                </div>
+                                <div class="font-style"  v-if="currentDiv === 'div5'">
+                                    <p><b>Жирный шрифт</b>&nbsp;&nbsp;
+                                        <input type="checkbox" v-model="bond" @input="isBond(index)">
+                                    </p>
+                                    <p><i>Курсив</i>&nbsp;&nbsp;
+                                        <input type="checkbox" v-model="italic" @input="isItalic(index)">
+                                    </p>
+                                </div>
+
+                                <div class="redact"  v-if="currentDiv === 'div6'">
+                                    <textarea name="" id="" cols="30" rows="10" v-model="reductText"></textarea>
+                                    <input @click="changePost(index)"  type="submit" value="Изменить">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="text" v-html="post['text']" :style="post['tools']">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

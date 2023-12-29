@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="root">
+        <div class="add-post">
+            <h1>Создать новый пост: </h1>
+            <input type="text" name="work" v-model.lazy="newRecord">
+            <input class="check" @click.prevent="createNewPost" type="submit" value="Добавить">
+        </div>
+
+        <ul>
+            <element v-for="(text, index) in records" :text="text" :index="index"></element>
+        </ul>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

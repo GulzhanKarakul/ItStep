@@ -1,0 +1,40 @@
+.bar, .line, .pie {
+    width: 600px;
+    height: 400px;
+}
+*{
+    color: #002255;
+}
+
+#root {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.input-form form{
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    justify-content: space-around;
+    margin: 50px;
+}
+
+input {
+    padding: 7px 15px;
+    border: 2px solid #3a84f4;
+    border-radius: 7px;
+    margin: 5px 0;
+}
+h1 {
+    width: 100%;
+}
+
+label {
+    width: 38%;
+    margin: 5px 0;
+}
+

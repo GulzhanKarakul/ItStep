@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directives</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <style>
+        #root{
+            width: 1200px;
+            /* height: 1000px; */
+            margin: 0 auto;
+            font-size: 24px;
+        }
+
+        #spisok{
+            background-color: aquamarine;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 800px;
+            border: 1px solid #000;
+            height: 80%;
+        }
+
+        #form {
+            margin: 20px auto;
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            width: 800px;
+            height: 80%;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        label{
+            width: 100%;
+            text-align: center;
+        }
+
+        input {
+            margin: 10px auto;
+            width: 80%;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 2px solid #000;
+        }
+
+        input[type='submit']{
+            background-color: rgb(144, 127, 255);
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root">
+
+        <div v-if="show" id="form">
+            <form >
+                <label for="name">Name</label>
+                <input type="text" name="name">
+                <label for="name">Last Name</label>
+                <input type="text" name="lastName">
+                <label for="name">Age</label>
+                <input type="text" name="age">
+                <input @click.prevent="submitForm" type="submit" id="btn" value="Log In">
+            </form>
+        </div>
+
+        <div v-else id="spisok">
+            <ul>
+                <li v-for="(user, index) in users">{{index+1}}&nbsp;:&nbsp;{{user['lastName']+' '+user['name']+' '+user['age']+' лет'}}</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        Vue.createApp({
+            data: () => {
+                return {
+                    users: [],
+                    show: true,
+                }
+            },
+            methods: {
+                submitForm(){
+                    const user = {};
+                    this.show = false;
+
+                    let inputs = document.querySelectorAll('input');
+                    let name = inputs[0].value;
+                    let lastName = inputs[1].value;
+                    let age = inputs[2].value;
+
+                    user['name'] = name;
+                    user['lastName'] = lastName;
+                    user['age'] = age;
+
+                    localStorage.setItem(`user${name}`, JSON.stringify(user));
+
+                    let keys = Object.keys(localStorage);
+                    for(let key of keys) {
+                        let user = JSON.parse(localStorage.getItem(key));
+                        this.users.push(user);
+                    }
+                }
+            },
+        } ).mount("#root")
+    </script>
+    
+</body>
+</html>

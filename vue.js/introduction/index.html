@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue First CW</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    
+
+    <div id="root">
+        <span>Счётчик: {{ counter }}</span>
+    </div>
+    
+    <script>
+            // Создается объект- приложение. Другими словами страница отображается как целое приложение и постепенно подгружается
+            Vue.createApp({
+                // Объект с настройками приложения
+                data: () => {
+                    return {
+                        counter: 0,
+                    }
+                },
+                mounted() {
+                    setInterval(() => {
+                        this.counter++
+                    }, 1000)
+                },
+
+            }).mount('#root')
+    </script>
+</body>
+</html>

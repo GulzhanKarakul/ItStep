@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+   display: flex;
+   padding: 50px;
+   justify-content: space-evenly;
+}
+
+#vvod {
+    width: 400px;
+    height: 500px;
+    padding: 20px;
+    text-align: center;
+}
+
+input {
+   padding: 10px 0px;
+   border: 2px solid #000;
+   border-radius: 10px;
+   margin: 15px 0;
+   width: 100%;
+}
+
+input[type="submit"]{
+   background: #73b4ee;
+}
+
+#spisok {
+    width: 400px;
+    min-height: 500px;
+    background: #73b4ee;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+ol{
+   width: 55%;
+   margin: 0 auto;
+}
+
+input[type="checkbox"]{
+    width: 20px;
+}
+
+.btn {
+   padding: 5px 10px;
+   border: 2px solid #000;
+   border-radius: 10px;
+   font-size: 14px;
+}

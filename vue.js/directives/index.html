@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directives</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root">
+        {{text}}
+        <!-- <a v-if="show"  :href="link">google</a>
+        <a v-else-if="show1"  :href="link">Mail.ru</a>
+        <a v-else="show"  :href="link">yandex</a>
+        <img :src="img_url" alt="" srcset=""> -->
+
+        <ul>
+            <li v-for="(user, index) in users.splice(0, 2)">{{Math.round(index)+1}}&nbsp;:&nbsp;{{user}}</li>
+        </ul>
+
+        <div>{{text2}}</div>
+        <input type="text" @input="log('Вы написали: ', $event)">
+    </div>
+    
+    
+    <script>
+        Vue.createApp( {
+            data: () => {
+                return {
+                    text: "It's Work!",
+                    text2: '',
+                    // link: "http://google.com/",
+                    // img_url: "",
+                    // show: true,
+                    // show1: true,
+                    users: [ "John", "Abay", "Anna", "Max"],
+                }
+            },
+            mounted() {
+                // setTimeout( () => {
+                //         // this.link = "http://yandex.kz/"
+                //         this.show = false;
+                //     }, 5000);
+            },
+            methods: {
+                log(text, ev){
+                    this.text2 = text + ev.target.value;
+                }
+            },
+        } ).mount("#root")
+    </script>
+</body>
+</html>

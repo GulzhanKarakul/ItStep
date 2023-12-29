@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Task</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root">
+        <button id="btn">LIKE {{like}}</button>
+    </div>
+
+    <div id="number">
+        <span>Random Number Generator</span>
+        <span>{{randomNumber}}</span>
+
+        <button id="random_btn">Get Random Number</button>
+    </div>
+
+    <script>
+        // Создается объект- приложение. Другими словами страница отображается как целое приложение и постепенно подгружается
+        
+
+        const LikeCounter = {
+            // Объект с настройками приложения
+            data: () => {
+                return {
+                    like: 0,
+
+                }
+            },
+            mounted() {
+                document.getElementById('btn').onclick = () => {
+                    this.like++;
+                }
+            },
+        }
+
+        const RandomNumber = {
+            // Объект с настройками приложения
+            data: () => {
+                return {
+                    randomNumber: 0,
+                }
+            },
+            mounted() {
+                document.getElementById('random_btn').onclick = () => {
+                    let number = getRandomArbitrary(-1000, 1000);
+                    this.randomNumber = number.toFixed(3);
+                }
+            },
+
+            
+        }
+
+        Vue.createApp(LikeCounter).mount('#root');
+        Vue.createApp(RandomNumber).mount('#number');
+
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+        </script>
+
+</body>
+</html>

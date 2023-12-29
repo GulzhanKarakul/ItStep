@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хуки</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <!-- v-new-dir="1+1" -->
+    <!-- аргументы передаются через двоеточие -->
+    <div id="root">
+        <input type="text" 
+        v-model.lazy="name" 
+        @click="log"
+         
+         
+         v-new-dir:foo
+         >
+        <p>{{ name }}</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

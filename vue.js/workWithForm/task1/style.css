@@ -1,0 +1,62 @@
+#root{
+    width: 1200px;
+    margin: 0 auto;
+    font-size: 24px;
+}
+
+#spisok{
+    background-color: aquamarine;
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 800px;
+    border: 1px solid #000;
+    padding: 30px 0;
+}
+
+#form {
+    margin: 20px auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    width: 800px;
+    height: 80%;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+label{
+    width: 100%;
+    text-align: center;
+}
+
+input {
+    margin: 10px auto;
+    width: 80%;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+
+input[type='submit']{
+    background-color: rgb(144, 127, 255);
+}
+
+ul {
+    list-style: none;
+}
+
+table {
+     margin: 20px auto;
+     text-align: center;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+
+td {
+    padding: 10px;
+}

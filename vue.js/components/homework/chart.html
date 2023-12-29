@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue - chart.js example</title>
+   
+    <script src="https://cdn.jsdelivr.net/npm/babel-regenerator-runtime@6.5.0/runtime.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.0.10/dist/vuetify.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs@3.4.0/dist/vue-chartjs.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  
+    <div id="root">
+      <h1>Создай свою диаграмму!</h1>
+
+        <div class="input-form">
+          <h3>Введите данные:</h3>
+          <form action="">
+            <label id="inp"  for="name">Название Диаграммы:</label>
+            <input type="text" @input="nameChart($event)">
+         
+            <label for="">Название</label>
+            <label for="">Значение</label>
+              <input type="text" @input="changeLabel($event,0)">
+              
+              <input type="text" @input="changeValue($event, 0)">
+            
+              <input type="text" @input="changeLabel($event, 1)">
+              <input type="text" @input="changeValue($event, 1)">
+            
+              <input type="text" @input="changeLabel($event, 2)">
+              <input type="text" @input="changeValue($event, 2)">
+
+              <input type="text" @input="changeLabel($event, 3)">
+              <input type="text" @input="changeValue($event, 3)">
+            
+          </form>
+        </div>
+
+        <div class="bar" v-if="currentDiv='bar'">
+            <my-bar-chart v-if="ChartConfig.labels.length" :bar-data="ChartConfig" :chart-options="options"></my-bar-chart>
+        </div>
+    </div>
+  
+    <script src="chart.js">
+    
+  </script>
+</body>
+</html>

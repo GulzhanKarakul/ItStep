@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="root">
+
+        <div id="vvod">
+            <h1>Добавить еще одно дело!</h1>
+            <input type="text" name="work" v-model.lazy.trim="taskName">
+            <input class="check" @click.prevent="submitForm" type="submit" value="Добавить">
+        </div>
+
+        <div id="spisok">
+            <h1>Список Дел:</h1>
+            <ol>
+                <element @delete="deleteTask(index)" v-for="(name, index) in tasks" :name="name" :index="index"></element>
+            </ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.add-post {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    margin: 50px 0;
+    color: #001ca6;
+    font-size: 22px;
+    background: #6a80f145;
+}
+
+h1 {
+    width: 100%;
+}
+
+textarea {
+    width: 200px;
+    height: 40px;
+    border: 2px solid #6989fc;
+    border-radius: 10px;
+    margin: 7px 5px;
+    padding: 3px;
+}
+
+.add-post  input, .style input, .font-size input, .redact input{
+    /* min-height: 20px; */
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border: 2px solid #6989fc;
+    border-radius: 10px;
+    color: #001ca6;
+}
+
+input[type="submit"]{
+    background: #cbdbf9eb;
+    padding: 10px 55px;
+    border: 2px solid #6989fc;
+    border-radius: 10px;
+    margin: 10px 5px;
+}
+
+.post-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.post {
+    width: 400px;
+    min-height: 400px;
+    /* background: #97acf9; */
+    padding: 20px 0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.tools-menu{
+    /* width: 100%; */
+    text-align: center;
+}
+
+.tools-menu h3 {
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.menu li{
+    padding: 5px 10px;
+    border: 2px solid #a2b5f7;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.text {
+    width: 80%;
+    min-height: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px solid #6989fc;
+    border-radius: 10px;
+    background: #fff;
+    white-space: pre-wrap;
+}
+
+.text textarea {
+    border: none;
+    width: 100%;
+    min-height: 200px;
+}
+
+input[type="color"] {
+    width:100%;
+    border: none;
+    margin: 10px 0;
+}
+
+.backgrnd {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+
+.style, .font-size {
+    margin: 10px 0;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.img{
+    width: 70px;
+    height: 70px;
+}
+
+img{
+    width:100%;
+    height: 100%;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.font-style {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+
+.redact textarea { width: 80%;}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Task</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root">
+        <button id="btn">LIKE {{like}}</button>
+
+        <script>
+            // Создается объект- приложение. Другими словами страница отображается как целое приложение и постепенно подгружается
+            Vue.createApp({
+                // Объект с настройками приложения
+                data: () => {
+                    return {
+                        like: 0,
+                    }
+                },
+                mounted() {
+                    document.getElementById('btn').onclick = () => {
+                        this.like++;
+                    }
+                },
+            }).mount('#root')
+        </script>
+    </div>
+
+</body>
+</html>

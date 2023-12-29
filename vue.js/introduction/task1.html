@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Cart</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="cont">
+        <div class="user-form">
+            <form action="">
+                <input type="text" name="name" id="">
+                <input type="text" name="secondName" id="">
+                <input type="text" name="age" id="">
+                <input type="submit" id="btn" value="Input Data">
+            </form>
+        </div>
+
+        <div class="vue">
+            Name : {{name}} <br>
+            Last name : {{lastname}} <br>
+            Age : {{age}} <br>
+        </div>
+    </div>
+
+    <script>
+        // Создается объект- приложение. Другими словами страница отображается как целое приложение и постепенно подгружается
+        Vue.createApp({
+            // Объект с настройками приложения
+            data: () => {
+                return {
+                    name: "",
+                    lastname: "",
+                    age: "",
+                    flag: false,
+                }
+            },
+            mounted() {
+                let form = document.querySelector('.user-form');
+                let btn = document.getElementById('btn');
+                let name, secondName, age;
+                let vue = document.querySelector('.vue');
+
+                btn.addEventListener('click', () => {
+                    name = document.querySelector('input[name="name"]').value;
+                    secondName = document.querySelector('input[name="secondName"]').value;
+                    age = document.querySelector('input[name="age"]').value;
+
+                    console.log(name + ' ' + secondName + ' ' + age);
+
+                    this.name = name;
+                    this.lastname = secondName;
+                    this.age = age;             
+                    this.flag = true;
+                });
+
+                if(this.flag) {
+                    form.style.display = 'none';
+                    vue.style.display = 'block';
+                } else {
+                    form.style.display = 'block';
+                    vue.style.display = 'none';
+                } 
+            }, 
+        }).mount('#cont');
+    </script>
+    
+</body>
+</html>
