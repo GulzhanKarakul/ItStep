@@ -1,0 +1,50 @@
+.book-container {
+    width: 400px;
+    margin: 10px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+}
+
+.book-container img {
+    max-width: 100px;
+    height: auto;
+}
+
+.book-details {
+    margin-left: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+p {
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+.green{
+    color: rgb(53, 239, 46);
+}
+
+.red {
+    color: red;
+}
+
+#btn {
+    padding: 5px 15px;
+}
+
+.add-button {
+    background-color: green; 
+    color: white; 
+}
+
+.remove-button {
+    background-color: red; 
+    color: white; 
+}

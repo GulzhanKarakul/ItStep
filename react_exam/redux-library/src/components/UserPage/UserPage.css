@@ -1,0 +1,116 @@
+.user-profile {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+.books-con {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 900px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.user-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.user-age {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.user-id {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.logout-button {
+    margin-top: 20px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+.books-list {
+    list-style: none;
+    padding: 0;
+}
+  
+.books-list li {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.books-list h1 {
+    font-size: 15px;
+    margin: 0;
+}
+  
+.books-list p {
+    margin: 5px 0;
+}
+
+.book-form {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-label,
+.form-input,
+.form-button {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-input[type="text"],
+.form-input[type="url"],
+.form-input[type="textarea"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.form-input[type="textarea"] {
+    resize: vertical;
+}
+
+.form-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #555;
+}

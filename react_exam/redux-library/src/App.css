@@ -1,0 +1,313 @@
+* {
+  font-family: Century Gothic;
+}
+
+body {
+  background-color: #f0f0f0; /* Светло-серый фон */
+  text-decoration: none;
+}
+
+.container {
+  width: 1200px;
+  height: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-menu {
+  width: 15%;
+  height: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-menu div {
+  height: 200px;
+  background-color: #1680c7; /* Синий фон */
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 50px;
+  line-height: 200px;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: 200ms;
+}
+
+.left-menu div:nth-child(1) {
+  margin-top: 20px;
+}
+
+.left-menu div:hover {
+  background-color: #2980b9; /* Темно-синий фон при наведении */
+  transform: scale(1.1);
+}
+
+.vivod {
+  width: 83%;
+}
+
+.vivod-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.trend-books,
+.search-result,
+.give-out-books {
+  margin: 0 auto;
+  display: flex;
+  padding-bottom: 40px;
+  border-bottom: 2px grey dashed;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+}
+
+#search-book {
+  width: 50%;
+  margin: 0 auto 10px;
+  height: 25px;
+}
+
+.winx {
+  width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  transition: 300ms;
+}
+
+.winx:hover {
+  transform: translateX(20px);
+}
+
+.trend-book {
+  width: 165px;
+  height: 230px;
+  margin: 3px;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+}
+
+.trend-book img,
+.reader-review img {
+  width: 155px;
+  height: 180px;
+  border-radius: 6px;
+}
+
+.trend-book h2 {
+  font-size: 20px;
+}
+
+.osnova {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #1b7ec09c; /* Синий фон с прозрачностью */
+  opacity: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 2%;
+}
+
+.alert {
+  padding: 40px 15px;
+  border-radius: 10px;
+  color: #294d4e;
+  font-size: 17px;
+  text-align: center;
+  background-color: #fff;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.alert h2 {
+  width: 100%;
+}
+
+.alert table {
+  width: 800px;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.btn {
+  border: none;
+  margin: 20px 30px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 17px;
+  padding: 10px;
+  background-color: #1680c7; /* Синий цвет кнопок */
+  border-radius: 7px;
+}
+
+.for-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.for-buttons button,
+#registration {
+  padding: 10px 55px;
+}
+
+.registr {
+  display: none;
+  text-align: center;
+  font-size: 18px;
+  border: 2px solid #DAA06D;
+  border-radius: 10px;
+}
+
+form {
+  width: 900px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+label {
+  width: 100%;
+}
+
+.registr input {
+  width: 140px;
+  padding: 10px 140px;
+  border-radius: 10px;
+  margin: 10px 40px;
+}
+
+.reader {
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 600;
+}
+
+.reader img {
+  width: 200px;
+}
+
+.avatar {
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.reader button {
+  padding: 5px 20px;
+}
+
+.basicInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.reader table {
+  width: 700px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.active {
+  display: block;
+}
+
+.readers-list {
+  margin: 10px auto;
+  display: flex;
+  padding-bottom: 40px;
+  border-bottom: 2px grey dashed;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.reader-review {
+  width: 164px;
+  height: 210px;
+  margin: 3px;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  border: 3px solid #000;
+}
+
+.modalWin {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalWin p {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 200px;
+  background: #0b324c; /* Синий фон модального окна */
+  border-radius: 15px;
+  color: white;
+  padding: 20px;
+}
+
+.modalWinInp {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalWinInp p {
+  width: 300px;
+  height: 230px;
+  margin: 0 auto;
+  font-size: 23px;
+  font-weight: bold;
+  margin-top: 200px;
+  background: #075f99; /* Синий фон модального окна */
+  border-radius: 15px;
+  color: white;
+  padding: 20px;
+}
+
+.modalWinInp input {
+  padding: 12px 76px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.modalWinInp button {
+  padding: 12px 116px;
+  border-radius: 10px;
+  margin: 20px auto 0;
+}
