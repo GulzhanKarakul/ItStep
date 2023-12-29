@@ -1,0 +1,48 @@
+body {
+    background: rgb(175, 175, 238);
+}
+
+form {
+    width: 90%;
+    margin: 0 auto;
+}
+
+form * {
+    display: block;
+    padding: 8px 86px;
+}
+
+form label {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.btn {
+    margin: 20px 0px 10px;
+    padding: 7px 131px;
+    font-weight: bold;
+}
+
+/* input {
+    width: 100%;
+} */
+
+.flex {
+    display: flex;
+    width: 375px;
+    background: #fff;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+img {
+    width: 80%;
+    height: 300px;
+    margin: 10px 0;
+}
+
+h3 {
+    width: 100%;
+}
