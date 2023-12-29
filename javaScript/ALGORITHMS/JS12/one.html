@@ -1,0 +1,199 @@
+<script>
+/*1 час в задаче = 6 секунд реального времени.
+Используйте класс Date и функции setTimeout() / setInterval(). 
+Создать класс Автомобиль (производитель, модель, год выпуска, средняя скорость), и следующие функции для работы с этим объектом.
+1.	Метод для вывода на экран информации об автомобиле.
+2.	Метод для подсчета необходимого времени для преодоления переданного расстояния со средней скоростью. Учтите, что через каждые 4 часа дороги водителю необходимо делать перерыв на 1 час.
+3.  Для для отправки автомобиля в путь. Автомобиль выводит строку «Поехали» в начале пути, и «Приехали» - через время, когда автомобиль закончит путь.*/
+
+class Car{
+    constructor(manufacturer, model, year, avgSpeed) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.year = year;
+        this.avgSpeed = avgSpeed;
+    }
+	
+    info(){
+        document.write('Общая информация об автомобиле:<br> <table width = "30%" border = "1">'); 
+            for(let key in this){ 
+                document.writeln('<tr>'); 
+                    document.write("<td>" + key + "<\/td>");
+                    document.write("<td>" + this[key] + "<\/td>");
+                document.writeln('<\/tr>'); 
+
+            } 
+            document.write('<\/table>'); 
+    }
+	
+    transiteTime(distance){
+	    let result = distance / this.avgSpeed;
+	    if(result > 4){
+		    let restTime = Math.floor((result - 4) / 4);
+			result += restTime;
+		}
+	    return result.toFixed(1);
+	}
+	
+	travel(distance) {
+        document.write("Поехали! <br>");
+        let totalTime = this.transiteTime(distance);
+        setTimeout(() => document.write("Приехали! <br>"), (totalTime * 6 * 1000));
+    }
+}
+
+/*Создайте класс-наследник ГрузовойАвтомобиль, у которого добавляется характеристика в виде грузоподъёмности.
+1.	Реализуйте методы для погрузки и разгрузки.
+2.	Переопределите метод для подсчета времени пути, так как чем больше вес груза, тем меньше его скорость.*/
+
+class Truck extends Car{
+    constructor(manufacturer, model, year, avgSpeed, carryingCapacity){
+	    super(manufacturer, model, year, avgSpeed);
+		this.carryingCapacity = carryingCapacity;
+		this.occupiedCapacity = 0;
+	}
+	
+	cargoLoading(corgoWeight){
+	    let occupiedCargo = 0;
+	    let excessWeight = 0;
+	    if(corgoWeight <= this.carryingCapacity){
+		    occupiedCargo = this.carryingCapacity - this.occupiedCapacity
+			if(corgoWeight <= occupiedCargo){
+		        this.occupiedCapacity += corgoWeight;
+			    document.write(`Грузовик загружен на ${this.occupiedCapacity} <br>`);
+			}else{
+			    this.occupiedCapacity += occupiedCargo;
+				excessWeight = corgoWeight - occupiedCargo;
+				document.write(`Вес груза превысил грузоподъемность! <br> Грузовик загружен полностью, но превышающий груз остался не загруженным. Его вес: ${excessWeight} <br>`);
+			}
+		}else{
+		    occupiedCargo = this.carryingCapacity - this.occupiedCapacity;
+		    this.occupiedCapacity = this.carryingCapacity;
+			excessWeight = corgoWeight - occupiedCargo;
+			document.write(`Вес груза превысил грузоподъемность! <br> Грузовик загружен полностью, но превышающий груз остался не загруженным. Его вес: ${excessWeight} <br>`);
+		}
+	return this.occupiedCapacity;
+	}
+	
+	unloadingOfCargo(){
+	    this.occupiedCapacity = 0;
+		document.write(`Грузовик был разгружен! <br> Теперь он пустой! <br>`);
+	}
+	
+	travel(distance) {
+        document.write("Поехали! <br>");
+        let totalTime = this.transiteTime(distance);
+		if(this.occupiedCapacity === 0){
+            setTimeout(() => document.write("Приехали! <br>"), (totalTime * 6 * 1000));
+		}else{
+		    let delayFactor = (this.occupiedCapacity / this.carryingCapacity) + 1;
+		    totalTime *= delayFactor;
+			setTimeout(() => document.write("Приехали! <br>"), (totalTime * 6 * 1000));
+		}
+    }
+}
+
+/*Создайте класс Автобус. У автобуса есть расписание, и отправить автобус в путь можно только в точное время, по расписанию. Также, в отличие от грузового автомобиля, он перевозит не грузы, а людей, и остановку делает каждые 30 мин.
+1.	На каждой остановке в автобус заходит случайное (от 1 до 5) количество пассажиров, и такое же случайное количество выходит из него.
+2.	Из-за того что постоянно меняется количество пассажиров, скорость автобуса может меняться, и автобус может приехать на конечную остановку с опозданием, или наоборот, с опережением. Поэтому автобус в конце пути должен сообщать: «Приехали с опозданием на N часов M минут» или «Приехали с опережением на N часов M минут».
+
+
+let car1 = new Car('hujlk', 'hjkpo', 854,200)
+*/
+
+class Bus extends Car {
+    constructor(manufacturer, model, year, avgSpeed, schedule) {
+        super(manufacturer, model, year, avgSpeed);
+        this.schedule = schedule;
+        this.carryingCapacity = 20;
+        this.occupiedCapacity = 0;
+        this.timer = null;
+    }
+    getSchedule() {
+        document.write(`График отправки: ${this.schedule.join(" ")} <br>`)
+	}
+
+    busStop() {
+        this.occupiedCapacity += Math.floor(Math.random() * 6);
+        this.occupiedCapacity -= Math.floor(Math.random() * 3);// Я спец сделала меньше потому что иногда в минус переваливает
+    }
+
+    travel(distance) {
+        let totalTime = this.transiteTime(distance);
+	    let originTotalTime = totalTime;
+
+        let scheduleTime = [];
+        for(let x of this.schedule){
+	       let miniArr = x.split(':');
+		   miniArr = miniArr.map(Number);
+		  scheduleTime.push(miniArr);
+	    }
+		
+	    let currentDate = new Date();
+		let currentHour = currentDate.getHours();
+        let currentMinutes = currentDate.getMinutes();
+        let timeDifference = [];
+		let isDepartureTimeFound = false;
+		
+		let difference = 0;
+		
+		for(let i = 0; i < scheduleTime.length; i++){
+			    if(scheduleTime[i][0] ===  currentHour && scheduleTime[i][1] === currentMinutes){
+				    document.write("Поехали! <br>");
+                    this.occupiedCapacity = Math.floor(Math.random() * 6);
+
+                    this.timer = setInterval(() => this.busStop(), 3000); 
+
+                    let delayFactor = (this.occupiedCapacity / this.carryingCapacity) + 1;
+                    totalTime *= delayFactor;
+                    setTimeout(() => {
+                        this.off();
+                        this.occupiedCapacity = 0;
+                        document.write("Приехали! <br>");
+			            let difFactor = 0;
+			            if(originTotalTime === totalTime){
+		                    document.write('Приехали вовремя! <br>');
+		                }else if(originTotalTime >= totalTime){
+		                    difFactor = originTotalTime - totalTime;
+						    difFactor = difFactor* 6 * 10;
+		                    document.write(`Приехали с опережением на ${difFactor.toFixed(0)}  минут <br>`);
+		                }else{ 
+		                    difFactor = totalTime - originTotalTime;
+						    difFactor = difFactor* 6 * 10;
+		                    document.write(`Приехали с опозданием на ${difFactor.toFixed(0)} минут <br>`);
+					    }
+                    }, (totalTime * 6 * 1000));
+					isDepartureTimeFound = true;
+                    break;
+					}
+		
+		}
+		if (!isDepartureTimeFound) {
+            document.write("Вы ошиблись с временем отправки. Смотрите график отправки! <br>");
+        }
+    }
+
+    off() {
+        clearInterval(this.timer); 
+    }
+}
+
+/* "Поиграйте с машинками это типа свои примеры скинуть же)))"*/
+
+let car1 = new Car('hujlk', 'hjkpo', 854,200)
+car1.info();
+car1.travel(500);
+
+let truck = new Truck("gmc", "audi", 1998, 180, 500);
+truck.info();
+truck.cargoLoading(800);
+truck.transiteTime(200);
+truck.unloadingOfCargo()
+truck.cargoLoading(200);
+truck.travel(500);
+
+let bus = new Bus('bbb', 'audi', 2012, 200, ['22:00', '22:28', '22:24', '22:35']);
+bus.getSchedule();
+bus.travel(500);
+
+</script>

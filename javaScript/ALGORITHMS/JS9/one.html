@@ -1,0 +1,132 @@
+<script>
+/*  В строке заменить все цифры соответствующими словами.
+
+Виталий, я за 15 минут сделала ее на основе римских чисел, а потом как поняла что 11-19 не считается... и я часа 3-3,5 сидела делая разные варианты))) Голову cломала как прибавить эти числа как строчные)) Интересная задача! */
+
+let userInput = prompt("Введите строку с числами: \n\nПрограмма заменит числа на слова!");
+
+if (!userInput) {
+    alert("Вы ввели неверные данные");
+} else {
+    let arrayOfUserInputs = userInput.split(" ");
+	let result = [];
+	for(let x of arrayOfUserInputs){
+	    if(isNaN(x)){
+		    result.push(x);
+		}else{
+		    let capitalNumber = showNumberConvertedToString(x);
+			result.push(capitalNumber);
+		}
+	}
+
+    document.write("Ваша строка изначально: " + userInput + "<br>" + "Ваша строка с числами замененными на слова: " + result.join(" "));
+}
+
+function showNumberConvertedToString(elem){
+    let input = Number(elem);
+	if(input === 0) return 0;
+
+
+	let capitalNumber = '';
+	let thousands = 0;
+	let hundreds =0;
+	let tens = 0;
+	let num = 0;
+
+    if(input < 0){
+	    capitalNumber += "минус";
+		input = Math.abs(input); //новый метод...
+	}
+
+    if(input >= 1000 && input < 10000){
+	  if(input % 1000 === 0){
+	    thousands = Math.floor(input / 1000);
+        switch(thousands){
+	       case 1: capitalNumber += " тысяча"; break;
+	       case 2: capitalNumber += " две тысячи"; break;
+	       case 3: capitalNumber += " три тысячи"; break;
+	       case 4: capitalNumber += " четыре тысячи"; break;
+		     case 5: capitalNumber += " пять тысяч"; break;
+		     case 6: capitalNumber += " шесть тысяч"; break;
+		     case 7: capitalNumber += " семь тысяч"; break;
+		     case 8: capitalNumber += " восемь тысяч"; break;
+		     case 9: capitalNumber += "девять тысяч"; break;
+	    }
+	  }else {
+	    num = input % 1000;
+		thousands = input - num;
+		capitalNumber += showNumberConvertedToString(thousands) + showNumberConvertedToString(num);
+
+	  }
+	}else if(input >= 100 && input < 1000){
+	  if(input % 100 === 0){
+	    hundreds = Math.floor(input / 100) % 10;
+	    switch(hundreds){
+	        case 1: capitalNumber += " сто"; break;
+		      case 2: capitalNumber += " двести"; break;
+		      case 3: capitalNumber += " триста"; break;
+		      case 4: capitalNumber += " четыреста"; break;
+		      case 5: capitalNumber += " пятьсот"; break;
+		      case 6: capitalNumber += " шестьсот"; break;
+		      case 7: capitalNumber += " семьсот"; break;
+		      case 8: capitalNumber += " восемьсот"; break;
+		      case 9: capitalNumber += " девятьсот"; break;
+	    }
+	  }else{
+	    num = input % 100;
+		hundreds = input - num;
+		capitalNumber += showNumberConvertedToString(hundreds) + showNumberConvertedToString(num);
+	  }
+	} else if(input >= 20 && input < 100){
+	  if(input % 10 === 0){
+	    tens = Math.floor(input / 10) % 10;
+	   switch(tens){
+		    case 2: capitalNumber += " двадцать"; break;
+		    case 3: capitalNumber += " тридцать"; break;
+		    case 4: capitalNumber += " сорок"; break;
+		    case 5: capitalNumber += " пятьдесят"; break;
+		    case 6: capitalNumber += " шестьдесят"; break;
+		    case 7: capitalNumber += " семьдесят"; break;
+		    case 8: capitalNumber += " восемьдесят"; break;
+		    case 9: capitalNumber += " девяносто"; break;
+	    }
+	   }else{
+	    num = input % 10;
+	  	tens = input - num;
+		  capitalNumber += showNumberConvertedToString(tens) + showNumberConvertedToString(num);
+	   }
+
+    }else if(input >= 0 && input < 20){
+	switch(input){
+	    case 1: capitalNumber += " один"; break;
+		  case 2: capitalNumber += " два"; break;
+		  case 3: capitalNumber += " три"; break;
+		  case 4: capitalNumber += " четыре"; break;
+		  case 5: capitalNumber += " пять"; break;
+		  case 6: capitalNumber += " шесть"; break;
+		  case 7: capitalNumber += " семь"; break;
+		  case 8: capitalNumber += " восемь"; break;
+		  case 9: capitalNumber += " девять"; break;
+		  case 10: capitalNumber += " десять"; break;
+	    case 11: capitalNumber += " одиннадцать"; break;
+		  case 12: capitalNumber += " двенадцать"; break;
+		  case 13: capitalNumber += " тринадцать"; break;
+		  case 14: capitalNumber += " четырнадцать"; break;
+		  case 15: capitalNumber += " пятнадцать"; break;
+		  case 16: capitalNumber += " шестнадцать"; break;
+		  case 17: capitalNumber += " семнадцать"; break;
+		  case 18: capitalNumber += " восемнадцать"; break;
+		  case 19: capitalNumber += " девятнадцать"; break;
+	  }
+	}
+
+	return capitalNumber;
+}
+
+function test_showNumberConvertedToString(){
+    console.assert(showNumberConvertedToString("") = "", "Test 1 failed!");
+    console.assert(showNumberConvertedToString("15") = " пятнадцать", "Test 2 failed!");
+    console.assert(showNumberConvertedToString("привет 25") = "привет двадцать пять", "Test 3 failed!");
+    console.assert(showNumberConvertedToString("-25") = "минус двадцать пять", "Test 4 failed!");
+}
+</script>

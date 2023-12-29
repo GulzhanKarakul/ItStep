@@ -1,0 +1,145 @@
+<script>
+ /*Создайте класс Animal со свойствами: name, weight и size. Реализуйте метод talk(), который будет выводить строку "Mmmmmmm...". И метод eat(meal), который будет увеличивать size и weight на количество букв в строке "meal".*/
+
+class Animal{
+    constructor(name, weight, size){
+	    this.name = name;
+		this.weight = weight;
+		this.size = size;
+		this.originalWeigt = weight;
+		this.live = true;
+	}
+	
+	talk(){
+	    document.write(`${this.name} говорит "Мммммммм..."<br>`);
+	}
+	eat(meal){
+	    if(this.weight > (this.originalWeigt + 5)){
+		    document.write("Я сыт, не могу больше есть! Нужно облегчиться <br>"); //не знаю как написать, все таки животные не ходят в уборную
+		}else{
+	    this.weight += meal.length;
+		}
+	}
+	poop(){
+           this.weight -= 5;
+    }
+	
+	dead(){
+	    this.live = false;
+	}
+
+}
+
+/* 2. Создайте классы травоядных и хищников: Herbivore и Predator - наследников класса Animal.
+У Herbivore имеется свойство ratio - массив названий того, чем оно может питаться. Модифицируйте поведение метода eat(), чтобы не есть всё подряд, а только то, что входит в рацион животного.
+У Predator модифицируйте метод eat() так, чтобы животное питалось только другими животными, но чей вес и размер меньше своего. Кроме того, если животное поело, его размер и вес увеличивается на 20% размера и веса съеденного животного. Придумайте, что можно сделать, чтобы нельзя было съесть два раза один и тот же экземпляр животного.
+*/
+
+class Herbivore extends Animal {
+    constructor(name, weight, size) {
+        super(name, weight, size);
+        this.ratio = ['морковка', "капуста", "яблоки", "трава", "бананы", "картошка"];
+		
+    }
+    eat(meal) {
+        if (this.ratio.includes(meal)) {
+            if(this.weight > (this.originalWeigt + 5)){
+		        document.write("Я сыт, не могу больше есть! Нужно облегчиться <br>"); 
+		    }else{
+	            this.weight += meal.length;
+				document.write(`${this.name} съел ${meal}! <br>`);
+		    }
+        } else {
+            document.write(`${this.name} не может съесть ${meal}! <br>`);
+        }
+    }
+	
+}
+
+class Predator extends Animal {
+    constructor(name, weight, size) {
+        super(name, weight, size);
+        this.ratio = ["мясо","хлеб", "яйца"]
+    }
+    eat(meal) {
+	    if(this.weight > (this.originalWeigt + 7)){
+		    document.write("Я сыт, не могу больше есть! Нужно облегчиться <br>"); 
+		}else if (this.ratio.includes(meal)){
+	        this.weight += meal.length;
+		    document.write(`${this.name} съел ${meal}! <br>`);
+        } else if((meal instanceof Herbivore && meal.live === false) || (meal instanceof Predator && meal.live === false)){
+            document.write(`${this.name} не может съесть ${meal.name}! ${meal.name} мертв(( <br> `);
+        } else if((meal instanceof Herbivore && 
+		           this.weight >= meal.weight && 
+				   this.size >= meal.size) || 
+				   (meal instanceof Predator && 
+				   meal !== this && 
+				   this.weight >= meal.weight && 
+				   this.size >= meal.size)) {
+	        this.weight += meal.weight;
+		    document.write(`${this.name} съел ${meal.name}! <br>`); 
+			meal.dead();
+        } else {
+            document.write(`${this.name} не может съесть ${meal}! <br>`);
+        }
+    }
+	poop(){
+           this.weight -= 10;
+    }
+
+}
+
+/* 3. Создайте классы Goose и Wolf - наследники от Herbivore и Predator. Модифицируйте для них метод talk(), чтобы они соответствовали гусю и волку. Придумайте для них ещё по одному свойству и методу, чтобы они были разными или работали по-разному у гусей и волков.*/
+
+class Goose extends Herbivore {
+  constructor(name, weight, size) {
+    super(name, weight, size);
+    this.canFly = true;
+  }
+  talk() {
+    document.write(`${this.name} говорит "Гууу Гууу!" <br>`);
+  }
+  swim() {
+    document.write(`${this.name} плавает. <br>`);
+  }
+}
+
+class Wolf extends Predator {
+  constructor(name, weight, size) {
+    super(name, weight, size);
+    this.isPackAnimal = true;
+  }
+  talk() {
+    document.write(`${this.name} говорит "Ррррррр!" <br>`);
+  }
+  hunt() {
+    document.write(`${this.name} охотится. <br>`);
+  }
+}
+/* 3. Создайте классы Goose и Wolf - наследники от Herbivore и Predator. Модифицируйте для них метод talk(), чтобы они соответствовали гусю и волку. Придумайте для них ещё по одному свойству и методу, чтобы они были разными или работали по-разному у гусей и волков.*/
+
+//три веселых гуся:
+let goose1 = new Goose('Гуся', 5, 30);
+let goose2 = new Goose('Моли', 4, 25);
+let goose3 = new Goose('Кукла', 6, 35);
+//три страшных волка
+let wolf1 = new Wolf('Рекс', 41, 100);
+let wolf2 = new Wolf('Макс', 35, 90);
+let wolf3 = new Wolf('Гроза', 45, 110);
+
+goose1.talk();
+goose1.canFly;
+goose1.eat('морковка');
+goose2.eat('трава');
+goose2.poop();
+goose2.weight;
+
+wolf1.talk();
+wolf3.talk();
+wolf3.eat('мясо');
+wolf3.weight;
+wolf1.eat(goose1);
+goose1.live;
+wolf1.poop();
+wolf1.eat(goose1);
+</script>

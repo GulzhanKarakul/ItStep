@@ -1,0 +1,109 @@
+<script>
+/* 5.	Создать квадратную матрицу N х N со случайными числами от -10 до 10. Найти сумму отрицательных элементов под главной диагональю и сумму положительных элементов над главной диагональю. Сравнить их по модулю и вывести результат сравнения.*/
+
+let matrixSize = prompt('Введите желаемую размерность матрицы: \n\n Где первое число будет означать колличество строк, а второе - колличество столбцов. Например: 7, 8');
+let currentMatrixSizeArray = getIntFromUser(matrixSize);
+let currentMatrix = getRandomMatrix(currentMatrixSizeArray[0], currentMatrixSizeArray[1]);
+showMatrix(currentMatrix);
+
+// Функция для обработки введенных данных
+test_getIntFromUser();
+
+function getIntFromUser(promptString){
+    let matrixRowsAndColsArray = promptString.split(', ');
+    matrixRowsAndColsArray = matrixRowsAndColsArray.map(Number);
+	return matrixRowsAndColsArray;
+}
+
+function test_getIntFromUser(){
+    console.assert(JSON.stringify(getIntFromUser("3, 4")) === JSON.stringify([3, 4]), "Test Case 1 Failed");
+    console.assert(JSON.stringify(getIntFromUser("1, 2, 3")) === JSON.stringify([1, 2, 3]), "Test Case 2 Failed");
+    console.assert(JSON.stringify(getIntFromUser("-1, -2")) === JSON.stringify([-1, -2]), "Test Case 3 Failed");
+    console.assert(JSON.stringify(getIntFromUser("5 , 6")) === JSON.stringify([5, 6]), "Test Case 4 Failed");
+}
+// Функция для получения рандомного числа
+
+function getRandomInt(min, max){
+    return value = Math.floor(Math.random() * (max*2 + 1)) + min;
+}
+
+// Функция для получения матрицы с рандомными числами
+test_getRandomMatrix();
+
+function getRandomMatrix(rows, columns){
+    let matrix = [];
+	
+	for(let row = 0; row < rows; row++){
+		    let currentRow = [];
+		    for(let col = 0; col < columns; col++){
+				    currentRow[col] = getRandomInt(-10,10);
+			}
+		    matrix.push(currentRow);
+		}
+	return matrix;
+}
+
+function test_getRandomMatrix(){
+    let matrix = getRandomMatrix(3, 4);
+    console.assert(matrix.length === 3, "Test Case 1 Failed");
+    console.assert(matrix[0].length === 4, "Test Case 1 Failed");
+
+    matrix = getRandomMatrix(-2, "abc");
+    console.assert(matrix.length === 0, "Test Case 2 Failed");
+}
+
+// Функция для вывода матрицы в документ
+function showMatrix(matrix){
+    document.write('<table width = "50%" border = "1">'); 
+          for(i = 0; i < matrix.length; i++){ 
+            document.writeln('<tr>'); 
+                for(j = 0; j < matrix[i].length; j++){ 
+                    document.write("<td>" + matrix[i][j] + "<\/td>") 
+                }  
+            document.writeln('<\/tr>'); 
+        } 
+    document.write('<\/table> <br>'); 
+	return matrix;
+}
+let sumOfElements = sumOfPositiveAndNegativeNum(currentMatrix);
+console.log(sumOfElements);
+if(sumOfElements[0] > Math.abs(sumOfElements[1])){
+    document.write(`Сумма положительных чисел над диагональю по модулю больше суммы негативных чисел под диагональю по модулю: <br> ${sumOfElements[0]} > ${Math.abs(sumOfElements[1])} `)
+} else if(sumOfElements[0] < Math.abs(sumOfElements[1])){
+    document.write(`Сумма негативных чисел над диагональю по модулю больше суммы положительных чисел под диагональю по модулю: <br> ${sumOfElements[0]} < ${Math.abs(sumOfElements[1])} `)
+}
+
+//Функция для определения суммы елементов
+test_sumOfPositiveAndNegativeNum();
+
+function sumOfPositiveAndNegativeNum(matrix){
+    let sumOfPositiveNum = 0;
+    let sunOfNegativeNum = 0;
+	let result = [];
+	
+    for(let i in matrix){
+	    for(let j in matrix[i]){
+		    if(i > j){
+			    if(matrix[i][j] < 0){
+				    sunOfNegativeNum += matrix[i][j];
+				}
+			} else if(i < j){
+			    if(matrix[i][j] > 0){
+				    sumOfPositiveNum += matrix[i][j];
+				}
+			}
+		}
+	}
+	result.push(sumOfPositiveNum);
+	result.push(sunOfNegativeNum);
+	return result;
+}
+
+function test_sumOfPositiveAndNegativeNum(){
+    console.assert( JSON.stringify(sumOfPositiveAndNegativeNum([[1, 2], [3, 4]])) === JSON.stringify([2, 0]),"Test Case 1 Failed");
+
+    console.assert(JSON.stringify(sumOfPositiveAndNegativeNum([[1, 2, -3], [-4, 5, 6], [-7, 8, 9]])) === JSON.stringify([8, -11]), "Test Case 2 Failed");
+
+    console.assert(JSON.stringify(sumOfPositiveAndNegativeNum([[-1, -2, -3], [-4, -5, -6], [-7, -8, -9]])) === JSON.stringify([0, -19]),"Test Case 3 Failed");
+}
+</script>

@@ -1,0 +1,55 @@
+<script>
+/* Обратная польская нотация  - способ представления математических выражений, где операции записываются после операндов (аргументов). Например, можно записать следующий код  2 5 3 + *  вместо обычного математического выражения со скобками:  (5 + 3) * 2 . Обратная польская запись позволяет избавиться от скобок, которые используются для задания приоритета выполнения операций.
+
+Это была самая легкая задача))*/
+
+function polishNotation(str){
+    let stack = [];
+    let arrayOfNumbersAndOperations = str.split(" ");
+    let result = 0;
+    const operations = "+-*/";
+
+    for(let i in arrayOfNumbersAndOperations){
+        if(!isNaN(arrayOfNumbersAndOperations[arrayOfNumbersAndOperations.length - 1])){
+            console.error("Неправильно введенные данные");
+            return false;
+        } else if(!isNaN(arrayOfNumbersAndOperations[i])){
+            let num = Number(arrayOfNumbersAndOperations[i]);
+            stack.push(num);
+        } else if(operations.indexOf(arrayOfNumbersAndOperations[i]) > -1){
+            let currentOperation = arrayOfNumbersAndOperations[i];
+
+            switch(currentOperation){
+                case '+': result = stack.pop() + stack.pop(); break;
+                case '-': result = stack.pop() - stack.pop(); break;
+                case '*': result = stack.pop() * stack.pop(); break;
+                case '/': result = stack.pop() / stack.pop(); break;
+            }
+            stack.unshift(result);
+
+        } else {
+            console.error("Неправильно введенные данные");
+            return false;
+        }
+    }
+    return stack[0];
+}
+
+function test_polishNotation(){
+    console.assert(polishNotation("4 16 10 + -") === -22, 'Test 1 Failed');
+    console.assert(polishNotation("2 5 4 * /") === 0.1, 'Test 2 Failed');
+    console.assert(polishNotation("4 16 10 g -") === false, 'Test 3 Failed');
+    console.assert(polishNotation("4 16") === false, 'Test 4 Failed');
+}
+
+test_polishNotation();
+let userInput = prompt('Введите выражение, соответсвуещее польской нотации. Программа выполнит операции и выдаст результат!');
+
+if (!userInput) {
+    alert("Вы не ввели данные");
+} else {
+    let resultOfOperation = polishNotation(userInput);
+    document.write(resultOfOperation);
+}
+
+</script>

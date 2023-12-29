@@ -1,0 +1,45 @@
+<script>
+/* Дана строка, содержащая буквы, цифры и скобки '(', ')', '[', ']', '{', '}'. Если скобки расставлены правильно (то есть каждой открывающей скобки соответствует закрывающая того же вида), то вывести 'yes', иначе вывести номер первой незакрытой или лишней закрывающей скобки.
+
+Блин, эту задачу я тоже делала дооооолго... Даже если мои кореша с ютюба объяснили как делать, но они делали через объекты и их return был просто false. А в тернарный оператор i + 1 то не засунуть(( и если false тоже не исправить как в тернарном операторе, почему то мои тесты падают...*/
+
+let string = prompt("Введите текст со скобками: . \n\nПрограмма проверит расставлены ли скобки правильно");
+
+if (!string) {
+  alert("Вы не ввели данные");
+} else {
+let result = checkBrackets(string);
+document.write(string + "<br>" + result);
+}
+
+test_checkBrackets()
+function checkBrackets(str) {
+  let stack = [];
+  let anotherChars = [];
+  const openBrackets = "({[";
+  const closeBrackets = ")}]";
+  const allowedChars = "абвгдежзиклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890+-*/%=,.!? ";
+
+  for (let i = 0; i < str.length; i++) {
+    let current = str[i];
+
+    if (openBrackets.indexOf(current) > -1) {
+      stack.push(current);
+    } else if (closeBrackets.indexOf(current) > -1) {
+      if (openBrackets[closeBrackets.indexOf(current)] !== stack.pop()) return (`Номер незакрытой скобки: ${i + 1}`);
+    } else if (allowedChars.indexOf(current) === -1) {
+      continue;
+    }
+  }
+
+  return stack.length === 0 ? "yes" : `Номер незакрытой скобки: ${str.lastIndexOf(stack[0]) + 1}`;
+}
+
+function test_checkBrackets(){
+console.assert(checkBrackets('(){}[]') === 'yes', 'Test 1 Failed'); 
+console.assert(checkBrackets('ba([{na}])na') === 'yes', 'Test 2 Failed'); 
+console.assert(checkBrackets('(){}[') === "Номер незакрытой скобки: 5", 'Test 3 Failed');
+console.assert(checkBrackets('(]') === "Номер незакрытой скобки: 2", 'Test 4 Failed');
+console.assert(checkBrackets('ba({na}))na') === "Номер незакрытой скобки: 9", 'Test 5 Failed');
+}
+</script>

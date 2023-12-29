@@ -1,0 +1,85 @@
+<script>
+/* 3. Пользователь вводит строку - прототип функции на языке JavaScript. Написать программу, которая анализирует эту функцию и выводит следующие данные: название функции, количество аргументов, их наименование и значения по умолчанию.
+Пример: "function foo(index, len, flag = true)"
+Вывод:
+Имя функции: foo
+Количество аргументов: 3
+    имя аргумента 1: index, значение по-умолчанию: undefined;
+    имя аргумента 2: len, значение по-умолчанию: undefined;
+    имя аргумента 3: flag, значение по-умолчанию: true.
+*/
+
+/* Виталий, т.к. функция сразу выдает анализ, если поставить тесты впереди то они автоматически выводятся... НО они работают без ошибок, но при этом выходят в document.write. так что чтобы проверить их советую их один раз включить, а потом для проверки все таки отключить прототип*/
+
+let functionPrototype = prompt("Введите прототип функции, программа проанализирует входные данные и выдаст объяснение!");
+
+if (!functionPrototype) {
+  alert("Вы не ввели данные");
+} else {
+    let functionPrototypeAnalysis = showFunctionPartsMeaning(functionPrototype);
+	
+	if(functionPrototypeAnalysis === true){
+	   document.write('<br> Ваша функция успешно проанализирована! <br>' );
+	}else{
+	    document.write('<br> Попробуйте еще раз! Запишите прототип коректно <br>' );
+	}
+}
+
+test_showFunctionPartsMeaning();
+
+function showFunctionPartsMeaning(str){
+  str.trim();
+  let keyWord = str.slice(0,str.indexOf(" "));
+
+  if(keyWord !== "function"){
+    alert("Ключевое слово не соответствует функции"); return false;
+ }else{
+    let functionName = str.slice((str.indexOf(" ") + 1), str.indexOf("("));
+
+    if(functionName === ""){
+	    alert("У функции обязательно должно быть имя"); return false;
+	}else if(!isNaN(functionName[0])){
+	    alert("Функция не может начинаться с цифры!");  return false;
+	}else{
+	    document.write("Имя функции: " + functionName + "<br>");
+		
+		let stringOfAllArguments = str.slice((str.indexOf("(")+ 1), str.indexOf(")"));
+		let arrayOfAllArguments = stringOfAllArguments.split(",");
+		document.write('Количество аргументов: ' + arrayOfAllArguments.length + '<br>');
+		let newArray = [];
+        for (let i in arrayOfAllArguments) {
+            arrayOfAllArguments[i] = arrayOfAllArguments[i].trim();
+            let miniArray = [];
+            if (arrayOfAllArguments[i].includes("=")) {
+                miniArray = arrayOfAllArguments[i].split("=");
+                miniArray[0] = miniArray[0].trim();
+                miniArray[1] = miniArray[1].trim();
+            } else {
+                miniArray[0] = arrayOfAllArguments[i];
+            }
+            newArray.push(miniArray);
+        }
+
+		
+		for(let x of newArray){
+		    if(x.length === 1){
+			    document.write(' Имя аргумента ' + (newArray.indexOf(x) + 1) + ' : ' + x + ' , значение по-умолчанию: undefined;' + '<br>');
+			}else{
+			     document.write(' Имя аргумента ' + (newArray.indexOf(x) + 1) + ' : ' + x[0] + ' , значение по-умолчанию: '  + x[x.length - 1] + ';' + '<br>');
+			}
+		}
+	}
+		return true;
+  }
+}
+
+
+function test_showFunctionPartsMeaning(){
+    console.assert(showFunctionPartsMeaning("function foo(index, len, flag=true)") === true, "Test 1 Failed");
+    console.assert(showFunctionPartsMeaning("functions foo(index, len, flag = true)") === false, "Test 2 Failed");
+    console.assert(showFunctionPartsMeaning("function (index, len, flag = true)") === false, "Test 3 Failed");
+    console.assert(showFunctionPartsMeaning("function 9bh(index, len, flag = true)") === false, "Test 4 Failed");
+    console.assert(showFunctionPartsMeaning("function cool(index = null, str = false, flag = true)") === true, "Test 4 Failed");
+
+}
+</script>

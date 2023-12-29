@@ -1,0 +1,142 @@
+<script>
+/* 3.	Создать прямоугольную матрицу из N строк и M столбцов со случайными числами от -10 до 10. Найти локальные минимумы и локальные максимумы в матрице, вывести их в документ с номерами индексов (координатами).*/
+
+let matrixSize = prompt('Введите желаемую размерность матрицы: \n\n Где первое число будет означать колличество строк, а второе - колличество столбцов. Например: 7, 8');
+let currentMatrixSizeArray = getIntFromUser(matrixSize);
+let currentMatrix = getRandomMatrix(currentMatrixSizeArray[0], currentMatrixSizeArray[1]);
+showMatrix(currentMatrix);
+
+let arrOfLocalLows = getMinNumberElement(currentMatrix);
+let arrOfLocalHighs = getMaxNumberElement(currentMatrix);
+
+for (let x of arrOfLocalLows){
+   document.write(` Локальный минимум в матрице: ${x[2]} его координаты: строка ${x[0]} столбец ${x[1]}. <br>`);
+}
+for (let x of arrOfLocalHighs){
+   document.write(`Локальный максимум в матрице: ${x[2]} его координаты: строка ${x[0]} столбец ${x[1]}. <br>`);
+}
+
+// Функция для обработки введенных данных
+test_getIntFromUser();
+
+function getIntFromUser(promptString){
+    let matrixRowsAndColsArray = promptString.split(', ');
+    matrixRowsAndColsArray = matrixRowsAndColsArray.map(Number);
+	return matrixRowsAndColsArray;
+}
+
+function test_getIntFromUser(){
+    console.assert(JSON.stringify(getIntFromUser("3, 4")) === JSON.stringify([3, 4]), "Test Case 1 Failed");
+    console.assert(JSON.stringify(getIntFromUser("1, 2, 3")) === JSON.stringify([1, 2, 3]), "Test Case 2 Failed");
+    console.assert(JSON.stringify(getIntFromUser("-1, -2")) === JSON.stringify([-1, -2]), "Test Case 3 Failed");
+    console.assert(JSON.stringify(getIntFromUser("5 , 6")) === JSON.stringify([5, 6]), "Test Case 4 Failed");
+}
+// Функция для получения рандомного числа
+
+function getRandomInt(min, max){
+    return value = Math.floor(Math.random() * (max*2 + 1)) + min;
+}
+
+// Функция для получения матрицы с рандомными числами
+test_getRandomMatrix();
+
+function getRandomMatrix(rows, columns){
+    let matrix = [];
+	
+	for(let row = 0; row < rows; row++){
+		    let currentRow = [];
+		    for(let col = 0; col < columns; col++){
+				    currentRow[col] = getRandomInt(-10,10);
+			}
+		    matrix.push(currentRow);
+		}
+	return matrix;
+}
+function test_getRandomMatrix(){
+    let matrix = getRandomMatrix(3, 4);
+    console.assert(matrix.length === 3, "Test Case 1 Failed");
+    console.assert(matrix[0].length === 4, "Test Case 1 Failed");
+
+    matrix = getRandomMatrix(-2, "abc");
+    console.assert(matrix.length === 0, "Test Case 2 Failed");
+}
+
+// Функция для вывода матрицы в документ
+function showMatrix(matrix){
+    document.write('<table width = "50%" border = "1">'); 
+          for(i = 0; i < matrix.length; i++){ 
+            document.writeln('<tr>'); 
+                for(j = 0; j < matrix[i].length; j++){ 
+                    document.write("<td>" + matrix[i][j] + "<\/td>") 
+                }  
+            document.writeln('<\/tr>'); 
+        } 
+    document.write('<\/table> <br>'); 
+	return matrix;
+}
+
+// Функция для определения локального минимума в матрице
+test_getMinNumberElement();
+
+function getMinNumberElement(matrix) {
+  let min = [];
+  for (let i = 1; i < matrix.length - 1; i++) {
+    for (let j = 1; j < matrix[i].length - 1; j++) {
+      if (matrix[i][j] < matrix[i - 1][j] && matrix[i][j] < matrix[i + 1][j] && matrix[i][j] < matrix[i][j - 1] && matrix[i][j] < matrix[i][j + 1]) {
+        let miniArrOfIndexAndElem = [i + 1, j + 1, matrix[i][j]];
+        min.push(miniArrOfIndexAndElem);
+      }
+    }
+  }
+  return min;
+  
+}
+
+function test_getMinNumberElement(){
+    let matrix1 = [  [5, 7, 8, 6, 4],
+                     [6, 7, 3, 2, 9],
+                     [5, 7, 2, 8, 5],
+                   ];
+    let expectedOutput1 = [[2, 4, 2]];
+    console.assert(JSON.stringify(getMinNumberElement(matrix1)) === JSON.stringify(expectedOutput1), "Test Case 1 Failed");
+
+    let matrix2 = [  [1, 2, 3],
+                     [4, 5, 6],
+                     [7, 8, 9]
+                  ];
+    let expectedOutput2 = [];
+    console.assert(JSON.stringify(getMinNumberElement(matrix2)) === JSON.stringify(expectedOutput2), "Test Case 2 Failed");
+}
+
+// Функция для определения локального максимума в матрице
+test_getMaxNumberElement();
+
+function getMaxNumberElement(matrix) {
+  let max = [];
+  for (let i = 1; i < matrix.length - 1; i++) {
+    for (let j = 1; j < matrix[i].length - 1; j++) {
+      if (matrix[i][j] > matrix[i - 1][j] && matrix[i][j] > matrix[i + 1][j] && matrix[i][j] > matrix[i][j - 1] && matrix[i][j] > matrix[i][j + 1]) {
+        let miniArrOfIndexAndElem = [i + 1, j + 1, matrix[i][j]];
+        max.push(miniArrOfIndexAndElem);
+      }
+    }
+  }
+  return max;
+}
+
+function test_getMaxNumberElement(){
+    let matrix1 = [  [5, 7, 8, 6, 4],
+                     [6, 7, 10, 2, 9],
+                     [5, 7, 2, 8, 5],
+                   ];
+    let expectedOutput1 = [[2, 3, 10]];
+    console.assert(JSON.stringify(getMaxNumberElement(matrix1)) === JSON.stringify(expectedOutput1), "Test Case 1 Failed");
+
+    let matrix2 = [  [9, 8, 7],
+                     [6, 5, 4],
+                     [3, 2, 1]
+                  ];
+    let expectedOutput2 = [];
+    console.assert(JSON.stringify(getMaxNumberElement(matrix2)) === JSON.stringify(expectedOutput2), "Test Case 2 Failed");
+}
+</script>

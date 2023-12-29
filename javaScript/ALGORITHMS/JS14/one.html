@@ -1,0 +1,216 @@
+<script>
+/* Предприятие выпускает X видов продукции, используя Y типов сырья. X и Y вводит пользователь. Пользователь также вводит массив – план выпуска продукции. Используя класс Matrix, сгенерируйте и выведите в документ матрицы производства, матрицы стоимости сырья. Посчитайте и выведите матрицу затрат на виды продукции и общую сумму затрат на сырьё для реализации плана производства.*/
+	
+function randomOne(){
+   return Math.floor(Math.random() * (10 + 1));
+}
+
+class Matrix extends Array{
+    #rows
+    #cols
+    constructor(rows, cols, value = 0){
+        super();
+        this.#rows = rows;
+        this.#cols = cols;
+
+        for(let row = 0; row < rows; row++){
+            let currentRow = [];
+            for(let col = 0; col < cols; col++){
+                if(typeof value === 'function'){
+                    currentRow[col] = value();
+                } else currentRow[col] = value; 
+            }
+            this.push(currentRow);
+        }
+    }   
+
+    get rows(){return this.#rows};
+    get cols(){return this.#cols};
+
+    add(value){
+        if(typeof value === 'number'){
+             let result = new Matrix(this.rows, this.cols);
+            for(let r in this){
+                for(let c in this[r])result[r][c] = this[r][c] + value;
+            }
+            return result;
+        }else if(value instanceof Matrix){
+
+            if(this.cols === value.cols && this.rows === value.rows){
+            let result = new Matrix(this.rows, this.cols);
+            for(let r in this){
+                for(let c in this[r])this[r][c] += value[r][c];
+            }
+            return result;
+            }
+        }
+    }
+
+    sub(value){
+    if(typeof value === 'number'){
+        let result = new Matrix(this.rows, this.cols);
+        for(let r in this){
+            for(let c in this[r])result[r][c] = this[r][c] - value;
+        }
+        return result;
+    } else if(value instanceof Matrix){
+        if(this.cols === value.cols && this.rows === value.rows){
+            for(let r in this){
+                for(let c in this[r])this[r][c] -= value[r][c];
+            }
+            return this;
+        }
+    }
+}
+
+    mul(value){
+        if(typeof value === 'number'){
+            let result = new Matrix(this.rows, this.cols);
+            for(let r in this){
+                for(let c in this[r])result[r][c] = this[r][c] * value;
+            }
+            return result;
+        }else if(value instanceof Matrix){
+            if(this.rows === value.cols){
+                let result = new Matrix(this.rows, value.cols);
+                for(let r in this){
+                    for(let c in value[r]){
+                         for(let k in value){
+                             result[r][c] += this[r][k] * value[k][c];
+                        }
+                    }
+                }
+                return result;
+            }
+        }
+    }
+
+	transpose(){
+	    let result = new Matrix(this.cols, this.rows);
+		for(let r = 0; r < result.rows; r++){
+		    for(let c = 0; c < result.cols; c++){
+		        result[r][c] = this[c][r];
+				
+		    }
+		}
+		return result;
+	
+	}
+}
+//Функция для умножения значения в каждом столбце первой матрицы на значение в каждый элемент массива
+test_matrixMultArrayAndResultIsArr();
+
+function matrixMultArrayAndResultIsArr(matrix, array){
+    let resultArray = [];
+    if(matrix.length === 0|| array.length === 0){
+	    return resultArray;
+	}else{
+    
+    for (let j = 0; j < matrix[0].length; j++) {
+        let elemOfResultArray = 0;
+        for (let i = 0; i < matrix.length; i++) {
+            elemOfResultArray += matrix[i][j] * array[i];
+        }
+    resultArray.push(elemOfResultArray);
+    }
+	}
+	return resultArray;
+}
+
+function test_matrixMultArrayAndResultIsArr(){
+    console.assert(JSON.stringify(matrixMultArrayAndResultIsArr([[1, 2, 3], [4, 5, 6]], [2, 3, 4])) === 
+	JSON.stringify([14, 19, 24]), 'Test 1 Failed');
+
+    console.assert(JSON.stringify(matrixMultArrayAndResultIsArr([[1, 2], [3, 4]], [2, 3])) === 
+	JSON.stringify([11, 16]), 'Test 2 Failed');
+
+    console.assert(JSON.stringify(matrixMultArrayAndResultIsArr([[5]], [3])) === 
+	JSON.stringify([15]), 'Test 3 Failed');
+
+    console.assert(JSON.stringify(matrixMultArrayAndResultIsArr([], [2, 3, 4])) === 
+	JSON.stringify([]), 'Test 4 Failed');
+
+    console.assert(JSON.stringify(matrixMultArrayAndResultIsArr([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [])) === 
+	JSON.stringify([]), 'Test 5 Failed');
+}
+//это вот данные с завода, можете их подставить чтобы посмотреть что вычисления идут правильно!
+
+<!-- let production = [[4, 3], [2, 6], [1, 5]]; -->
+<!-- let arrayOfProductionRelease = [90, 130, 50]; -->
+<!-- let matrixOfPriceOfRawMaterials = [[60], [40]]; -->
+
+//Функция для умножения значения в строке первой матрицы на значение в каждом столбце второй матрицы
+test_getCostOfRawMaterials();
+
+function getCostOfRawMaterials(matrix1, matrix2){
+    let result = [];
+    for(let i in matrix1){
+        let elem = [];
+        for(let j in matrix2[0]){
+            let x = 0;
+            for(let k in matrix1[i]){
+                x += matrix1[i][k] * matrix2[k][j];
+            }
+            elem.push(x);
+        }
+        result.push(elem);
+    }
+    return result;
+}
+function test_getCostOfRawMaterials(){
+    console.assert(getCostOfRawMaterials( [[4, 3], [2, 6], [1, 5]], [[60], [40]]).toString() === 
+	[[360], [360], [260]].toString(), "Test case 1 failed");
+
+    console.assert(getCostOfRawMaterials([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10], [11, 12]]).toString() === 
+    [[58, 64], [139, 154]].toString(), "Test case 2 failed");
+
+    console.assert(getCostOfRawMaterials([[1]], [[1]]).toString() === [[1]].toString(), "Test case 3 failed");
+	
+    console.assert(getCostOfRawMaterials([[1, 2, 3]], [[4], [5], [6]]).toString() === [[32]].toString(), "Test case 4 failed");
+}
+
+
+
+let numberOfProducts = +prompt('Введите какое количество видов продукции предприятие выпускает: ');
+let numberOfRawMaterials = +prompt('Введите какое количество видов сырья предприятие использует: ');
+if(typeof(numberOfProducts) !== 'number' || typeof(numberOfRawMaterials) !== 'number'){
+    alert('Неправильный ввод! Введите Число!');
+}else{
+    let production = new Matrix(numberOfProducts, numberOfRawMaterials, randomOne);
+    console.log(production);
+	
+    let planOfProductionRelease = prompt('Введите план выпуска продукции:  \n\nДанные можно записывать через запятую: 70, 80, 45');
+    let arrayOfProductionRelease = planOfProductionRelease.split(", ");
+    if(arrayOfProductionRelease.length !== numberOfProducts){
+        alert(`План выпуска продукции должен быть введен на каждый вид продукции! \n\nВы должны ввести такое же колличество данных, что равнеяется: ${numberOfProducts}`);
+    }
+    arrayOfProductionRelease = arrayOfProductionRelease.map(Number);
+    console.log(arrayOfProductionRelease);
+	
+	let rawMaterialCosts = matrixMultArrayAndResultIsArr(production, arrayOfProductionRelease);
+	
+    let priceOfRawMaterials = prompt('Введите стоимость каждого вида сырья через запяту: \n\nДанные можно записывать через запятую: 70, 80');
+    let arrPriceOfRawMaterials = priceOfRawMaterials.split(", ");
+    if(arrPriceOfRawMaterials.length !== numberOfRawMaterials){
+        alert(`Необходимо ввести стоимость сырья на каждый вид используемого сырья для выпуска продукции! \n\nВы должны ввести такое же колличество данных, что равнеяется: ${numberOfRawMaterials}`);
+    }else{
+        arrPriceOfRawMaterials = arrPriceOfRawMaterials.map(Number);
+
+        let matrixOfPriceOfRawMaterials = new Matrix(1, arrPriceOfRawMaterials.length);
+        for(let i = 0; i < arrPriceOfRawMaterials.length; i++){
+            matrixOfPriceOfRawMaterials[0][i] = arrPriceOfRawMaterials[i];
+        }
+        matrixOfPriceOfRawMaterials = matrixOfPriceOfRawMaterials.transpose();
+        console.log(matrixOfPriceOfRawMaterials);
+		 
+        let matrixOfCostOfEachRawMaterials = getCostOfRawMaterials(production, matrixOfPriceOfRawMaterials);
+		for(let x of matrixOfCostOfEachRawMaterials){
+		    document.write(`Стоимость затрат каждого вида сырья: ${matrixOfCostOfEachRawMaterials.indexOf(x) + 1} = ${x.join()} <br>`);
+		}
+        let totalCostOfRawMaterials = matrixMultArrayAndResultIsArr(matrixOfPriceOfRawMaterials, rawMaterialCosts);
+        document.write(`Общая стоимость сырья: ${totalCostOfRawMaterials} <br>`);
+    }
+}
+
+</script>
+

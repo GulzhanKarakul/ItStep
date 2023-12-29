@@ -1,0 +1,162 @@
+<script>
+/* 4.	Создать прямоугольную матрицу из N строк и M столбцов со случайными числами от -10 до 10. Найти строку и столбец с наибольшим количеством нулей и удалить их. Вывести результат.*/
+
+let matrixSize = prompt('Введите желаемую размерность матрицы: \n\n Где первое число будет означать колличество строк, а второе - колличество столбцов. Например: 7, 8');
+let currentMatrixSizeArray = getIntFromUser(matrixSize);
+let currentMatrix = getRandomMatrix(currentMatrixSizeArray[0], currentMatrixSizeArray[1]);
+showMatrix(currentMatrix);
+
+// Функция для обработки введенных данных
+test_getIntFromUser();
+
+function getIntFromUser(promptString){
+    let matrixRowsAndColsArray = promptString.split(', ');
+    matrixRowsAndColsArray = matrixRowsAndColsArray.map(Number);
+	return matrixRowsAndColsArray;
+}
+
+function test_getIntFromUser(){
+    console.assert(JSON.stringify(getIntFromUser("3, 4")) === JSON.stringify([3, 4]), "Test Case 1 Failed");
+    console.assert(JSON.stringify(getIntFromUser("1, 2, 3")) === JSON.stringify([1, 2, 3]), "Test Case 2 Failed");
+    console.assert(JSON.stringify(getIntFromUser("-1, -2")) === JSON.stringify([-1, -2]), "Test Case 3 Failed");
+    console.assert(JSON.stringify(getIntFromUser("5 , 6")) === JSON.stringify([5, 6]), "Test Case 4 Failed");
+}
+// Функция для получения рандомного числа
+
+function getRandomInt(min, max){
+    return value = Math.floor(Math.random() * (max*2 + 1)) + min;
+}
+
+// Функция для получения матрицы с рандомными числами
+test_getRandomMatrix();
+
+function getRandomMatrix(rows, columns){
+    let matrix = [];
+	
+	for(let row = 0; row < rows; row++){
+		    let currentRow = [];
+		    for(let col = 0; col < columns; col++){
+				    currentRow[col] = getRandomInt(-10,10);
+			}
+		    matrix.push(currentRow);
+		}
+	return matrix;
+}
+function test_getRandomMatrix(){
+    let matrix = getRandomMatrix(3, 4);
+    console.assert(matrix.length === 3, "Test Case 1 Failed");
+    console.assert(matrix[0].length === 4, "Test Case 1 Failed");
+
+    matrix = getRandomMatrix(-2, "abc");
+    console.assert(matrix.length === 0, "Test Case 2 Failed");
+}
+
+// Функция для вывода матрицы в документ
+
+function showMatrix(matrix){
+    document.write('<table width = "50%" border = "1">'); 
+          for(i = 0; i < matrix.length; i++){ 
+            document.writeln('<tr>'); 
+                for(j = 0; j < matrix[i].length; j++){ 
+                    document.write("<td>" + matrix[i][j] + "<\/td>") 
+                }  
+            document.writeln('<\/tr>'); 
+        } 
+    document.write('<\/table> <br>'); 
+	return matrix;
+}
+
+let arrOfZeroPosition = findRowAndColumnWithMaxZeros(currentMatrix);
+console.log(arrOfZeroPosition);
+let removedArray = deleteRowAndCol(currentMatrix, arrOfZeroPosition);
+showMatrix(removedArray);
+
+// Функция для поиска адреса строки и столбца с большим колличеством нулей
+test_findRowAndColumnWithMaxZeros();
+
+function findRowAndColumnWithMaxZeros(matrix) {
+    let result = [];
+	let rowToDelete = -1;
+	let colToDelete = -1;
+	let maxZeroCountInRow = -1;
+	let maxZeroCountInCol = -1;
+	
+	for(let i in matrix){
+	    let countInRow = -1;
+	    let countInCol = -1;
+	    for(let j in matrix[i]){
+		    if(matrix[i][j] === 0){
+		        countInRow++;
+		    }
+			if(matrix[j][i] === 0){
+		        countInCol++;
+		    }
+		}
+		
+	if (countInRow > maxZeroCountInRow) {
+            maxZeroCountInRow = countInRow;
+            rowToDelete = i;
+        }
+        if (countInCol > maxZeroCountInCol) {
+            maxZeroCountInCol = countInCol;
+            colToDelete = i;
+        }
+	}
+	result.push(rowToDelete);
+	result.push(colToDelete);
+    return result;
+}
+
+function test_findRowAndColumnWithMaxZeros(){
+    let matrix1 = [ [1, 0, 0],
+                    [1, 1, 0],
+                    [0, 0, 1]
+                  ];
+    let expectedResult1 = ['0','1'];
+    console.assert(JSON.stringify(findRowAndColumnWithMaxZeros(matrix1)) === JSON.stringify(expectedResult1),  "Test Case 1 Failed");
+
+    let matrix2 = [ [0, 0, 0],
+                    [1, 1, 0],
+                    [0, 0, 1]
+                  ];
+    let expectedResult2 = ['0', '0'];
+    console.assert(JSON.stringify(findRowAndColumnWithMaxZeros(matrix2)) === JSON.stringify(expectedResult2),  "Test Case 2 Failed");
+}
+// Функция для удаления строки и столбца из матрицы
+test_deleteRowAndCol();
+
+function deleteRowAndCol(matrix, arrOfIndexRowCol){
+    arrOfIndexRowCol = arrOfIndexRowCol.map(Number);
+    let newMatrix = [];
+
+    for (let i = 0; i < matrix.length; i++) {
+        if (i !== arrOfIndexRowCol[0]) {
+            let newRow = [];
+            for(let j = 0; j < matrix[i].length; j++){
+                if(j !== arrOfIndexRowCol[1]){
+                    newRow.push(matrix[i][j]);
+                }
+            }
+            newMatrix.push(newRow);
+        }
+    }
+    return newMatrix;
+}
+
+function test_deleteRowAndCol(){
+    const matrix1 = [  [1, 2, 3],
+                       [4, 5, 6],
+                       [7, 8, 9],
+                    ];
+    const index1 = [1, 1];
+    console.assert( JSON.stringify(deleteRowAndCol(matrix1, index1)) === JSON.stringify([ [1, 3], [7, 9] ]), "Test Case 1 Failed");
+
+    const matrix2 = [  [1, 2],
+                       [3, 4],
+                       [5, 6],
+                    ];
+    const index2 = [0, 1];
+    console.assert(JSON.stringify(deleteRowAndCol(matrix2, index2)) === JSON.stringify([ [3], [5],  ]), "Test Case 2 Failed" );
+}
+
+</script>

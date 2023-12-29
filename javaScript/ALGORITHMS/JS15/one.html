@@ -1,0 +1,71 @@
+<script>
+/* Создавайте функции, нужные вам для решения задачи, так, чтобы вы могли их без изменений использовать и в других решениях. Используйте подход TDD (Test Driven Development), где это возможно. Каждая функция должна выполнять только одно дело, имя функции должно ясно указывать, что именно она делает и что возвращает. Имена аргументов функций тоже должны быть "говорящими".
+
+1.	Имеется массив слов. Например, ['брод','пальто','гриб','музыка','лес', 'кожа', ... ].
+Также имеется матрица букв, произвольного размера. Например:
+[ 'д', 'г', 'р', 'и', 'б', 'о', 'ы', 'б' ]
+[ 'л', 'а', 'г', 'м', 'а', 'н', 'э', 'р' ]
+[ 'е', 'г', 'п', 'а', 'л', 'ь', 'т', 'о' ]
+[ 'с', 'м', 'у', 'з', 'ы', 'к', 'а', 'д' ]
+[ 'л', 'т', 'р', 'и', 'к', 'о', 'ж', 'а' ]
+В этой матрице могут быть слова, записанные сверху вниз или слева направо. Найти в матрице все такие слова, которые есть в словаре, и вывести в таком виде:
+" 'музыка' - строка 4, столбец 2: слева направо"
+и т.д.
+2.	*** Усложнить задачу: слова также могут записываться в матрице снизу вверх и справа налево.
+*/
+
+<!-- const arrayOfCurrentWords = ['брод','пальто','гриб','музыка','лес', 'кожа' ]; -->
+const matrixOfWords = [[ 'д', 'г', 'р', 'и', 'б', 'о', 'ы', 'д' ],
+                       [ 'л', 'а', 'г', 'м', 'а', 'н', 'э', 'о' ],
+                       [ 'е', 'г', 'п', 'а', 'л', 'ь', 'т', 'р' ],
+                       [ 'с', 'м', 'у', 'з', 'ы', 'к', 'а', 'б' ],
+                       [ 'л', 'т', 'р', 'и', 'а', 'ж', 'о', 'к' ]
+					   ];
+					   
+console.log(matrixOfWords);
+	   
+let userInput = prompt('Введите слово, для поиска в матрице: '); //Посмотрите слова "кожа" и "брод", я их специально сделала их снизу вверх и справа налево
+userInput = userInput.toLowerCase();
+let result = findMatches(matrixOfWords, userInput);
+document.write(result + '<br>');
+
+//Функция для определения позиции слова
+test_findMatches();
+
+function findMatches(matrix, str) {
+  let result = '';
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (str[0] === matrix[i][j]) {
+        if (str === matrix[i].slice(j, j + str.length).join('')) {
+          result += `${str[0].toUpperCase() + str.slice(1).toLowerCase()} строка ${i + 1} столбец ${j + 1}, слева направо`;
+        }
+        if (j >= str.length - 1 && str === matrix[i].slice(j - str.length + 1, j + 1).reverse().join('')) {
+          result += `${str[0].toUpperCase() + str.slice(1).toLowerCase()} строка ${i + 1} столбец ${j + 1}, справа налево`;
+        }
+        if (i <= matrix.length - str.length && str === matrix.slice(i, i + str.length).map(row => row[j]).join('')) {
+          result += `${str[0].toUpperCase() + str.slice(1).toLowerCase()} строка ${i + 1} столбец ${j + 1}, сверху вниз`;
+        }
+        if (i >= str.length - 1 && str === matrix.slice(i - str.length + 1, i + 1).reverse().map(row => row[j]).join('')) {
+          result += `${str[0].toUpperCase() + str.slice(1).toLowerCase()}  строка ${i + 1} столбец ${j + 1}, снизу вверх`;
+        }
+      }
+    }
+  }
+  return result || `Слово ${str[0].toUpperCase() + str.slice(1).toLowerCase()} не найдено в матрице.`;
+}
+
+function test_findMatches(){
+    const matrix = [['т', 'п', 'о'],
+                    ['о', 'е', 'щ'],
+                    ['а', 'с', 'о']
+	                ];
+    let string1 = 'пес';
+	console.assert(findMatches(matrix, string1) === 'Пес строка 1 столбец 2, сверху вниз', 'Test Case 1 failed');
+	let string2 = 'оса';
+	console.assert(findMatches(matrix, string2) === 'Оса строка 3 столбец 3, справа налево', 'Test Case 2 failed');
+	let string3 = 'кот';
+	console.assert(findMatches(matrix, string3) === 'Слово Кот не найдено в матрице.', 'Test Case 3 failed');
+}
+
+</script>

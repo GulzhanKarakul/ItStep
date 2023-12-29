@@ -1,0 +1,68 @@
+<script>
+/* 1.	Пользователь вводит два числа N и M - размер двумерного массива (матрицы). Создать такой массив, заполненный случайными целыми числами от -10 до 10 и вывести в документ.
+Примечание. Рекомендую создать примерно такие функции: getIntFromUser(promptString);  getRandomInt(min, max);  getRandomMatrix(rows, columns);  showMatrix(matrix).
+*/
+let matrixSize = prompt('Введите желаемую размерность матрицы: \n\n Где первое число будет означать колличество строк, а второе - колличество столбцов. Например: 7, 8');
+let currentMatrixSizeArray = getIntFromUser(matrixSize);
+let currentMatrix = getRandomMatrix(currentMatrixSizeArray[0], currentMatrixSizeArray[1]);
+showMatrix(currentMatrix);
+
+// Функция для обработки введенных данных
+test_getIntFromUser();
+
+function getIntFromUser(promptString){
+    let matrixRowsAndColsArray = promptString.split(', ');
+    matrixRowsAndColsArray = matrixRowsAndColsArray.map(Number);
+	return matrixRowsAndColsArray;
+}
+
+function test_getIntFromUser(){
+    console.assert(JSON.stringify(getIntFromUser("3, 4")) === JSON.stringify([3, 4]), "Test Case 1 Failed");
+    console.assert(JSON.stringify(getIntFromUser("1, 2, 3")) === JSON.stringify([1, 2, 3]), "Test Case 2 Failed");
+    console.assert(JSON.stringify(getIntFromUser("-1, -2")) === JSON.stringify([-1, -2]), "Test Case 3 Failed");
+    console.assert(JSON.stringify(getIntFromUser("5 , 6")) === JSON.stringify([5, 6]), "Test Case 4 Failed");
+}
+// Функция для получения рандомного числа
+
+function getRandomInt(min, max){
+    return value = Math.floor(Math.random() * (max*2 + 1)) + min;
+}
+
+// Функция для получения матрицы с рандомными числами
+test_getRandomMatrix();
+
+function getRandomMatrix(rows, columns){
+    let matrix = [];
+	
+	for(let row = 0; row < rows; row++){
+		    let currentRow = [];
+		    for(let col = 0; col < columns; col++){
+				    currentRow[col] = getRandomInt(-10,10);
+			}
+		    matrix.push(currentRow);
+		}
+	return matrix;
+}
+function test_getRandomMatrix(){
+    let matrix = getRandomMatrix(3, 4);
+    console.assert(matrix.length === 3, "Test Case 1 Failed");
+    console.assert(matrix[0].length === 4, "Test Case 1 Failed");
+
+    matrix = getRandomMatrix(-2, "abc");
+    console.assert(matrix.length === 0, "Test Case 2 Failed");
+}
+
+// Функция для вывода матрицы в документ
+function showMatrix(matrix){
+    document.write('<table width = "50%" border = "1">'); 
+          for(i = 0; i < matrix.length; i++){ 
+            document.writeln('<tr>'); 
+                for(j = 0; j < matrix[i].length; j++){ 
+                    document.write("<td>" + matrix[i][j] + "<\/td>") 
+                }  
+            document.writeln('<\/tr>'); 
+        } 
+    document.write('<\/table> <br>'); 
+	return matrix;
+}
+</script>

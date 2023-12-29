@@ -1,0 +1,582 @@
+<script>
+/* Карточка сотрудника предприятия содержит такие поля: id сотрудника, firstName - имя, lastName - фамилия, birthDate - дата рождения, hiredDate - дата принятия на работу, firedDate - дата увольнения, position - должность, salary - размер зарплаты.
+1) Создать функцию newEmployee(fullName, birthDate, position, salary), добавляющую нового работника. Функция должна возвращать результат в виде объекта с полями: id, errorDescription. В случае ошибки id = -1, а errorDescription содержит строку, поясняющую, что именно не так.
+*/
+
+function Employee() {
+    this.id = -1;
+    this.firstName = " ";
+    this.lastName = " ";
+    this.birthDate = " ";
+    this.hiredate = " ";
+    this.fireDate = " ";
+    this.position =  " ";
+    this.salary = 0;
+}
+
+let database = [];
+
+test_newEmployee();
+
+/* 2) Заполнить базу сотрудников.*/
+
+newEmployee("Каракул Гульжан", "1993-12-01", "менеджер", 150000);
+newEmployee("Молдамбаева Альмира", "1965-12-02", "учитель", 190000);
+newEmployee("Каракул Чапай", "1963-02-01", "менеджер", 160000);
+newEmployee("Тимур Алькей", "2001-04-15", "администратор", 270000);
+
+function newEmployee(fullName, birthDate, position, salary){
+    let [firstName, lastName] = fullName.split(" ");
+    if(!firstName) return {id: -1, errorDescription: "firstName not specified"};
+    if(!lastName) return {id: -1, errorDescription: "lastName not specified"};
+    if(!birthDate) return {id: -1, errorDescription: "birthDate not specified"};
+    if(!position) return {id: -1, errorDescription: "position not specified"};
+    if(!salary) return {id: -1, errorDescription: "salary not specified"};
+
+    for (let x of database) {
+        if(x.firstName === firstName && x.lastName === lastName)
+        return {id: -1, errorDescription: "Exist"}; 
+    }
+
+    let worker = new Employee();
+    worker.id = database.length;
+    worker.firstName = firstName;
+    worker.lastName = lastName;
+    worker.hiredate = new Date().toDateString();
+    birthDate = new Date(birthDate);
+    if(!birthDate) return {id: -1, errorDescription: "birthDate not specified"};
+    worker.birthDate = birthDate.toDateString();
+    worker.position = position;
+    worker.salary = salary;
+
+    database.push(worker);
+    return {id: worker.id, errorDescription: ""};
+}
+
+function test_newEmployee(){
+    let ars = ["Иванов Амир", "2012-12-12", "менеджер", 80000];
+    let result = JSON.stringify({id: 0, errorDescription: ""});
+    console.assert(JSON.stringify(newEmployee(...ars)) === result, "Test 1 failed");
+
+    ars = ["ИвановАмир", "2012-12-12", "менеджер", 80000];
+    result = JSON.stringify({id: -1, errorDescription: "lastName not specified"});
+    console.assert(JSON.stringify(newEmployee(...ars)) === result, "Test 2 failed");
+  
+	ars = ["Иванов Амир", "2012-12-12", "менеджер", 80000];
+	result = JSON.stringify({id: -1, errorDescription: "Exist"});
+    console.assert(JSON.stringify(newEmployee(...ars)) === result, "Test 3 failed");
+	
+	ars = ["Петров Амир", "", "менеджер", 80000];
+	result = JSON.stringify({id: -1, errorDescription: "birthDate not specified"});
+    console.assert(JSON.stringify(newEmployee(...ars)) === result, "Test 4 failed");
+}
+
+/*Реализовать fireEmployee(id), увольняющую сотрудника. Функция возвращает результат по тем же правилам. */
+test_fireEmployee();
+
+function fireEmployee(id){
+    if(!id) return {id: -1, errorDescription: "ID not specified"};
+	
+	for (let x of database) {
+        if(x.id === id){
+		    Object.assign(x, {fireDate : new Date().toDateString()})
+			return {id: x.id, errorDescription: ""};
+		}
+    }
+	return {id: -1, errorDescription: "Employee not found"};
+}
+
+function test_fireEmployee() {
+  let result = JSON.stringify({id: 1, errorDescription: ""});
+  console.assert(JSON.stringify(fireEmployee(1)) === result, "Test 1 failed");
+  
+  result = JSON.stringify({id: -1, errorDescription: "Employee not found"});
+  console.assert(JSON.stringify(fireEmployee(100)) === result, "Test 2 failed");
+
+  result = JSON.stringify({id: 3, errorDescription: ""});
+  console.assert(JSON.stringify(fireEmployee(3)) === result, "Test 3 failed");
+}
+
+/* Реализовать getEmployeeId(fullName), Выполняющую поиск сотрудника в базе по имени и фамилии, и возвращающую id сотрудника или -1 в случае, если такой не найден.*/
+test_getEmployeeId();
+
+function getEmployeeId(fullName){
+    let [firstName, lastName] = fullName.split(" ");
+    if(!firstName) return {id: -1, errorDescription: "firstName not specified"};
+    if(!lastName) return {id: -1, errorDescription: "lastName not specified"};
+	
+    for (let x of database) {
+        if(x.firstName === firstName && x.lastName === lastName){
+            return {id: x.id, errorDescription: ""}; 
+		}
+    }
+	return {id: -1, errorDescription: "Doesn't Exist"};
+}
+
+function test_getEmployeeId(){
+    let ars = ["Каракул Гульжан"];
+    let result = JSON.stringify({id: 1, errorDescription: ""});
+    console.assert(JSON.stringify(getEmployeeId(...ars)) === result, "Test 1 failed");
+
+    ars = ["ИвановАмир"];
+    result = JSON.stringify({id: -1, errorDescription: "lastName not specified"});
+    console.assert(JSON.stringify(getEmployeeId(...ars)) === result, "Test 2 failed");
+
+    ars = ["Иванов Амир"];
+    result = JSON.stringify({id: -1, errorDescription: "Doesn't Exist"});
+    console.assert(JSON.stringify(getEmployeeId(...ars)) === result, "Test 3 failed");
+}
+
+/* Реализовать getEmployeeRecord(id), возвращающую полную карточку сотрудника со всеми полями, или объект {id, errorDescription}, как в (1).*/
+test_getEmployeeRecord();
+
+function getEmployeeRecord(id){
+    if(!id) return {id: -1, errorDescription: "ID not specified"};
+	
+	for(let x of database){
+	    if(x.id === id){
+		    document.write('<table width = "30%" border = "1">'); 
+            for(let key in x){ 
+                document.writeln('<tr>'); 
+                     document.write("<td>" + key + "<\/td>") 
+                     document.write("<td>" + x[key] + "<\/td>") 
+                document.writeln('<\/tr>'); 
+
+            } 
+            document.write('<\/table>'); 
+			return x;
+		}
+	}
+	return {id: -1, errorDescription: "Doesn't Exist"};
+}
+
+function test_getEmployeeRecord() {
+    let expected = {
+        id: 1,
+        firstName: "Каракул",
+        lastName: "Гульжан",
+        birthDate: "Wed Dec 01 1993",
+        hiredate: "Tue Feb 28 2023",
+        fireDate: "Tue Feb 28 2023",
+        position: "менеджер",
+        salary: 150000
+    };
+    console.assert(JSON.stringify(getEmployeeRecord(1)) === JSON.stringify(expected), "Test 1 failed");
+
+    expected = { id: -1, errorDescription: "ID not specified" };
+    console.assert(JSON.stringify(getEmployeeRecord()) === JSON.stringify(expected), "Test 2 failed");
+
+    expected = { id: -1, errorDescription: "Doesn't Exist" };
+    console.assert(JSON.stringify(getEmployeeRecord(100)) === JSON.stringify(expected), "Test 3 failed");
+}
+/* Реализовать getEmployeeList(selector), возвращающую массив карточек сотрудников, для которых функция selector возвращает true. Пример вызова: getEmployeeList(x => x.salary < 250000). Предусмотреть, чтобы передаваемая функция не могла никак изменить данные в базе.
+
+Я в итоге смотрела на ютюбе и гуглила как сделать и как сделать тесты*/
+test_getEmployeeList();
+
+function getEmployeeList(selector) {
+  return database.filter(employee => selector({ ...employee }));
+}
+
+function test_getEmployeeList(){
+    let result = getEmployeeList(employee => employee.position === "менеджер");
+    let expectedResult = database.filter(employee => employee.position === "менеджер");
+    console.assert(JSON.stringify(result) === JSON.stringify(expectedResult), "Test Case 1 Failed");
+
+    result = getEmployeeList(employee => employee.salary > 200000);
+    expectedResult = database.filter(employee => employee.salary > 200000);
+    console.assert(JSON.stringify(result) === JSON.stringify(expectedResult), "Test Case 2 Failed");
+
+    result = getEmployeeList(employee => employee.birthDate.includes("1965"));
+    expectedResult = database.filter(employee => employee.birthDate.includes("1965"));
+    console.assert(JSON.stringify(result) === JSON.stringify(expectedResult), "Test Case 3 Failed");
+
+    result = getEmployeeList(employee => employee.id === 999);
+    expectedResult = database.filter(employee => employee.id === 999);
+    console.assert(JSON.stringify(result) === JSON.stringify(expectedResult), "Test Case 4 Failed");
+}
+
+/* 2. Используя сделанные функции работы с базой, вывести в документ информацию об уволенных сотрудниках.*/
+
+function showFireEmployees(database){
+    for(x of database){
+	    if(x.fireDate !== " "){
+		    document.write(`Уволенный сотрудник ${x.firstName} ${x.lastName}. Дата увольнения ${x.fireDate} <br>`);
+			return {id: x.id, errorDescription: ""};
+		}
+	}
+    return {id: -1, errorDescription: "Doesn't Exist"};
+}
+
+function test_showFireEmployees() {
+    let database = [];
+
+    newEmployee("Иванов Амир", "2012-12-12", "менеджер", 80000);
+    newEmployee("Петров Петр", "1990-01-01", "администратор", 120000);
+    newEmployee("Сидорова Екатерина", "1985-05-05", "учитель", 100000);
+    newEmployee("Кузнецова Ольга", "1999-10-20", "менеджер", 90000);
+
+    let result = showFireEmployees(database);
+    console.assert(result.id === -1 && result.errorDescription === "Doesn't Exist", "Test 1 failed");
+
+    database[0].fireDate = new Date().toDateString();
+    result = showFireEmployees(database);
+    console.assert(result.id === 0 && result.errorDescription === "", "Test 2 failed");
+
+    database[1].fireDate = new Date().toDateString();
+    result = showFireEmployees(database);
+    console.assert(result.id === 1 && result.errorDescription === "", "Test 3 failed");
+    
+    database[2].fireDate = new Date().toDateString();
+    result = showFireEmployees(database);
+    console.assert(result.id === 2 && result.errorDescription === "", "Test 4 failed");
+}
+
+
+/* 3. Вывести в документ средний возраст действующих сотрудников. ФИО самого молодого и самого старого сотрудника.*/
+
+//функция чтобы прорядить уволенных сотрудников 
+function activeEmployees(database){
+    let activeEmployeesList = [];
+    for(x of database){
+	    if(x.fireDate === " "){
+		    activeEmployeesList.push(x);
+		}
+	}
+    return activeEmployeesList;
+}
+
+let activeEmployeesList = activeEmployees(database);
+
+//функция чтобы найти средний возвраст
+test_averageAgeOfEmployees();
+
+function averageAgeOfEmployees(activeEmployees){
+    let currentDate = new Date();
+	let totalAge = 0;
+	
+	for(let employee of activeEmployees){
+	    let age = currentDate.getFullYear() - new Date(employee.birthDate).getFullYear();
+		totalAge += age;
+	}
+    let averageAge = totalAge / activeEmployees.length;
+	document.write(`Средний возраст действующих сотрудников: ${averageAge.toFixed(0)}<br>`);
+	return averageAge;
+}
+
+function test_averageAgeOfEmployees() {
+    let employee1 = new newEmployee();
+    employee1.birthDate = "1990-01-01"; 
+
+    let employee2 = new newEmployee();
+    employee2.birthDate = "1985-05-15";
+
+    let employee3 = new newEmployee();
+    employee3.birthDate = "1995-12-30";
+
+    let activeEmployees = [];
+    activeEmployees.push(employee1);
+    activeEmployees.push(employee2);
+    activeEmployees.push(employee3);
+
+    let result = averageAgeOfEmployees(activeEmployees);
+    console.assert(result === 32, "Test 1 failed");
+
+    activeEmployees = [];
+    result = averageAgeOfEmployees(activeEmployees);
+    console.assert(result === 0, "Test 2 failed");
+
+    let employee4 = new Employee();
+    activeEmployees.push(employee4);
+    result = averageAgeOfEmployees(activeEmployees);
+    console.assert(isNaN(result), "Test 3 failed");
+}
+
+//функция для поиска самого молодого и самого старого сотрудников
+test_youngestAndOldestEmployee();
+
+function youngestAndOldestEmployee(activeEmployees) {
+    let currentDate = new Date();
+    let youngestEmployee = activeEmployees[0];
+    let oldestEmployee = activeEmployees[0];
+
+    for (let employee of activeEmployees) {
+        let birthDate = new Date(employee.birthDate);
+        if (birthDate > new Date(youngestEmployee.birthDate)) {
+            youngestEmployee = employee;
+        }
+        if (birthDate < new Date(oldestEmployee.birthDate)) {
+            oldestEmployee = employee;
+        }
+    }
+
+    let youngestEmployeeAge = currentDate.getFullYear() - new Date(youngestEmployee.birthDate).getFullYear();
+    let oldestEmployeeAge = currentDate.getFullYear() - new Date(oldestEmployee.birthDate).getFullYear();
+	
+	return {youngestEmployeeId: youngestEmployee.id, oldestEmployeeId : oldestEmployee.id};
+}
+
+/* Здесь, Виталий, тест не проходит!!! Я не знаю почему... Я прогоняю сначала функцию через эбаут бланк, потом первый employees и у меня выходит ответ 2 и 1, как я и вывела и то же самое с третьим тестом, но они не проходят....*/
+function test_youngestAndOldestEmployee(){
+    console.assert(typeof youngestAndOldestEmployee([]) === "object", "Test 1 failed");
+
+    let employees = [
+        {
+        id: 0,
+        firstName: "Иван",
+        lastName: "Иванов",
+        birthDate: 'Wed Dec 01 1993'
+        },
+        {
+        id: 1,
+        firstName: "Петр",
+        lastName: "Петров",
+        birthDate: 'Thu Dec 02 1965'
+        },
+        {
+        id: 2,
+        firstName: "Сидор",
+        lastName: "Сидоров",
+        birthDate: 'Sun Apr 15 2001'
+        }
+    ];
+    let result = youngestAndOldestEmployee(employees);
+    console.assert(result.youngestEmployeeId === 2, "Test 2 failed");
+    console.assert(result.oldestEmployeeId === 1, "Test 2 failed");
+
+    employees = [
+        {
+        id: 0,
+        firstName: "Иван",
+        lastName: "Иванов",
+        birthDate: 'Fri Feb 01 1963'
+        }
+    ];
+    result = youngestAndOldestEmployee(employees);
+    console.assert(result.youngestEmployeeId === 0 && result.oldestEmployeeId === 0, "Test 3 failed");
+}
+/* 4. Вывести общий размер зарплатного фонда компании, самую маленькую и самую большую зарплаты, среднюю зарплату, медианную зарплату.*/
+
+//Функция для вывода общего размера зарплатного фонда.
+test_averageSalaryOfEmployees();
+
+function averageSalaryOfEmployees(activeEmployees){
+	let totalSalary = 0;
+	for(let employee of activeEmployees){
+		totalSalary += employee.salary;
+	}
+	document.write(`Общий размер зарплатного фонда: ${totalSalary.toFixed(0)} тенге.<br>`);
+	return totalSalary;
+}
+
+function test_averageSalaryOfEmployees(){
+    let activeEmployees = [];
+    console.assert(averageSalaryOfEmployees(activeEmployees) === 0, "Test 1 failed");
+
+    activeEmployees = [
+	    {
+		id: 0, 
+		firstName: "Иван",
+		lastName: "Иванов", 
+		birthDate: "1990-01-01", 
+		hiredate: "2020-01-01", 
+		fireDate: " ",
+		position: "менеджер",
+		salary: 100000
+		}
+    ];
+    console.assert(averageSalaryOfEmployees(activeEmployees) === 100000, "Test 2 failed");
+	
+    activeEmployees = [
+	    {
+		id: 0,
+		firstName: "Иван",
+		lastName: "Иванов",
+		birthDate: "1990-01-01",
+		hiredate: "2020-01-01",
+		fireDate: " ",
+		position: "менеджер",
+		salary: 100000
+		},
+	    {
+		id: 1,
+		firstName: "Петр",
+		lastName: "Петров",
+		birthDate: "1985-02-02",
+		hiredate: "2019-01-01",
+		fireDate: " ",
+		position: "учитель",
+		salary: 150000
+		},
+	    {
+		id: 2,
+		firstName: "Сидор",
+		lastName: "Сидоров",
+		birthDate: "1980-03-03",
+		hiredate: "2018-01-01",
+		fireDate: " ",
+		position: "администратор",
+		salary: 120000
+		}
+    ];
+    console.assert(averageSalaryOfEmployees(activeEmployees) === 370000, "Test 3 failed");
+}
+
+//функция для поиска самой маленькой и самой большой зарплаты сотрудников
+test_smallestAndHighestSalary();
+
+function smallestAndHighestSalary(activeEmployees){
+    let smallestSalaryEmployee = {};
+    let highestSalaryEmployee = {};
+	
+    if (activeEmployees.length > 0) {
+        smallestSalaryEmployee = activeEmployees[0];
+        highestSalaryEmployee = activeEmployees[0];
+
+        for (let employee of activeEmployees) {
+            let currentSalary = employee.salary;
+            if (currentSalary < smallestSalaryEmployee.salary) {
+                smallestSalaryEmployee = employee;
+            }
+            if (currentSalary > highestSalaryEmployee.salary) {
+                highestSalaryEmployee = employee;
+            }
+        }
+    }
+
+	if (smallestSalaryEmployee) {
+	    document.write(`Сотрудник с самой маленькой зарплатой: ${smallestSalaryEmployee.firstName} ${smallestSalaryEmployee.lastName}: ${smallestSalaryEmployee.salary} тенге<br>`);
+	}
+	if (highestSalaryEmployee) {
+	    document.write(`Сотрудник с самой большой зарплатой: ${highestSalaryEmployee.firstName} ${highestSalaryEmployee.lastName}: ${highestSalaryEmployee.salary} тенге<br>`);
+	}
+	return {smallestSalaryEmployee: smallestSalaryEmployee.id, highestSalaryEmployee : highestSalaryEmployee.id};
+}
+
+
+function test_smallestAndHighestSalary(){
+    console.assert(typeof smallestAndHighestSalary([]) === "object", "Test 1 failed");
+
+    activeEmployees = [
+        {
+            id: 0, 
+            firstName: "Иван",
+            lastName: "Иванов", 
+            birthDate: 'Wed Dec 01 1993', 
+            hiredate: 'Thu Mar 17 2016', 
+            fireDate: " ",
+            position: "менеджер",
+            salary: 100000
+        }
+    ];
+    result = smallestAndHighestSalary(activeEmployees);
+    console.assert(result.smallestSalaryEmployee === 0, "Test 2 failed");
+    console.assert(result.highestSalaryEmployee === 0, "Test 2 failed");
+    
+    activeEmployees = [
+        {
+            id: 0,
+            firstName: "Иван",
+            lastName: "Иванов",
+            birthDate: 'Thu Dec 02 1965',
+            hiredate: 'Thu Mar 17 2016',
+            fireDate: " ",
+            position: "менеджер",
+            salary: 100000
+        },
+        {
+            id: 1,
+            firstName: "Петр",
+            lastName: "Петров",
+            birthDate: 'Sun Apr 15 2001',
+            hiredate: 'Thu Mar 17 2016',
+            fireDate: " ",
+            position: "учитель",
+            salary: 150000
+        },
+        {
+            id: 2,
+            firstName: "Сидор",
+            lastName: "Сидоров",
+            birthDate: 'Wed Dec 01 1993',
+            hiredate: 'Thu Mar 17 2016',
+            fireDate: " ",
+            position: "администратор",
+            salary: 120000
+        }
+    ];
+    result = smallestAndHighestSalary(activeEmployees);
+    console.assert(result.smallestSalaryEmployee === 0, "Test 3 failed");
+    console.assert(result.highestSalaryEmployee === 1, "Test 3 failed");    
+}
+
+//функция для выводв медианной запрлаты
+test_showMedianSalary();
+
+function showMedianSalary(activeEmployees) {
+    if(activeEmployees.length === 0) return false;
+    let sortedSalaries = activeEmployees.map(employee => employee.salary).sort((a, b) => a - b);
+    let middleIndex = Math.floor(sortedSalaries.length / 2);
+    let medianSalary;
+    if (sortedSalaries.length % 2 === 0) {
+        medianSalary = (sortedSalaries[middleIndex - 1] + sortedSalaries[middleIndex]) / 2;
+    }else {
+        medianSalary = sortedSalaries[middleIndex];
+    }
+    document.write(`Медианная зарплата: ${medianSalary} тенге<br>`);
+    return medianSalary;
+}
+
+function test_showMedianSalary(){
+    let activeEmployees = [];
+    console.assert(showMedianSalary(activeEmployees) === false, "Test 1 failed");
+
+    activeEmployees = [
+	    {
+		id: 0, 
+		firstName: "Иван",
+		lastName: "Иванов", 
+		birthDate: "1990-01-01", 
+		hiredate: "2020-01-01", 
+		fireDate: " ",
+		position: "менеджер",
+		salary: 100000
+		}
+    ];
+    console.assert(showMedianSalary(activeEmployees) === 100000, "Test 2 failed");
+	
+    activeEmployees = [
+	    {
+		id: 0,
+		firstName: "Иван",
+		lastName: "Иванов",
+		birthDate: "1990-01-01",
+		hiredate: "2020-01-01",
+		fireDate: " ",
+		position: "менеджер",
+		salary: 100000
+		},
+	    {
+		id: 1,
+		firstName: "Петр",
+		lastName: "Петров",
+		birthDate: "1985-02-02",
+		hiredate: "2019-01-01",
+		fireDate: " ",
+		position: "учитель",
+		salary: 150000
+		},
+	    {
+		id: 2,
+		firstName: "Сидор",
+		lastName: "Сидоров",
+		birthDate: "1980-03-03",
+		hiredate: "2018-01-01",
+		fireDate: " ",
+		position: "администратор",
+		salary: 120000
+		}
+    ];
+    console.assert(showMedianSalary(activeEmployees) === 120000, "Test 3 failed");
+}
+</script>
