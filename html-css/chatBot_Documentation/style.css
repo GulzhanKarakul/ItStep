@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:'Lato', sans-serif;;
+    font-size: 17px;
+}
+
+.cont {
+    width: 1200px;
+    margin: 0 auto;
+    /* padding: 0 20px 0; */
+}
+
+header {
+    margin: 0;
+    padding: 20px;
+    background: #72b7fd;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.menu li {
+    list-style: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.introduction, .resume {
+    padding: 20px;
+}
+
+.sup {display: block;}
+
+h1 {
+    font-size: 40px;
+    margin: 20px 0;
+}
+
+p {
+    text-indent: 20px;
+    margin: 10px 0;
+    line-height: 22px;
+}
+
+.introduction ol {
+    margin: 10px 25px;
+}
+
+.inputs {
+    display: flex;
+}
+
+.introduction li {
+    margin: 5px;
+}
+
+.cap-rover ol {
+    width: 90%;
+}
+
+.cap-rover li {
+    width: 100%;
+    margin: 15px;
+}
+
+.sub-panel {
+    width: 300px;
+    margin: 20px 0px;
+}
+
+.sub-panel li {
+    width: 100%;
+    list-style: none;
+    padding: 15px 0;
+    background: #72b7fd;
+    margin: 20px 0;
+    padding: 15px;
+    padding-right: 0;
+    box-sizing: content-box;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.location {
+    margin: 20px;
+    padding: 20px;
+    width: 800px;
+    margin-left: 30px;
+}
+
+.command h3 {
+    color: #54a8fe;
+    text-indent: 20px;
+}
+
+.instal-types p {text-indent: 0px;}
+
+.output, .instal-types {
+    border: 3px solid #72b7fd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.chat-menu {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    font-family:'Lato', sans-serif;
+    padding: 7px 10px;
+    background: #54a8fe;
+    font-size: 28px;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 7px;
+    border: none;
+    border-radius: 7px;
+}
+
+.output span { color: #54a8fe;}
+
+.out-contacts span {
+    display: block;
+    padding: 10px 15px;
+    border: 2px solid #72b7fd;
+    border-radius: 7px;
+    text-align: center;
+    margin: 10px 0 0;
+}
+
+.introduction, .inputs, .resume,  .command, .out-almaty, .out-astana, .out-karaganda, .chat-inp, .output, .instruction, .deploy-type { display: none; }
+.active {
+    display: flex;
+    flex-wrap: wrap;
+}
