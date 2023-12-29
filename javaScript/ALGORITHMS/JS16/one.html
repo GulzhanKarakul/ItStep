@@ -1,0 +1,40 @@
+<script>
+/* Проектируйте функции, нужные вам для решения задачи, используя подход TDD (Test Driven Development)! 	
+
+1. Пользователь вводит строку в формате JSON. Используя метод JSON.parse() выведите информацию из введённого JSON-объекта в документ. Например, для объекта {id: 35, name: 'Robert', married: true} вывод будет такой:
+
+ключ: 'id', значение: 35, тип: number;
+ключ: 'name', значение: 'Robert', тип: string;
+Ключ: 'married', значение: true, тип: boolean;
+
+Пользователь может ввести некорректный JSON, предусмотрите понятный пользователю вывод для такого случая тоже.
+*/
+
+//Функция для вывода информации из введённого объекта в документ
+test_objectDescribe();
+
+function objectDescribe(obj){
+	for(let key in obj){
+	    document.write(`Ключ: ${key}, значение:  ${obj[key]}, тип: ${typeof(obj[key])}; <br>`);
+	}
+    return obj;
+}
+/*т.к. моя функция используется для вывода в документ а ритерн в любом случае должен быть я просто возвращаю сам объект. Поэтому я не вижу большого смысла писать моей функции TDD! */
+function test_objectDescribe(){
+    let object1 = { "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] };
+	let result = { "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] };
+	console.assert(JSON.stringify(objectDescribe(object1)) === JSON.stringify(result));
+}
+
+try {
+    let newObjectInput = JSON.parse(prompt('Введите объект: \n\n Программа выведет информацию в документ!'));
+    if (!(newObjectInput instanceof Object)) {
+        throw new Error('Введенные данные не являются объектом!');
+    }
+    objectDescribe(newObjectInput);
+} catch (error) {
+    //Прикол в том что если ввести строку без кавычек то выходит в алерт другая ошибка... а вот с числами все ок...
+    alert(error.message);
+}
+
+</script>

@@ -1,0 +1,90 @@
+<script>
+/*  Не буду врать! Я нашла код для квадратной матрицы с одинаковым колличеством строк и столбцов, запоненной спиралевидно, но с позиции matrix[0][0] =1; matrix[0][1] =2 и тд Тем не менее мне пришлось попотеть чтобы свести заполнение с позиции matrix[0][3] =0; matrix[1][3] =1 и потом разобраться для матрицы с разным колличеством строк и столбцов... 
+НО было очень интересно! Реально. */
+
+let rows = +prompt('Number of Rows?');
+let cols = +prompt('Number of Collons?');
+
+let matrixCur = getSpiralMatrix(rows, cols);
+
+test_getSpiralMatrix();
+function getSpiralMatrix(rows, cols){
+    let matrix = [];
+    if(rows === undefined || cols === undefined){
+	    return matrix;
+	}else{
+	    for(let row = 0; row < rows; row++){
+		    let currentRow = [];
+		    for(let col = 0; col < cols; col++){
+		        currentRow[col] = 0;
+	        }
+		    matrix.push(currentRow);
+	    }
+	
+	    let num = 0;
+        let count = rows * cols;
+        let i = 0;
+        let j = matrix[0].length - 1;
+        let d = matrix.length - 1; 
+	
+	    if(rows === cols){
+            while (num < count) {
+                for (let k = i; k <= j && num < count; k++) { 
+                    matrix[k][j] = num++;
+                }
+                for (let k = j - 1; k >= i && num < count; k--) { 
+                    matrix[j][k] = num++;
+                }
+                for (let k = j - 1; k >= i && num < count; k--) {
+                    matrix[k][i] = num++;
+                }
+                for (let k = i; k < j && num < count; k++) {
+                    matrix[i][k] = num++;
+                }
+
+                i++;
+                j--;
+            }
+            console.log(matrix); 
+	    }else {
+            while (num < count) {
+                for (let k = i; k <= d && num < count; k++) { 
+                    matrix[k][j] = num++;
+                }
+                for (let k = j - 1; k >= i && num < count; k--) { 
+                    matrix[d][k] = num++;
+                }
+                for (let k = d - 1; k >= i && num < count; k--) { 
+                    matrix[k][i] = num++;
+                }
+                for (let k = i + 1; k < j && num < count; k++) { 
+                    matrix[i][k] = num++;
+                }
+
+                i++;
+                j--;
+			    d--;
+            }
+            console.log(matrix); 
+        }
+        return matrix; 
+	}
+}
+
+function test_getSpiralMatrix() {
+    let size = [2,2];
+    let expect = [[3,0],
+                  [2,1]];
+    console.assert(getSpiralMatrix(...size).toString() === expect.toString());
+
+    size = [4,5];
+    expect = [[10, 11, 12, 13, 0],
+              [ 9, 18, 19, 14, 1],
+              [ 8, 17, 16, 15, 2],
+              [ 7,  6,  5,  4, 3]];
+    console.assert(getSpiralMatrix(...size).toString() === expect.toString());
+
+    console.assert(getSpiralMatrix().toString() === [].toString());
+}
+
+</script>
