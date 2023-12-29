@@ -1,0 +1,28 @@
+div{
+	text-align: center;
+	margin: 50px;
+	font-family:lato,sans-serif;
+	font-size: 17px;
+}
+ol{
+	width:15%;
+	margin: 0 auto;
+}
+ul{
+	width:50%;
+	margin: 5px auto;
+}
+ul li{
+	margin: 5px 0;
+}
+.submit{
+	display: inline-block;
+	width:20%;
+	height: 40px;
+    font-size: 17px;
+    color: #fff;
+	background:#75db92;
+    border-bottom: 3px solid #48a517;
+	font-family:monospace;
+	text-transform: uppercase;
+}
